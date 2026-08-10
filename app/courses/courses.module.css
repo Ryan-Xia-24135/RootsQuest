@@ -11,3 +11,8 @@
 /* On constrained screens, outcomes become a normal vertical document. */
 @media(max-width:800px),(max-height:720px){.outcomes{height:auto;min-height:100svh;overflow:visible;padding:clamp(72px,10vh,100px) 5% 7%}.outcomes h2{position:relative;top:auto;left:auto;width:auto;margin-bottom:clamp(24px,5vh,50px)}.outcomeGrid{position:relative;inset:auto;display:grid;grid-template-columns:1fr;gap:clamp(24px,5vh,50px)}.outcome,.outcome:nth-child(3),.outcome:nth-child(4){direction:ltr;grid-template-columns:minmax(150px,42%) 1fr;min-height:clamp(190px,34vh,310px)}.outcome img{height:100%;min-height:180px}.outcome div{min-height:0;height:max-content;max-height:100%;overflow-y:auto}.outcome h3{font-size:clamp(20px,4.5vw,30px)}.outcome p{font-size:clamp(14px,3vw,20px)}}
 @media(max-width:520px){.outcome{grid-template-columns:1fr;gap:12px}.outcome img{height:auto;min-height:0;aspect-ratio:16/9}.outcome div{max-height:42svh}}
+
+/* One continuous, viewport-fixed forest behind both course sections. */
+.main{position:relative;background:#3d291f url('/assets/offers-fixed-bg.png') center/cover fixed no-repeat}
+.panel{background:transparent}
+@media(max-width:800px){.main{background-attachment:scroll}.main::before{content:"";position:fixed;z-index:0;inset:0;background:url('/assets/offers-fixed-bg.png') center/cover no-repeat;pointer-events:none}.panel{z-index:1}}
