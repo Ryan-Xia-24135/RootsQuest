@@ -12,8 +12,13 @@ export default function SiteNav() {
       <Link href="/courses">Courses</Link>
       <Link href="/contact">Contact</Link>
     </div>
-    <Link className={`${styles.logoLink} ${styles.logoRight}`} href="/" aria-label="ROOTS Quest home">
-      <Image src="/assets/light-logo.png" alt="" width={1000} height={1000} priority />
-    </Link>
+    <div className={styles.socials} aria-label="ROOTS Quest social media">
+      <a className={styles.socialLink} href="https://www.linkedin.com/in/roots-quest/" target="_blank" rel="noreferrer" aria-label="ROOTS Quest on LinkedIn">
+        <Image src="/assets/linkedin.png" alt="" width={1600} height={1600} />
+      </a>
+      <a className={styles.socialLink} href="https://www.instagram.com/rootsquestyyc/" target="_blank" rel="noreferrer" aria-label="ROOTS Quest on Instagram">
+        <Image src="/assets/instagram.png" alt="" width={1200} height={1200} />
+      </a>
+    </div>
   </nav>;
 }

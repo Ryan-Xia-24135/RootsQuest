@@ -4,7 +4,10 @@
 /* Page-specific color treatment overrides. */
 .hero{--tint:transparent;background-image:url('/assets/hero.png')}
 .hero::after{content:none}
-.importance{--tint:#31576d;background-image:linear-gradient(rgba(4,20,31,.38),rgba(4,20,31,.38)),url('/assets/mountain-bg.png');background-blend-mode:multiply,normal}
+.about{--tint:#285747;background-image:linear-gradient(rgba(3,20,13,.44),rgba(3,20,13,.44)),url('/assets/forest-bg.png');background-blend-mode:multiply,normal}
+.courses{--tint:#694534;background-image:linear-gradient(rgba(28,13,7,.45),rgba(28,13,7,.45)),url('/assets/earth-bg.png');background-blend-mode:multiply,normal}
+.importance{--tint:#24495e;background-image:linear-gradient(rgba(2,14,23,.57),rgba(2,14,23,.57)),url('/assets/mountain-bg.png');background-blend-mode:multiply,normal}
+.contact{--tint:#354765;background-image:linear-gradient(rgba(4,10,27,.5),rgba(4,10,27,.5)),url('/assets/cohort-bg.png');background-blend-mode:multiply,normal}
 
 /* Compact supporting type; heading sizes above remain unchanged. */
 .heroCopy p{font-size:clamp(18px,1.8vw,27px)}
@@ -13,3 +16,5 @@
 .card span{font-size:clamp(11px,1.05vw,16px)}
 .contactCopy>p:not(:first-child){font-size:clamp(16px,1.65vw,25px)}
 @media(max-width:800px){.heroCopy p{font-size:4.2vw}.button{font-size:3vw}.callout,.courseCopy p,.intro{font-size:2.8vw}.card span{font-size:2vw}.contactCopy>p:not(:first-child){font-size:3.5vw}}
+.heroCopy,.courseCopy,.callout,.intro,.contactCopy,.card{min-width:0;overflow-wrap:anywhere}
+@media(max-height:700px) and (min-width:801px){.callout,.courseCopy p,.intro{font-size:clamp(14px,1.35vw,20px)}.cards{top:36%;gap:2vw}.card{height:min(43vh,300px)}.importanceButton{bottom:3%}}

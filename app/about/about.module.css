@@ -6,3 +6,9 @@
 .facts span{font-size:clamp(19px,2.1vw,32px)}
 .list p{font-size:clamp(15px,1.65vw,25px)}
 @media(max-width:800px){.lead{font-size:3.1vw}.body{font-size:2.85vw}.facts span{font-size:3.6vw}.list p{font-size:2.6vw}}
+
+/* Dark monochrome treatment stays behind the clean foreground photo and content. */
+.panel{isolation:isolate;background-image:linear-gradient(rgba(2,20,12,.5),rgba(2,20,12,.5)),url('/assets/about-background.png');background-blend-mode:multiply,normal}
+.panel::after{content:"";position:absolute;z-index:0;inset:0;background:#254d3b;mix-blend-mode:color;pointer-events:none}
+.lead,.body,.facts span,.list article{min-width:0;overflow-wrap:anywhere}
+@media(max-height:700px) and (min-width:801px){.facts{gap:4vh 3vw}.lead,.body{font-size:clamp(14px,1.35vw,20px)}.list{gap:2vh}.list article{min-height:70px}.list p{font-size:clamp(13px,1.35vw,20px)}}
