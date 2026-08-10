@@ -12,3 +12,6 @@
 .panel::after{content:"";position:absolute;z-index:0;inset:0;background:#254d3b;mix-blend-mode:color;pointer-events:none}
 .lead,.body,.facts span,.list article{min-width:0;overflow-wrap:anywhere}
 @media(max-height:700px) and (min-width:801px){.facts{gap:4vh 3vw}.lead,.body{font-size:clamp(14px,1.35vw,20px)}.list{gap:2vh}.list article{min-height:70px}.list p{font-size:clamp(13px,1.35vw,20px)}}
+
+.panel::before{background:radial-gradient(circle,rgba(1,9,5,.8) 0 1.15px,transparent 1.35px) 0 0/4px 4px,radial-gradient(circle,rgba(218,235,220,.13) 0 .8px,transparent 1px) 2px 2px/4px 4px}
+.overview h1{top:11%;font-size:clamp(38px,3.8vw,58px)}.overview .lead{top:21%;width:35%}.overview .facts{top:21%;width:47%}.overview .forest{top:47%;height:45%}.overview .body{top:55%;width:52%}

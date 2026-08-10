@@ -18,3 +18,10 @@
 @media(max-width:800px){.heroCopy p{font-size:4.2vw}.button{font-size:3vw}.callout,.courseCopy p,.intro{font-size:2.8vw}.card span{font-size:2vw}.contactCopy>p:not(:first-child){font-size:3.5vw}}
 .heroCopy,.courseCopy,.callout,.intro,.contactCopy,.card{min-width:0;overflow-wrap:anywhere}
 @media(max-height:700px) and (min-width:801px){.callout,.courseCopy p,.intro{font-size:clamp(14px,1.35vw,20px)}.cards{top:36%;gap:2vw}.card{height:min(43vh,300px)}.importanceButton{bottom:3%}}
+
+/* Match the centered blue reference section. */
+.importance h2{top:8%;left:50%;width:80%;transform:translateX(-50%);text-align:center}.importance .intro{top:21%;left:15%;width:70%}.importance .cards{top:35%;gap:2vw}.importance .card{height:clamp(240px,23vw,350px);padding-top:15%}.importanceButton{bottom:6%}
+@media(max-width:800px){.importance h2{width:90%}.importance .intro{top:19%;left:8%;width:84%}.importance .cards{top:30%;gap:5vh 4%}.importance .card{height:min(24vh,190px)}.importanceButton{bottom:3%}}
+
+/* A denser, higher-contrast print grain like the supplied screenshots. */
+.panel::before{background:radial-gradient(circle,rgba(2,8,6,.78) 0 1.15px,transparent 1.35px) 0 0/4px 4px,radial-gradient(circle,rgba(230,230,205,.16) 0 .8px,transparent 1px) 2px 2px/4px 4px}
