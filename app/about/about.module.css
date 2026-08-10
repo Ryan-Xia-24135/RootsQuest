@@ -12,11 +12,3 @@
 .panel::after{content:"";position:absolute;z-index:0;inset:0;background:#254d3b;mix-blend-mode:color;pointer-events:none}
 .lead,.body,.facts span,.list article{min-width:0;overflow-wrap:anywhere}
 @media(max-height:700px) and (min-width:801px){.facts{gap:4vh 3vw}.lead,.body{font-size:clamp(14px,1.35vw,20px)}.list{gap:2vh}.list article{min-height:70px}.list p{font-size:clamp(13px,1.35vw,20px)}}
-
-.lead,.body{font-size:clamp(17px,1.75vw,27px);max-height:36%;overflow:auto}
-.facts{grid-template-columns:repeat(2,max-content);align-items:start;gap:clamp(14px,5vh,55px) clamp(14px,3vw,46px)}
-.facts span{width:max-content;max-width:100%;padding:clamp(7px,.65vw,11px) clamp(10px,.9vw,15px);font-size:clamp(20px,2.2vw,33px);line-height:1.1}
-.list{gap:clamp(9px,2vh,22px)}
-.list article{min-height:0;height:auto;max-height:14vh;overflow:auto;padding-right:clamp(8px,1vw,15px)}
-.list p{padding:clamp(8px,1vh,13px) clamp(8px,1.4vw,21px) clamp(8px,1vh,13px) 0;font-size:clamp(16px,1.75vw,27px)}
-@media(max-width:800px){.lead,.body{font-size:clamp(12px,3.2vw,17px)}.facts{gap:clamp(9px,2vh,18px);grid-template-columns:1fr}.facts span{justify-self:stretch;width:auto;font-size:clamp(14px,3.8vw,20px)}.list article{max-height:13vh}.list p{font-size:clamp(11px,2.8vw,15px)}}
