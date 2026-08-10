@@ -27,7 +27,7 @@ export default function HomePage(){return <main>
   </section>
   <section className={`${styles.panel} ${styles.importance}`}>
     <h2>The Importance of What<br/>ROOTS Quest Offers</h2><p className={styles.intro}>Students don’t just learn abstract ideas, ROOTS Quest introduces students to real-world concepts and usages of highly relevant topics</p>
-    <div className={styles.cards}>{cards.map(card=><a className={styles.card} href={card.href} target="_blank" rel="noreferrer" key={card.title}><Image className={styles.logo} src={card.logo} alt="" width={120} height={80}/><Image className={styles.cardPhoto} src={card.image} alt="" width={800} height={534}/><span>{card.title}</span></a>)}</div>
+    <div className={styles.cards}>{cards.map(card=><a className={styles.card} href={card.href} target="_blank" rel="noreferrer" key={card.title}><Image className={styles.logo} src={card.logo} alt="" width={120} height={80}/><div className={styles.cardVisual}><Image className={styles.cardPhoto} src={card.image} alt="" width={800} height={534}/></div><span>{card.title}</span></a>)}</div>
     <Link className={`${styles.button} ${styles.importanceButton}`} href="/curriculum">More About Everything ROOTS Quest Teaches</Link>
   </section>
   <section className={`${styles.panel} ${styles.contact}`}><div className={styles.contactCopy}><p>Ready to Grow Your ROOTS?</p><h2>The Next Cohort is Forming Now</h2><p>Spots are limited.<br/>Sign up to reserve and register your place or to ask more about the course.</p><Link className={`${styles.button} ${styles.join}`} href="/register">Join ROOTS Quest</Link></div></section>
