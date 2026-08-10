@@ -5,3 +5,11 @@
 .hero{--tint:transparent;background-image:url('/assets/hero.png')}
 .hero::after{content:none}
 .importance{--tint:#31576d;background-image:linear-gradient(rgba(4,20,31,.38),rgba(4,20,31,.38)),url('/assets/mountain-bg.png');background-blend-mode:multiply,normal}
+
+/* Compact supporting type; heading sizes above remain unchanged. */
+.heroCopy p{font-size:clamp(18px,1.8vw,27px)}
+.button{font-size:clamp(15px,1.5vw,22px)}
+.callout,.courseCopy p,.intro{font-size:clamp(16px,1.65vw,25px)}
+.card span{font-size:clamp(11px,1.05vw,16px)}
+.contactCopy>p:not(:first-child){font-size:clamp(16px,1.65vw,25px)}
+@media(max-width:800px){.heroCopy p{font-size:4.2vw}.button{font-size:3vw}.callout,.courseCopy p,.intro{font-size:2.8vw}.card span{font-size:2vw}.contactCopy>p:not(:first-child){font-size:3.5vw}}
