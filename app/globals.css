@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Asta+Sans:wght@400;500;600;800&family=Inter:wght@400;500&display=swap');
+
+:root { --gold:#e5c055; --green:#184327; --heading:"Asta Sans",Arial,sans-serif; --body:"Inter",Arial,sans-serif; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-snap-type:y mandatory; }
+body { margin:0; background:#07110b; color:#fff; font-family:var(--body); }
+a { color:inherit; }
+button, input, select, textarea { font:inherit; }
+@media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto} *,*::before,*::after{transition-duration:.01ms!important} }
