@@ -6,3 +6,12 @@
 .panel::after{content:"";position:absolute;z-index:0;inset:0;background:#694737;mix-blend-mode:color;pointer-events:none}
 .intro,.outcome,.outcome div{min-width:0;overflow-wrap:anywhere}
 @media(max-height:700px) and (min-width:801px){.intro p{font-size:clamp(14px,1.4vw,20px)}.outcomeGrid{top:21%;gap:3% 7%}.outcome h3{font-size:clamp(18px,1.7vw,25px)}.outcome p{font-size:clamp(12px,1.15vw,17px)}.outcome div{padding:4%}}
+
+.intro p{font-size:clamp(18px,1.8vw,27px);max-height:5.5em;overflow:auto}
+.outcomeGrid{gap:clamp(16px,4vh,42px) clamp(20px,7vw,106px)}
+.outcome{align-items:center;min-height:0}
+.outcome img{height:auto;max-height:24vh;aspect-ratio:4/3}
+.outcome div{min-height:0;height:max-content;max-height:23vh;overflow:auto;padding:clamp(10px,2vw,30px)}
+.outcome h3{font-size:clamp(22px,2.1vw,32px)}
+.outcome p{font-size:clamp(16px,1.45vw,22px)}
+@media(max-width:800px){.intro p{font-size:clamp(14px,3.8vw,20px)}.outcomeGrid{gap:clamp(8px,1.5vh,14px)}.outcome img{max-height:15vh}.outcome div{min-height:0;max-height:16vh}.outcome h3{font-size:clamp(15px,4.2vw,22px)}.outcome p{font-size:clamp(11px,3.1vw,16px)}}
