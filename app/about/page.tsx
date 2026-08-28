@@ -1,10 +1,16 @@
 import SnapScroller from "@/components/SnapScroller";
+import AboutOverviewContent from "@/components/AboutOverviewContent";
+import AboutDetailsContent from "@/components/AboutDetailsContent";
 
 export default function AboutPage() {
   return (
     <SnapScroller
       continuousBackground="/assets/about-background-3-pages.png"
-      sections={[{}, {}, {}]}
+      sections={[
+        { id: "about-overview", content: <AboutOverviewContent /> },
+        { id: "about-details", content: <AboutDetailsContent /> },
+        { id: "about-more" },
+      ]}
     />
   );
 }

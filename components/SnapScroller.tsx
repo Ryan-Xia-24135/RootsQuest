@@ -3,6 +3,7 @@
 import { animate, motion, useReducedMotion } from "framer-motion";
 import {
   type KeyboardEvent,
+  type MouseEvent,
   type ReactNode,
   type TouchEvent,
   type WheelEvent,
@@ -13,6 +14,7 @@ import SiteNav from "@/components/SiteNav";
 export type SnapSection = {
   background?: string;
   content?: ReactNode;
+  id?: string;
 };
 
 type SnapScrollerProps = {
@@ -93,6 +95,17 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
     }
   };
 
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
+    const control = (event.target as Element).closest<HTMLElement>("[data-snap-to]");
+    if (!control) return;
+
+    const destination = Number(control.dataset.snapTo);
+    if (!Number.isInteger(destination)) return;
+
+    event.preventDefault();
+    moveToPage(destination);
+  };
+
   return (
     <main
       ref={containerRef}
@@ -102,6 +115,7 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       onKeyDown={handleKeyDown}
+      onClick={handleClick}
       tabIndex={0}
     >
       {continuousBackground && (
@@ -116,6 +130,7 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
 
       {sections.map((section, index) => (
         <motion.section
+          id={section.id}
           className="relative z-10 h-svh min-h-svh w-full bg-cover bg-center bg-no-repeat"
           style={section.background ? { backgroundImage: `url('${section.background}')` } : undefined}
           initial={{ opacity: 0 }}
