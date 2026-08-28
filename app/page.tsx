@@ -2,6 +2,11 @@
 
 import { animate, motion, useReducedMotion } from "framer-motion";
 import { type KeyboardEvent, type TouchEvent, type WheelEvent, useRef } from "react";
+import AboutSectionContent from "@/components/AboutSectionContent";
+import CourseSectionContent from "@/components/CourseSectionContent";
+import ImportanceSectionContent from "@/components/ImportanceSectionContent";
+import SignupSectionContent from "@/components/SignupSectionContent";
+import HeroSectionContent from "@/components/HeroSectionContent";
 import SiteNav from "@/components/SiteNav";
 
 const backgrounds = [
@@ -101,7 +106,7 @@ export default function HomePage() {
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      {backgrounds.map((background) => (
+      {backgrounds.map((background, index) => (
         <motion.section
           className="relative h-svh min-h-svh w-full bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url('${background}')` }}
@@ -111,6 +116,11 @@ export default function HomePage() {
           key={background}
         >
           <SiteNav />
+          {index === 0 && <HeroSectionContent />}
+          {index === 1 && <AboutSectionContent />}
+          {index === 2 && <CourseSectionContent />}
+          {index === 3 && <ImportanceSectionContent />}
+          {index === 4 && <SignupSectionContent />}
         </motion.section>
       ))}
     </main>
