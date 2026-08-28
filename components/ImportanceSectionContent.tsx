@@ -36,15 +36,15 @@ const cards = [
 export default function ImportanceSectionContent() {
   return (
     <div className="absolute inset-0 z-10 overflow-hidden">
-      <h1 className="absolute left-1/2 top-[max(80px,6.7%)] m-0 w-[90.08%] -translate-x-1/2 text-center font-['Asta_Sans',Arial,sans-serif] text-[clamp(36px,4.24vw,64px)] font-semibold leading-[1.2] tracking-[-0.03em] text-white max-md:top-[calc(72.45px+2%)] max-md:w-[92%] max-md:text-[clamp(24px,7vw,40px)]">
+      <h1 className="absolute left-1/2 top-[max(78px,7%)] m-0 w-[90.08%] -translate-x-1/2 text-center font-['Asta_Sans',Arial,sans-serif] text-[clamp(26px,min(4.24vw,5.2vh),64px)] font-semibold leading-[1.15] tracking-[-0.03em] text-white max-md:top-[calc(72.45px+2%)] max-md:w-[92%] max-md:text-[clamp(22px,min(7vw,5vh),40px)]">
         The Importance of What<br />ROOTS Quest Offers
       </h1>
 
-      <p className="absolute left-1/2 top-[22.4%] m-0 flex h-[9.16%] w-[65.67%] -translate-x-1/2 items-center justify-center overflow-y-auto text-center font-['Inter',Arial,sans-serif] text-[clamp(18px,2.12vw,32px)] font-medium leading-[1.2] tracking-[-0.03em] text-white max-md:top-[23%] max-md:h-[8%] max-md:w-[90%] max-md:text-[clamp(12px,3.25vw,18px)]">
+      <p className="absolute left-1/2 top-[max(155px,22.4%)] m-0 flex h-[9.16%] w-[65.67%] -translate-x-1/2 items-center justify-center overflow-y-auto text-center font-['Inter',Arial,sans-serif] text-[clamp(14px,min(2.12vw,3vh),32px)] font-medium leading-[1.2] tracking-[-0.03em] text-white max-md:top-[max(145px,23%)] max-md:h-[8%] max-md:w-[90%] max-md:text-[clamp(11px,min(3.25vw,2.7vh),18px)]">
         Students don’t just learn abstract ideas, ROOTS Quest introduces students to real-world concepts and usages of highly relevant topics
       </p>
 
-      <div className="absolute left-[3.57%] right-[3.57%] top-[37.47%] grid h-[40.22%] grid-cols-4 gap-[3.17%] max-md:left-[5%] max-md:right-[5%] max-md:top-[35%] max-md:h-[47%] max-md:grid-cols-2 max-md:grid-rows-2 max-md:gap-x-[6%] max-md:gap-y-[8%]">
+      <div className="absolute left-[3.57%] right-[3.57%] top-[max(225px,37.47%)] grid h-[40.22%] grid-cols-4 gap-[3.17%] max-md:left-[5%] max-md:right-[5%] max-md:top-[max(205px,35%)] max-md:h-[47%] max-md:grid-cols-2 max-md:grid-rows-2 max-md:gap-x-[6%] max-md:gap-y-[8%]">
         {cards.map((card) => (
           <a
             className="relative min-h-0 rounded-[10px] bg-[#b6d8ee] text-[#2e5167] transition-transform hover:scale-[1.02] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white"
