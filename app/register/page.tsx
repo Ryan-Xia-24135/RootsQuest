@@ -1,3 +1,3 @@
-import type { Metadata } from "next";import InteriorPage from "@/components/InteriorPage";import styles from "./register.module.css";
-export const metadata:Metadata={title:"Register"};
-export default function RegisterPage(){return <InteriorPage eyebrow="Registration" title="Join ROOTS Quest"><p>This initial form demonstrates the registration route. Submission is intentionally disabled until secure storage, consent, and privacy requirements are selected.</p><form className={styles.form}><label>Parent or guardian name<input name="guardianName" autoComplete="name"/></label><label>Email address<input name="email" type="email" autoComplete="email"/></label><label>Student grade<select name="grade" defaultValue=""><option value="" disabled>Select a grade</option><option>Grade 6</option><option>Grade 7</option><option>Grade 8</option></select></label><button type="button" disabled>Registration opening soon</button></form></InteriorPage>}
+export default function RegisterPage() {
+  return <main className="min-h-screen" />;
+}
