@@ -16,7 +16,7 @@ export default function SignupSectionContent() {
       </p>
 
       <Link
-        className="absolute left-1/2 top-[59.6%] flex h-[11.33%] w-[47.5%] -translate-x-1/2 items-center justify-center rounded-[26.518px] bg-[#d9d9d9] px-[3%] font-['Asta_Sans',Arial,sans-serif] text-[clamp(26px,2.81vw,42.429px)] font-extrabold leading-[1.2] tracking-[-0.03em] text-black transition-transform hover:scale-[1.02] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white max-md:top-[64%] max-md:h-auto max-md:w-[82%] max-md:rounded-[18px] max-md:px-[5%] max-md:py-[4%] max-md:text-[clamp(22px,6vw,34px)]"
+        className="absolute left-1/2 top-[59.6%] flex h-[11.33%] w-[47.5%] -translate-x-1/2 items-center justify-center rounded-[26.518px] bg-[#d9d9d9] px-[3%] font-['Asta_Sans',Arial,sans-serif] text-[clamp(18px,min(2.81vw,4.5vh),42.429px)] font-extrabold leading-[1.2] tracking-[-0.03em] text-black transition-transform hover:scale-[1.02] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white max-md:top-[64%] max-md:h-auto max-md:w-[82%] max-md:rounded-[18px] max-md:px-[5%] max-md:py-[4%] max-md:text-[clamp(17px,min(6vw,4vh),34px)]"
         href="/register"
       >
         Join ROOTS Quest

@@ -36,7 +36,7 @@ const cards = [
 export default function ImportanceSectionContent() {
   return (
     <div className="absolute inset-0 z-10 overflow-hidden">
-      <h1 className="absolute left-1/2 top-[max(78px,7%)] m-0 w-[90.08%] -translate-x-1/2 text-center font-['Asta_Sans',Arial,sans-serif] text-[clamp(26px,min(4.24vw,5.2vh),64px)] font-semibold leading-[1.15] tracking-[-0.03em] text-white max-md:top-[calc(72.45px+2%)] max-md:w-[92%] max-md:text-[clamp(22px,min(7vw,5vh),40px)]">
+      <h1 className="absolute left-1/2 top-[max(calc(var(--nav-height)+6px),7%)] m-0 w-[90.08%] -translate-x-1/2 text-center font-['Asta_Sans',Arial,sans-serif] text-[clamp(26px,min(4.24vw,5.2vh),64px)] font-semibold leading-[1.15] tracking-[-0.03em] text-white max-md:top-[calc(var(--nav-height)+2%)] max-md:w-[92%] max-md:text-[clamp(22px,min(7vw,5vh),40px)]">
         The Importance of What<br />ROOTS Quest Offers
       </h1>
 
@@ -73,7 +73,7 @@ export default function ImportanceSectionContent() {
               />
             </div>
 
-            <span className="absolute bottom-[6.8%] right-[7.62%] block max-h-[3.6em] w-[64.76%] overflow-y-auto text-right font-['Inter',Arial,sans-serif] text-[clamp(12px,1.32vw,20px)] font-medium leading-[1.2] tracking-[-0.03em] max-md:bottom-[3%] max-md:right-[5%] max-md:w-[88%] max-md:text-[clamp(9px,2.4vw,14px)]">
+            <span className="absolute bottom-[6.8%] right-[7.62%] block max-h-[3.6em] w-[64.76%] overflow-y-auto text-right font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.32vw,2.5vh),20px)] font-medium leading-[1.2] tracking-[-0.03em] max-md:bottom-[3%] max-md:right-[5%] max-md:w-[88%] max-md:text-[clamp(8px,min(2.4vw,2.1vh),14px)]">
               {card.title}
             </span>
           </a>
@@ -81,7 +81,7 @@ export default function ImportanceSectionContent() {
       </div>
 
       <Link
-        className="absolute bottom-[8.6%] left-1/2 flex h-[5.78%] w-[50.4%] -translate-x-1/2 items-center justify-center rounded-[15px] bg-[#e5c055] px-[2%] text-center font-['Inter',Arial,sans-serif] text-[clamp(18px,2.12vw,32px)] font-medium leading-[1.2] tracking-[-0.03em] text-[#1a2d39] transition-transform hover:scale-[1.02] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white max-md:bottom-[2.5%] max-md:h-auto max-md:w-auto max-md:max-w-[90%] max-md:rounded-[10px] max-md:px-[5%] max-md:py-[2.5%] max-md:text-[clamp(13px,3.5vw,19px)]"
+        className="absolute bottom-[8.6%] left-1/2 flex h-[5.78%] w-[50.4%] -translate-x-1/2 items-center justify-center rounded-[15px] bg-[#e5c055] px-[2%] text-center font-['Inter',Arial,sans-serif] text-[clamp(13px,min(2.12vw,3.2vh),32px)] font-medium leading-[1.2] tracking-[-0.03em] text-[#1a2d39] transition-transform hover:scale-[1.02] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white max-md:bottom-[2.5%] max-md:h-auto max-md:w-auto max-md:max-w-[90%] max-md:rounded-[10px] max-md:px-[5%] max-md:py-[2.5%] max-md:text-[clamp(11px,min(3.5vw,2.7vh),19px)]"
         href="/curriculum"
       >
         More About Everything ROOTS Quest Teaches

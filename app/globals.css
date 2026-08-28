@@ -6,6 +6,10 @@ body {
   min-height: 100%;
 }
 
+:root {
+  --nav-height: clamp(44px, min(4.79vw, 7.4vh), 72.45px);
+}
+
 body {
   margin: 0;
   overflow: hidden;
@@ -18,4 +22,21 @@ body {
 
 .home-scroll::-webkit-scrollbar {
   display: none;
+}
+
+/* Reusable height-aware typography for all future sections. */
+.fluid-display {
+  font-size: clamp(2rem, min(6.67vw, 10vh), 6.3rem);
+}
+
+.fluid-heading {
+  font-size: clamp(1.4rem, min(4.24vw, 6vh), 4rem);
+}
+
+.fluid-body {
+  font-size: clamp(0.75rem, min(2.12vw, 3.5vh), 2rem);
+}
+
+.fluid-control {
+  font-size: clamp(0.75rem, min(1.73vw, 3.2vh), 1.65rem);
 }
