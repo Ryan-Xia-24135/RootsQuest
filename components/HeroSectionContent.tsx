@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { goldButtonEffect } from "@/components/goldButtonEffect";
 
 export default function HeroSectionContent() {
   return (
@@ -12,7 +13,7 @@ export default function HeroSectionContent() {
       </p>
 
       <Link
-        className="absolute left-1/2 top-[55.5%] flex h-[7.91%] w-[18.72%] min-w-max -translate-x-1/2 items-center justify-center rounded-[24.513px] bg-[#c8a84b] px-[2%] font-['Asta_Sans',Arial,sans-serif] text-[clamp(13px,min(1.73vw,3.2vh),26.147px)] font-extrabold leading-[1.2] tracking-[-0.03em] text-[#1e1e1e] transition-transform hover:scale-[1.03] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white max-md:top-[58%] max-md:h-auto max-md:w-auto max-md:rounded-[18px] max-md:px-[8%] max-md:py-[4%] max-md:text-[clamp(13px,min(4.8vw,3vh),24px)]"
+        className={`absolute left-1/2 top-[55.5%] flex h-[7.91%] w-[18.72%] min-w-max -translate-x-1/2 items-center justify-center rounded-[24.513px] bg-[#c8a84b] px-[2%] font-['Asta_Sans',Arial,sans-serif] text-[clamp(13px,min(1.73vw,3.2vh),26.147px)] font-extrabold leading-[1.2] tracking-[-0.03em] text-[#1e1e1e] max-md:top-[58%] max-md:h-auto max-md:w-auto max-md:rounded-[18px] max-md:px-[8%] max-md:py-[4%] max-md:text-[clamp(13px,min(4.8vw,3vh),24px)] ${goldButtonEffect}`}
         href="/register"
       >
         Join ROOTS Quest

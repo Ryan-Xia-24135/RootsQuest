@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { goldButtonEffect } from "@/components/goldButtonEffect";
 
 const cards = [
   {
@@ -81,7 +82,7 @@ export default function ImportanceSectionContent() {
       </div>
 
       <Link
-        className="absolute bottom-[8.6%] left-1/2 flex h-[5.78%] w-[50.4%] -translate-x-1/2 items-center justify-center rounded-[15px] bg-[#e5c055] px-[2%] text-center font-['Inter',Arial,sans-serif] text-[clamp(13px,min(2.12vw,3.2vh),32px)] font-medium leading-[1.2] tracking-[-0.03em] text-[#1a2d39] transition-transform hover:scale-[1.02] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white max-md:bottom-[2.5%] max-md:h-auto max-md:w-auto max-md:max-w-[90%] max-md:rounded-[10px] max-md:px-[5%] max-md:py-[2.5%] max-md:text-[clamp(11px,min(3.5vw,2.7vh),19px)]"
+        className={`absolute bottom-[8.6%] left-1/2 flex h-[5.78%] w-[50.4%] -translate-x-1/2 items-center justify-center rounded-[15px] bg-[#e5c055] px-[2%] text-center font-['Inter',Arial,sans-serif] text-[clamp(13px,min(2.12vw,3.2vh),32px)] font-medium leading-[1.2] tracking-[-0.03em] text-[#1a2d39] max-md:bottom-[2.5%] max-md:h-auto max-md:w-auto max-md:max-w-[90%] max-md:rounded-[10px] max-md:px-[5%] max-md:py-[2.5%] max-md:text-[clamp(11px,min(3.5vw,2.7vh),19px)] ${goldButtonEffect}`}
         href="/curriculum"
       >
         More About Everything ROOTS Quest Teaches

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { goldButtonEffect } from "@/components/goldButtonEffect";
 
 export default function CourseSectionContent() {
   return (
@@ -37,7 +38,7 @@ export default function CourseSectionContent() {
       </div>
 
       <Link
-        className="absolute left-[3.57%] top-[83.71%] flex h-[7.23%] w-[38.23%] items-center justify-center rounded-[15px] bg-[#e5c055] px-[1%] text-center font-['Inter',Arial,sans-serif] text-[clamp(13px,min(2.12vw,3.5vh),32px)] font-medium leading-[1.2] tracking-[-0.03em] text-[#2c1f14] transition-transform hover:scale-[1.02] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white max-md:bottom-[3%] max-md:left-1/2 max-md:top-auto max-md:h-auto max-md:w-auto max-md:max-w-[90%] max-md:-translate-x-1/2 max-md:rounded-[10px] max-md:px-[5%] max-md:py-[3%] max-md:text-[clamp(12px,min(3.8vw,3vh),20px)]"
+        className={`absolute left-[3.57%] top-[83.71%] flex h-[7.23%] w-[38.23%] items-center justify-center rounded-[15px] bg-[#e5c055] px-[1%] text-center font-['Inter',Arial,sans-serif] text-[clamp(13px,min(2.12vw,3.5vh),32px)] font-medium leading-[1.2] tracking-[-0.03em] text-[#2c1f14] max-md:bottom-[3%] max-md:left-1/2 max-md:top-auto max-md:h-auto max-md:w-auto max-md:max-w-[90%] max-md:-translate-x-1/2 max-md:rounded-[10px] max-md:px-[5%] max-md:py-[3%] max-md:text-[clamp(12px,min(3.8vw,3vh),20px)] ${goldButtonEffect}`}
         href="/courses"
       >
         More of What ROOTS Quest Offers
