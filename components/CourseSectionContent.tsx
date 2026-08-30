@@ -4,45 +4,35 @@ import { goldButtonEffect } from "@/components/goldButtonEffect";
 
 export default function CourseSectionContent() {
   return (
-    <div className="absolute inset-0 z-10 overflow-hidden">
-      <div className="absolute left-[3.57%] top-[10.79%] h-[37.68%] w-[35.91%] overflow-hidden rounded-[15.75px] max-md:left-[5%] max-md:top-[30%] max-md:h-[22%] max-md:w-[55%] max-md:rounded-[10px]">
-        <Image
-          className="object-cover"
-          src="/assets/spider-web.png"
-          alt="A spider web lit by warm sunlight"
-          fill
-          sizes="(max-width: 768px) 55vw, 36vw"
-        />
+    <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden p-[clamp(14px,3.3vw,50px)]">
+      <div className="mx-auto grid h-full max-w-[1450px] grid-cols-2 gap-[clamp(12px,2.5vw,38px)] max-sm:grid-cols-1 max-sm:grid-rows-2">
+        <section className="grid min-h-0 grid-rows-[1.2fr_auto] gap-[clamp(12px,2vh,22px)]">
+          <div className="relative min-h-0 overflow-hidden rounded-[clamp(16px,1.7vw,26px)] border border-[#f1d5b7]/40 shadow-[0_24px_60px_rgba(0,0,0,0.3)]">
+            <Image className="object-cover" src="/assets/spider-web.png" alt="A spider web lit by warm sunlight" fill sizes="(max-width: 640px) 92vw, 48vw" />
+          </div>
+          <p className="m-0 rounded-[clamp(14px,1.5vw,22px)] border border-[#dcc1aa]/55 bg-[#b7977d]/95 px-[clamp(14px,2.2vw,32px)] py-[clamp(10px,2vh,20px)] font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.6vw,2.7vh),24px)] font-normal leading-[1.3] tracking-[-0.03em] text-[#2c1f14] shadow-[0_18px_44px_rgba(0,0,0,0.22)]">
+            In the span of this 8 week course for students in grades 6-8 that teaches systems thinking, regenerative design, and nature-inspired problem solving in STEM.
+          </p>
+        </section>
+
+        <section className="flex min-h-0 flex-col rounded-[clamp(16px,1.7vw,26px)] border border-white/15 bg-black/25 p-[clamp(16px,2.7vw,40px)] shadow-[0_24px_60px_rgba(0,0,0,0.28)] backdrop-blur-[2px]">
+          <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(22px,min(4vw,5.7vh),60px)] font-semibold leading-[1.1] tracking-[-0.03em] text-white">
+            Beyond a School Curriculum and Science Project
+          </h1>
+          <p className="mt-[clamp(10px,2vh,20px)] max-h-[8em] overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.65vw,2.8vh),25px)] font-normal leading-[1.3] tracking-[-0.03em] text-white">
+            Students won’t just learn about the problems they’re interested in, they’ll learn what the system is behind the problem, the connections that relate to that problem, and designing what is their next step with this new understanding.
+          </p>
+          <div className="relative mt-[clamp(10px,2vh,20px)] min-h-0 flex-1 overflow-hidden rounded-[clamp(12px,1.2vw,18px)] border border-white/20 shadow-[0_16px_38px_rgba(0,0,0,0.28)] max-sm:hidden">
+            <Image className="object-cover object-center" src="/assets/pinecones.png" alt="Hands holding pinecones" fill sizes="48vw" />
+          </div>
+          <Link
+            className={`mt-[clamp(10px,2vh,20px)] inline-flex min-h-[clamp(38px,5.8vh,58px)] w-fit items-center justify-center rounded-[14px] bg-[#e5c055] px-[clamp(18px,2.8vw,42px)] text-center font-['Inter',Arial,sans-serif] text-[clamp(12px,min(1.55vw,2.6vh),23px)] font-medium leading-[1.15] text-[#2c1f14] ${goldButtonEffect}`}
+            href="/courses"
+          >
+            More of What ROOTS Quest Offers
+          </Link>
+        </section>
       </div>
-
-      <h1 className="absolute left-[43.78%] top-[10.79%] m-0 w-[55.22%] font-['Asta_Sans',Arial,sans-serif] text-[clamp(24px,min(4.24vw,6vh),64px)] font-semibold leading-[1.2] tracking-[-0.03em] text-white max-md:left-[5%] max-md:top-[calc(var(--nav-height)+3%)] max-md:w-[90%] max-md:text-[clamp(20px,min(7vw,5.5vh),40px)]">
-        Beyond a School Curriculum and Science Project
-      </h1>
-
-      <p className="absolute left-[43.78%] top-[28%] m-0 flex h-[20.47%] w-[52.71%] items-center overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(12px,min(2.12vw,3.5vh),32px)] font-medium leading-[1.2] tracking-[-0.03em] text-white max-md:left-[5%] max-md:top-[54%] max-md:h-[14%] max-md:w-[90%] max-md:text-[clamp(10px,min(3.25vw,2.8vh),18px)]">
-        Students won’t just learn about the problems they’re interested in, they’ll learn what the system is behind the problem, the connections that relate to that problem, and designing what is their next step with this new understanding.
-      </p>
-
-      <p className="absolute left-[3.57%] top-[53.87%] m-0 flex h-[14.56%] w-[56.55%] items-center overflow-y-auto rounded-[24.513px] bg-[#b7977d] px-[1.87%] font-['Inter',Arial,sans-serif] text-[clamp(12px,min(2.12vw,3.5vh),32px)] font-normal leading-[1.2] tracking-[-0.03em] text-[#2c1f14] max-md:left-[5%] max-md:top-[70%] max-md:h-auto max-md:max-h-[13%] max-md:w-[90%] max-md:rounded-[14px] max-md:px-[4%] max-md:py-[2.5%] max-md:text-[clamp(10px,min(3.25vw,2.8vh),18px)]">
-        In the span of this 8 week course for students in grades 6-8 that teaches systems thinking, regenerative design, and nature-inspired problem solving in STEM.
-      </p>
-
-      <div className="absolute left-[64.81%] top-[50%] h-[40.94%] w-[31.61%] overflow-hidden rounded-[15.75px] max-md:left-[64%] max-md:top-[30%] max-md:h-[22%] max-md:w-[31%] max-md:rounded-[10px]">
-        <Image
-          className="object-cover object-center"
-          src="/assets/pinecones.png"
-          alt="Hands holding pinecones"
-          fill
-          sizes="(max-width: 768px) 31vw, 32vw"
-        />
-      </div>
-
-      <Link
-        className={`absolute left-[3.57%] top-[83.71%] flex h-[7.23%] w-[38.23%] items-center justify-center rounded-[15px] bg-[#e5c055] px-[1%] text-center font-['Inter',Arial,sans-serif] text-[clamp(13px,min(2.12vw,3.5vh),32px)] font-medium leading-[1.2] tracking-[-0.03em] text-[#2c1f14] max-md:bottom-[3%] max-md:left-1/2 max-md:top-auto max-md:h-auto max-md:w-auto max-md:max-w-[90%] max-md:-translate-x-1/2 max-md:rounded-[10px] max-md:px-[5%] max-md:py-[3%] max-md:text-[clamp(12px,min(3.8vw,3vh),20px)] ${goldButtonEffect}`}
-        href="/courses"
-      >
-        More of What ROOTS Quest Offers
-      </Link>
     </div>
   );
 }

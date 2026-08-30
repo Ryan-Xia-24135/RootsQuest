@@ -2,25 +2,25 @@ import Link from "next/link";
 
 export default function SignupSectionContent() {
   return (
-    <div className="absolute inset-0 z-10 overflow-hidden text-center text-white">
-      <p className="absolute left-1/2 top-[32.65%] m-0 w-[43.06%] -translate-x-1/2 -translate-y-1/2 font-['Asta_Sans',Arial,sans-serif] text-[clamp(22px,min(3.33vw,5vh),50.4px)] font-semibold leading-[1.2] tracking-[-0.03em] max-md:top-[31%] max-md:w-[90%] max-md:text-[clamp(18px,min(6vw,4.5vh),34px)]">
-        Ready to Grow Your ROOTS?
-      </p>
-
-      <h1 className="absolute left-1/2 top-[42.33%] m-0 w-[56.87%] -translate-x-1/2 -translate-y-1/2 font-['Asta_Sans',Arial,sans-serif] text-[clamp(24px,min(3.74vw,5.5vh),56.572px)] font-extrabold leading-[1.15] tracking-[-0.03em] max-md:top-[41%] max-md:w-[92%] max-md:text-[clamp(20px,min(7.2vw,5vh),42px)]">
-        The Next Cohort is Forming Now
-      </h1>
-
-      <p className="absolute left-1/2 top-[52.19%] m-0 flex max-h-[13.14%] w-[42.06%] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-y-auto whitespace-pre-line font-['Inter',Arial,sans-serif] text-[clamp(14px,min(2.1vw,3.2vh),31.822px)] font-normal leading-[1.2] tracking-[-0.03em] max-md:top-[53%] max-md:w-[86%] max-md:text-[clamp(12px,min(4vw,3vh),21px)]">
-        {`Spots are limited.\nSign up to reserve and register your place or to ask more about the course.`}
-      </p>
-
-      <Link
-        className="absolute left-1/2 top-[59.6%] flex h-[11.33%] w-[47.5%] -translate-x-1/2 items-center justify-center rounded-[26.518px] bg-[#d9d9d9] px-[3%] font-['Asta_Sans',Arial,sans-serif] text-[clamp(18px,min(2.81vw,4.5vh),42.429px)] font-extrabold leading-[1.2] tracking-[-0.03em] text-black transition-transform hover:scale-[1.02] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white max-md:top-[64%] max-md:h-auto max-md:w-[82%] max-md:rounded-[18px] max-md:px-[5%] max-md:py-[4%] max-md:text-[clamp(17px,min(6vw,4vh),34px)]"
-        href="/register"
-      >
-        Join ROOTS Quest
-      </Link>
+    <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 flex items-center justify-center overflow-hidden px-[clamp(18px,5vw,76px)] py-[clamp(20px,5vh,52px)] text-center text-white">
+      <div className="w-full max-w-[940px] rounded-[clamp(20px,2vw,32px)] border border-white/25 bg-black/35 px-[clamp(22px,6vw,88px)] py-[clamp(26px,6vh,62px)] shadow-[0_30px_90px_rgba(0,0,0,0.42)] backdrop-blur-[3px]">
+        <p className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(17px,min(2.3vw,3.7vh),35px)] font-medium leading-[1.2] tracking-[-0.03em] text-white/85">
+          Ready to Grow Your ROOTS?
+        </p>
+        <h1 className="mt-[clamp(8px,1.8vh,16px)] font-['Asta_Sans',Arial,sans-serif] text-[clamp(25px,min(4.4vw,6.2vh),66px)] font-extrabold leading-[1.08] tracking-[-0.03em]">
+          The Next Cohort is Forming Now
+        </h1>
+        <div className="mx-auto my-[clamp(14px,2.8vh,26px)] h-px w-[min(320px,60%)] bg-white/35" />
+        <p className="mx-auto max-w-[35ch] whitespace-pre-line font-['Inter',Arial,sans-serif] text-[clamp(12px,min(1.8vw,3vh),27px)] font-normal leading-[1.35] tracking-[-0.03em] text-white/90">
+          {`Spots are limited.\nSign up to reserve and register your place or to ask more about the course.`}
+        </p>
+        <Link
+          className="mx-auto mt-[clamp(18px,4vh,36px)] flex min-h-[clamp(52px,8.5vh,84px)] w-full max-w-[640px] items-center justify-center rounded-[clamp(16px,1.8vw,26px)] border border-white/80 bg-[#d9d9d9] px-[5%] font-['Asta_Sans',Arial,sans-serif] text-[clamp(18px,min(2.7vw,4.4vh),41px)] font-extrabold leading-[1.1] tracking-[-0.03em] text-black shadow-[0_6px_0_#8b8b8b,0_16px_38px_rgba(0,0,0,0.35)] transition-[transform,box-shadow,filter] duration-300 hover:-translate-y-1 hover:brightness-105 hover:shadow-[0_8px_0_#8b8b8b,0_22px_46px_rgba(0,0,0,0.45)] active:translate-y-0 active:scale-[0.99] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none motion-reduce:hover:transform-none"
+          href="/register"
+        >
+          Join ROOTS Quest
+        </Link>
+      </div>
     </div>
   );
 }
