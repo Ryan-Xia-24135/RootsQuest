@@ -54,6 +54,13 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
   };
 
   const handleWheel = (event: WheelEvent<HTMLElement>) => {
+    const scrollArea = (event.target as Element).closest<HTMLElement>("[data-snap-scroll]");
+    if (scrollArea) {
+      const canScrollDown = event.deltaY > 0 && scrollArea.scrollTop + scrollArea.clientHeight < scrollArea.scrollHeight - 1;
+      const canScrollUp = event.deltaY < 0 && scrollArea.scrollTop > 1;
+      if (canScrollDown || canScrollUp) return;
+    }
+
     event.preventDefault();
     if (isMoving.current || Math.abs(event.deltaY) < 0.5) return;
     moveToPage(currentPage.current + (event.deltaY > 0 ? 1 : -1));
