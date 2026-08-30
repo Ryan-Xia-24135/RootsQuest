@@ -6,7 +6,7 @@ export default function AboutPage() {
   return (
     <SnapScroller
       sections={[
-        { id: "about-overview", background: "/assets/about-background-overview.png", content: <AboutOverviewContent /> },
+        { id: "about-overview", background: "/assets/about-background-meaning.png", content: <AboutOverviewContent /> },
         { id: "about-more", background: "/assets/about-background-meaning.png", content: <AboutMeaningContent /> },
       ]}
     />
