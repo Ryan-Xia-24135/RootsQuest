@@ -29,16 +29,16 @@ export default function AboutMeaningContent() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div className="absolute inset-0 z-10 overflow-hidden px-[3.17%] pb-[6.3vh] pt-[calc(var(--nav-height)+3.4vh)] text-white max-md:px-[4%] max-md:pb-[3vh] max-md:pt-[calc(var(--nav-height)+2.3vh)]">
-      <div className="flex h-full min-h-0 flex-col">
+    <div className="absolute inset-0 z-10 overflow-hidden px-[3.17%] pb-[6.3vh] pt-[calc(var(--nav-height)+3.4vh)] text-white max-md:px-[4%] max-md:pb-[3vh] max-md:pt-[calc(var(--nav-height)+2.3vh)] max-sm:overflow-y-auto">
+      <div className="flex h-full min-h-0 flex-col max-sm:h-auto max-sm:min-h-full">
         <h1 className="m-0 shrink-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(24px,min(4.24vw,6vh),64px)] font-semibold leading-[1.2] tracking-[-0.03em] max-md:text-[clamp(20px,min(7vw,4.8vh),40px)]">
           What Does ROOTS Mean?
         </h1>
 
-        <div className="mt-[3.6vh] grid min-h-0 flex-1 grid-rows-5 gap-[3.3vh] max-md:mt-[2.2vh] max-md:gap-[1.7vh]">
+        <div className="mt-[3.6vh] grid min-h-0 flex-1 grid-rows-5 gap-[3.3vh] max-md:mt-[2.2vh] max-md:gap-[1.7vh] max-sm:flex max-sm:flex-col max-sm:gap-3">
           {meanings.map(({ letter, text }, index) => (
             <motion.div
-              className="relative flex min-h-0 items-stretch pl-[2.55%]"
+              className="relative flex min-h-0 items-stretch pl-[2.55%] max-sm:min-h-[112px] max-sm:pl-5"
               initial={reduceMotion ? false : { opacity: 0, y: 72, scale: 0.975 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ amount: 0.25 }}

@@ -4,8 +4,8 @@ import { goldButtonEffect } from "@/components/goldButtonEffect";
 
 export default function AboutSectionContent() {
   return (
-    <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden p-[clamp(14px,3.3vw,50px)]">
-      <div className="mx-auto grid h-full max-w-[1450px] grid-cols-[0.82fr_1.18fr] gap-[clamp(12px,2.5vw,38px)] max-sm:grid-cols-1 max-sm:grid-rows-[auto_1fr_1fr]">
+    <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden p-[clamp(14px,3.3vw,50px)] max-sm:overflow-y-auto max-sm:p-3">
+      <div className="mx-auto grid h-full max-w-[1450px] grid-cols-[0.82fr_1.18fr] gap-[clamp(12px,2.5vw,38px)] max-sm:h-auto max-sm:min-h-full max-sm:grid-cols-1 max-sm:grid-rows-none max-sm:gap-3">
         <section className="flex min-h-0 flex-col rounded-[clamp(16px,1.7vw,26px)] border border-white/15 bg-black/20 p-[clamp(14px,2.5vw,38px)] shadow-[0_24px_60px_rgba(0,0,0,0.25)] backdrop-blur-[2px]">
           <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(23px,min(4.1vw,5.8vh),62px)] font-semibold leading-[1.12] tracking-[-0.03em] text-[#d9d9d9]">
             Where curious, young minds learn to<br />‘think like a forest’
@@ -15,8 +15,8 @@ export default function AboutSectionContent() {
           </div>
         </section>
 
-        <section className="grid min-h-0 grid-rows-[1.12fr_0.88fr] gap-[clamp(12px,2vh,22px)] max-sm:grid-rows-2">
-          <div className="relative min-h-0 overflow-hidden rounded-[clamp(16px,1.7vw,26px)] border border-white/25 shadow-[0_24px_60px_rgba(0,0,0,0.3)]">
+        <section className="grid min-h-0 grid-rows-[1.12fr_0.88fr] gap-[clamp(12px,2vh,22px)] max-sm:grid-rows-none max-sm:gap-3">
+          <div className="relative min-h-0 overflow-hidden rounded-[clamp(16px,1.7vw,26px)] border border-white/25 shadow-[0_24px_60px_rgba(0,0,0,0.3)] max-sm:h-[28svh] max-sm:min-h-[210px]">
             <Image className="object-cover object-bottom" src="/assets/student-writing.png" alt="A student writing while seated in a forest" fill sizes="(max-width: 640px) 92vw, 58vw" />
           </div>
 

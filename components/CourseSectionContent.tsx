@@ -4,10 +4,10 @@ import { goldButtonEffect } from "@/components/goldButtonEffect";
 
 export default function CourseSectionContent() {
   return (
-    <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden p-[clamp(14px,3.3vw,50px)]">
-      <div className="mx-auto grid h-full max-w-[1450px] grid-cols-2 gap-[clamp(12px,2.5vw,38px)] max-sm:grid-cols-1 max-sm:grid-rows-2">
+    <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden p-[clamp(14px,3.3vw,50px)] max-sm:overflow-y-auto max-sm:p-3">
+      <div className="mx-auto grid h-full max-w-[1450px] grid-cols-2 gap-[clamp(12px,2.5vw,38px)] max-sm:h-auto max-sm:min-h-full max-sm:grid-cols-1 max-sm:grid-rows-none max-sm:gap-3">
         <section className="grid min-h-0 grid-rows-[1.2fr_auto] gap-[clamp(12px,2vh,22px)]">
-          <div className="relative min-h-0 overflow-hidden rounded-[clamp(16px,1.7vw,26px)] border border-[#f1d5b7]/40 shadow-[0_24px_60px_rgba(0,0,0,0.3)]">
+          <div className="relative min-h-0 overflow-hidden rounded-[clamp(16px,1.7vw,26px)] border border-[#f1d5b7]/40 shadow-[0_24px_60px_rgba(0,0,0,0.3)] max-sm:h-[28svh] max-sm:min-h-[210px]">
             <Image className="object-cover" src="/assets/spider-web.png" alt="A spider web lit by warm sunlight" fill sizes="(max-width: 640px) 92vw, 48vw" />
           </div>
           <p className="m-0 rounded-[clamp(14px,1.5vw,22px)] border border-[#dcc1aa]/55 bg-[#b7977d]/95 px-[clamp(14px,2.2vw,32px)] py-[clamp(10px,2vh,20px)] font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.6vw,2.7vh),24px)] font-normal leading-[1.3] tracking-[-0.03em] text-[#2c1f14] shadow-[0_18px_44px_rgba(0,0,0,0.22)]">

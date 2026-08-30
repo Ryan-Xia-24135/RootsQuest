@@ -35,7 +35,7 @@ const courseQuestions: AccordionEntry[] = [
 
 export default function AboutDetailsContent() {
   return (
-    <div className="absolute inset-0 z-10 overflow-hidden px-[clamp(18px,3.2vw,48px)] pb-[clamp(18px,3vh,30px)] pt-[calc(var(--nav-height)+clamp(14px,3vh,30px))] text-white">
+    <div className="absolute inset-0 z-10 overflow-hidden px-[clamp(18px,3.2vw,48px)] pb-[clamp(18px,3vh,30px)] pt-[calc(var(--nav-height)+clamp(14px,3vh,30px))] text-white max-sm:px-3 max-sm:pb-3">
       <div className="mx-auto flex h-full min-h-0 max-w-[1600px] flex-col">
         <header className="mb-[clamp(14px,3vh,30px)] shrink-0">
           <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(22px,min(4.24vw,5.8vh),64px)] font-semibold leading-[1.1] tracking-[-0.03em]">Everything you need to know</h1>
