@@ -1,6 +1,7 @@
 "use client";
 
 import { animate, motion, useReducedMotion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import {
   type KeyboardEvent,
   type MouseEvent,
@@ -147,6 +148,19 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
         >
           <SiteNav />
           {section.content}
+          {index < sections.length - 1 && (
+            <motion.button
+              type="button"
+              className="absolute bottom-[clamp(8px,1.5vh,14px)] left-1/2 z-30 flex size-[clamp(34px,3.2vw,46px)] -translate-x-1/2 cursor-pointer items-center justify-center rounded-full border border-white/55 bg-black/45 text-white shadow-[0_10px_28px_rgba(0,0,0,0.35)] backdrop-blur-sm transition-colors hover:border-white hover:bg-black/65 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-white"
+              data-snap-to={index + 1}
+              aria-label={`Continue to section ${index + 2}`}
+              initial={reduceMotion ? false : { opacity: 0, y: -5 }}
+              animate={reduceMotion ? undefined : { opacity: 1, y: [0, 5, 0] }}
+              transition={reduceMotion ? undefined : { opacity: { duration: 0.25 }, y: { duration: 1.35, repeat: Infinity, ease: "easeInOut" } }}
+            >
+              <ChevronDown className="size-[58%]" strokeWidth={1.8} aria-hidden="true" />
+            </motion.button>
+          )}
         </motion.section>
       ))}
     </main>

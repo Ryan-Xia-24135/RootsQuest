@@ -88,12 +88,12 @@ function StickyNote({ note, index }: { note: Note; index: number }) {
   );
 }
 
-function CurriculumTopic({ heading, notes }: { heading: React.ReactNode; notes: Note[] }) {
+function CurriculumTopic({ heading, notes, compactHeading = false }: { heading: React.ReactNode; notes: Note[]; compactHeading?: boolean }) {
   return (
     <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden px-[clamp(14px,3vw,46px)] py-[clamp(16px,3vh,30px)] text-white max-sm:overflow-y-auto max-sm:p-3">
       <div className="relative mx-auto h-full max-w-[1480px] max-sm:flex max-sm:h-auto max-sm:min-h-full max-sm:flex-col">
-        <div className="absolute left-1/2 top-1/2 w-[min(72vw,1020px)] -translate-x-1/2 -translate-y-1/2 rounded-[clamp(18px,2vw,30px)] border border-white/15 bg-black/18 px-[clamp(18px,4vw,60px)] py-[clamp(20px,4vh,42px)] text-center shadow-[0_24px_65px_rgba(0,0,0,0.24)] backdrop-blur-[2px] max-sm:static max-sm:mb-3 max-sm:w-auto max-sm:translate-x-0 max-sm:translate-y-0">
-          <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(30px,min(5.3vw,8vh),80px)] font-semibold leading-[1.18] tracking-[-0.03em] max-sm:text-[clamp(28px,9vw,42px)]">
+        <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[clamp(18px,2vw,30px)] border border-white/15 bg-black/18 px-[clamp(18px,4vw,60px)] py-[clamp(20px,4vh,42px)] text-center shadow-[0_24px_65px_rgba(0,0,0,0.24)] backdrop-blur-[2px] max-sm:static max-sm:mb-3 max-sm:w-auto max-sm:translate-x-0 max-sm:translate-y-0 ${compactHeading ? "w-[min(62vw,900px)]" : "w-[min(72vw,1020px)]"}`}>
+          <h1 className={`m-0 font-['Asta_Sans',Arial,sans-serif] font-semibold leading-[1.18] tracking-[-0.03em] max-sm:text-[clamp(28px,9vw,42px)] ${compactHeading ? "text-[clamp(28px,min(3.7vw,6vh),56px)]" : "text-[clamp(30px,min(5.3vw,8vh),80px)]"}`}>
             {heading}
           </h1>
         </div>
@@ -116,7 +116,7 @@ export function SystemsThinkingContent() {
 }
 
 export function ResearchSkillsContent() {
-  return <CurriculumTopic heading="Technical, Scientific & Research Skills" notes={researchNotes} />;
+  return <CurriculumTopic heading="Technical, Scientific & Research Skills" notes={researchNotes} compactHeading />;
 }
 
 export function CurriculumOverviewHeading() {
