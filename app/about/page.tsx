@@ -1,6 +1,7 @@
 import SnapScroller from "@/components/SnapScroller";
 import AboutOverviewContent from "@/components/AboutOverviewContent";
 import AboutDetailsContent from "@/components/AboutDetailsContent";
+import AboutMeaningContent from "@/components/AboutMeaningContent";
 
 export default function AboutPage() {
   return (
@@ -9,7 +10,7 @@ export default function AboutPage() {
       sections={[
         { id: "about-overview", content: <AboutOverviewContent /> },
         { id: "about-details", content: <AboutDetailsContent /> },
-        { id: "about-more" },
+        { id: "about-more", content: <AboutMeaningContent /> },
       ]}
     />
   );

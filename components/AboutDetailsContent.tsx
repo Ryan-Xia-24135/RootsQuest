@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const facts = [
   ["For Curious STEM students", "In Grades 6–8"],
   ["Completely Free, No Fees", "The only tuition is your curiosity"],
@@ -40,7 +38,7 @@ export default function AboutDetailsContent() {
           ))}
         </div>
 
-        <div className="mt-[1vh] flex shrink-0 flex-col items-center">
+        <div className="mt-[1vh] flex shrink-0 flex-col items-center pb-[2.5vh] max-md:pb-[1.5vh]">
           <a
             className="flex min-w-[38%] flex-col items-center rounded-[clamp(10px,1.25vw,19px)] bg-[#c8a84b] px-[clamp(18px,1.55vw,24px)] py-[clamp(7px,1.1vh,11px)] text-center text-[#112e1b] transition-transform hover:scale-[1.03] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-white max-md:min-w-0 max-md:max-w-[88vw]"
             href="/register"
@@ -53,16 +51,6 @@ export default function AboutDetailsContent() {
             </span>
           </a>
 
-          <a
-            className="mt-[1.5vh] flex flex-col items-center font-['Inter',Arial,sans-serif] text-[clamp(11px,min(1.59vw,2.7vh),24px)] font-medium leading-[1.2] tracking-[-0.03em] transition-transform hover:scale-[1.03] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-white max-md:mt-[0.8vh] max-md:text-[clamp(9px,min(3vw,2vh),14px)]"
-            href="#about-more"
-            data-snap-to="2"
-          >
-            <span className="rounded-[10px] bg-black/45 px-3 py-1.5">What Does ROOTS Mean?</span>
-            <span className="relative mt-1 block size-[clamp(26px,min(3.97vw,5.5vh),60px)]">
-              <Image src="/assets/about-down-control.svg" alt="" fill sizes="60px" />
-            </span>
-          </a>
         </div>
       </div>
     </div>

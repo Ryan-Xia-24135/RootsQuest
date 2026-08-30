@@ -7,7 +7,7 @@ body {
 }
 
 :root {
-  --nav-height: clamp(44px, min(4.79vw, 7.4vh), 72.45px);
+  --nav-height: clamp(34px, min(3.7vw, 5.4vh), 52px);
 }
 
 body {
