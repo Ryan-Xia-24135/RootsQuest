@@ -10,7 +10,7 @@ export default function HeroSectionContent() {
           ROOTS Quest
         </h1>
         <p className="mt-[clamp(8px,1.8vh,16px)] max-w-[44ch] font-['Asta_Sans',Arial,sans-serif] text-[clamp(13px,min(2.1vw,3.6vh),31px)] font-medium leading-[1.3] tracking-[-0.03em] text-white">
-          A free course for STEM-curious students in Grades 6–8, teaching regenerative thinking and systems consideration.
+          A youth-led course helping STEM-curious students in Grades 6–8 think regeneratively and see the whole system.
         </p>
         <Link
           className={`mt-[clamp(18px,4vh,38px)] inline-flex min-h-[clamp(44px,7vh,72px)] items-center justify-center rounded-[20px] bg-[#c8a84b] px-[clamp(26px,4vw,58px)] font-['Asta_Sans',Arial,sans-serif] text-[clamp(14px,min(1.73vw,3vh),26px)] font-extrabold leading-none tracking-[-0.03em] text-[#1e1e1e] ${goldButtonEffect}`}
