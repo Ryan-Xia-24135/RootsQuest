@@ -36,10 +36,9 @@ const courseQuestions: AccordionEntry[] = [
 export default function AboutDetailsContent() {
   return (
     <div className="absolute inset-0 z-10 overflow-hidden px-[clamp(18px,3.2vw,48px)] pb-[clamp(18px,3vh,30px)] pt-[calc(var(--nav-height)+clamp(14px,3vh,30px))] text-white">
-      <div className="mx-auto flex h-full min-h-0 max-w-[1380px] flex-col">
-        <header className="mb-[clamp(12px,2.8vh,28px)] shrink-0">
+      <div className="mx-auto flex h-full min-h-0 max-w-[1600px] flex-col">
+        <header className="mb-[clamp(14px,3vh,30px)] shrink-0">
           <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(22px,min(4.24vw,5.8vh),64px)] font-semibold leading-[1.1] tracking-[-0.03em]">Everything you need to know</h1>
-          <p className="mt-[0.45em] max-w-[62ch] font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.35vw,2.4vh),20px)] font-normal leading-[1.35] text-[#ccdecd]">Select a question to learn more about ROOTS Quest.</p>
         </header>
 
         <div className="min-h-0 flex-1 overflow-y-auto pr-1">
