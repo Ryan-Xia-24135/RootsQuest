@@ -7,6 +7,7 @@ const navigation = [
   { label: "About us", href: "/about" },
   { label: "Courses", href: "/courses" },
   { label: "Contact", href: "/contact" },
+  { label: "Register", href: "/register" },
 ];
 
 export default function SiteNav() {
