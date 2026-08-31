@@ -80,6 +80,31 @@ const pages: { title: string; description: string; fields: Field[] }[] = [
 const fieldClass = "w-full rounded-lg border border-[#d9d9d9]/30 bg-black px-4 py-3 text-[15px] text-white outline-none transition placeholder:text-[#d9d9d9]/50 focus:border-white";
 const pillClass = "rounded-full border border-white px-4 py-2.5 text-left text-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 const storageKey = "roots-quest-interest-draft";
+const formspreeEndpoint = "https://formspree.io/f/xkjnoorp";
+const formspreeFields: Record<string, string> = {
+  student_name: "Student Name",
+  grade: "Grade",
+  age: "Age",
+  city: "City or Town",
+  student_email: "Student Email",
+  guardian_name: "Guardian Name",
+  guardian_email: "Guardian Email",
+  guardian_phone: "Guardian Phone",
+  guardian_consent: "Guardian Consent",
+  technology_access: "Technology Access",
+  weekly_availability: "Weekly Availability",
+  preferred_times: "Preferred Times",
+  referral_source: "Referral Source",
+  favourite_subjects: "Favourite Subjects",
+  outside_stem: "Outside STEM Activities",
+  outside_stem_details: "Outside STEM Details",
+  independent_comfort: "Independent Work Comfort",
+  world_problem: "World Problem",
+  nature_observation: "Nature Observation",
+  design_idea: "Design Idea",
+  participation_notes: "Participation Notes",
+  student_questions: "Student Questions",
+};
 
 export default function InterestForm() {
   const [page, setPage] = useState(0);
@@ -140,12 +165,29 @@ export default function InterestForm() {
     setSubmitError("");
 
     try {
-      const response = await fetch("/api/submit", {
+      const submission = Object.fromEntries(
+        Object.entries(answers).map(([name, value]) => [
+          formspreeFields[name] ?? name,
+          Array.isArray(value) ? value.join(", ") : value,
+        ]),
+      );
+
+      const response = await fetch(formspreeEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(answers),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          ...submission,
+          email: String(answers.guardian_email ?? answers.student_email ?? ""),
+          _subject: "New ROOTS Quest interest form submission",
+        }),
       });
-      if (!response.ok) throw new Error("Submission failed");
+      if (!response.ok) {
+        const result = await response.json().catch(() => null);
+        throw new Error(result?.errors?.[0]?.message ?? "Submission failed");
+      }
       localStorage.removeItem(storageKey);
       setSubmitted(true);
     } catch {
