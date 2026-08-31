@@ -77,8 +77,8 @@ const pages: { title: string; description: string; fields: Field[] }[] = [
   },
 ];
 
-const fieldClass = "w-full rounded-lg border border-[#74C69D]/45 bg-[#0D2B1F] px-4 py-3 font-['Lora',Georgia,serif] text-[15px] text-[#E8F5EE] outline-none transition placeholder:text-[#A8CABB]/60 focus:border-[#74C69D] focus:ring-2 focus:ring-[#74C69D]/25";
-const pillClass = "rounded-full border border-[#74C69D]/70 px-4 py-2.5 text-left font-['Lora',Georgia,serif] text-sm transition hover:border-[#C8A84B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C8A84B]";
+const fieldClass = "w-full rounded-lg border border-black/25 bg-white px-4 py-3 font-['Inter',Arial,sans-serif] text-[15px] text-black outline-none transition placeholder:text-black/40 focus:border-black focus:ring-2 focus:ring-black/15";
+const pillClass = "rounded-full border border-black px-4 py-2.5 text-left font-['Inter',Arial,sans-serif] text-sm transition hover:bg-black/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black";
 const storageKey = "roots-quest-interest-draft";
 const formspreeEndpoint = "https://formspree.io/f/xkjnoorp";
 const formspreeFields: Record<string, string> = {
@@ -198,10 +198,10 @@ export default function InterestForm() {
 
   if (submitted) {
     return (
-      <section className="mx-auto flex w-full max-w-[720px] flex-col items-center rounded-2xl border border-[#74C69D]/45 bg-[#163A28] px-6 py-14 text-center text-[#E8F5EE] shadow-[0_28px_80px_rgba(13,43,31,0.55)]">
-        <span className="flex size-14 items-center justify-center rounded-full bg-[#74C69D] text-[#0D2B1F]"><Check className="size-7" /></span>
-        <h1 className="mt-6 font-['Fraunces',Georgia,serif] text-3xl font-bold tracking-[-0.03em]">Thanks for your interest in ROOTS Quest.</h1>
-        <p className="mt-3 max-w-[48ch] leading-7 text-[#A8CABB]">We will review your answers and be in touch before the cohort begins.</p>
+      <section className="mx-auto flex w-full max-w-[720px] flex-col items-center rounded-2xl border border-black/15 bg-white px-6 py-14 text-center font-['Inter',Arial,sans-serif] text-black shadow-[0_28px_80px_rgba(0,0,0,0.35)]">
+        <span className="flex size-14 items-center justify-center rounded-full bg-black text-white"><Check className="size-7" /></span>
+        <h1 className="mt-6 text-3xl font-semibold tracking-[-0.03em]">Thanks for your interest in ROOTS Quest.</h1>
+        <p className="mt-3 max-w-[48ch] leading-7 text-black/65">We will review your answers and be in touch before the cohort begins.</p>
       </section>
     );
   }
@@ -210,16 +210,16 @@ export default function InterestForm() {
   const progress = ((page + 1) / pages.length) * 100;
 
   return (
-    <form onSubmit={(event) => event.preventDefault()} className="mx-auto w-full max-w-[920px] rounded-2xl border border-[#74C69D]/35 bg-[#163A28] p-[clamp(20px,4vw,44px)] text-[#E8F5EE] shadow-[0_28px_80px_rgba(13,43,31,0.62)]">
-      <div className="h-2 overflow-hidden rounded-full bg-[#0D2B1F]" aria-label={`Form progress: page ${page + 1} of ${pages.length}`}>
-        <motion.div className="h-full rounded-full bg-[#C8A84B]" animate={{ width: `${progress}%` }} transition={{ duration: 0.3 }} />
+    <form onSubmit={(event) => event.preventDefault()} className="mx-auto w-full max-w-[920px] rounded-2xl border border-black/15 bg-white p-[clamp(20px,4vw,44px)] font-['Inter',Arial,sans-serif] text-black shadow-[0_28px_80px_rgba(0,0,0,0.42)]">
+      <div className="h-2 overflow-hidden rounded-full bg-black/10" aria-label={`Form progress: page ${page + 1} of ${pages.length}`}>
+        <motion.div className="h-full rounded-full bg-black" animate={{ width: `${progress}%` }} transition={{ duration: 0.3 }} />
       </div>
-      <p className="mt-3 text-sm text-[#A8CABB]">Page {page + 1} of {pages.length}</p>
+      <p className="mt-3 text-sm text-black/55">Page {page + 1} of {pages.length}</p>
 
       <AnimatePresence mode="wait">
         <motion.section key={page} initial={{ opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -18 }} transition={{ duration: 0.2 }}>
-          <h1 className="mt-5 font-['Fraunces',Georgia,serif] text-[clamp(28px,4vw,44px)] font-bold leading-tight tracking-[-0.03em]">{current.title}</h1>
-          <p className="mt-2 text-[#A8CABB]">{current.description}</p>
+          <h1 className="mt-5 text-[clamp(28px,4vw,44px)] font-semibold leading-tight tracking-[-0.03em]">{current.title}</h1>
+          <p className="mt-2 text-black/60">{current.description}</p>
 
           <div className="mt-8 space-y-7">
             {current.fields.map((field) => {
@@ -227,7 +227,7 @@ export default function InterestForm() {
               const options = field.options ?? [];
               return (
                 <fieldset key={field.name} className="min-w-0">
-                  <legend className="mb-3 block text-[15px] leading-6 text-[#E8F5EE]">{field.label}{field.required && <span className="ml-1 text-[#C8A84B]" aria-hidden="true">*</span>}</legend>
+                  <legend className="mb-3 block text-[15px] leading-6 text-black">{field.label}{field.required && <span className="ml-1" aria-hidden="true">*</span>}</legend>
 
                   {(["text", "email", "tel"] as FieldType[]).includes(field.type) && (
                     <input className={fieldClass} type={field.type} name={field.name} value={String(answer ?? "")} onChange={(event) => setAnswer(field.name, event.target.value)} autoComplete={field.type === "email" ? "email" : "off"} />
@@ -245,25 +245,25 @@ export default function InterestForm() {
                     <div className="flex flex-wrap gap-2.5">
                       {options.map((option) => {
                         const selected = field.type === "multi" ? Array.isArray(answer) && answer.includes(option) : answer === option;
-                        return <button className={`${pillClass} ${selected ? "border-[#74C69D] bg-[#74C69D] text-[#0D2B1F]" : "bg-transparent text-[#E8F5EE]"}`} type="button" onClick={() => field.type === "multi" ? toggleAnswer(field.name, option) : setAnswer(field.name, option)} aria-pressed={selected} key={option}>{option}</button>;
+                        return <button className={`${pillClass} ${selected ? "bg-black text-white" : "bg-transparent text-black"}`} type="button" onClick={() => field.type === "multi" ? toggleAnswer(field.name, option) : setAnswer(field.name, option)} aria-pressed={selected} key={option}>{option}</button>;
                       })}
                     </div>
                   )}
                   {field.type === "yesno" && (
                     <div className="grid max-w-[420px] grid-cols-2 gap-3">
-                      {["Yes", "No"].map((option) => <button className={`${pillClass} text-center ${answer === option ? "border-[#74C69D] bg-[#74C69D] text-[#0D2B1F]" : "bg-transparent text-[#E8F5EE]"}`} type="button" onClick={() => setAnswer(field.name, option)} aria-pressed={answer === option} key={option}>{option}</button>)}
+                      {["Yes", "No"].map((option) => <button className={`${pillClass} text-center ${answer === option ? "bg-black text-white" : "bg-transparent text-black"}`} type="button" onClick={() => setAnswer(field.name, option)} aria-pressed={answer === option} key={option}>{option}</button>)}
                     </div>
                   )}
                   {field.type === "scale" && (
                     <div>
                       <div className="flex max-w-[520px] justify-between gap-2">
-                        {["1", "2", "3", "4", "5"].map((option) => <button className={`flex size-[clamp(42px,7vw,56px)] items-center justify-center rounded-full border border-[#74C69D] transition ${answer === option ? "bg-[#74C69D] text-[#0D2B1F]" : "bg-transparent text-[#E8F5EE]"}`} type="button" onClick={() => setAnswer(field.name, option)} aria-pressed={answer === option} key={option}>{option}</button>)}
+                        {["1", "2", "3", "4", "5"].map((option) => <button className={`flex size-[clamp(42px,7vw,56px)] items-center justify-center rounded-full border border-black transition ${answer === option ? "bg-black text-white" : "bg-transparent text-black"}`} type="button" onClick={() => setAnswer(field.name, option)} aria-pressed={answer === option} key={option}>{option}</button>)}
                       </div>
-                      <div className="mt-2 flex max-w-[520px] justify-between gap-5 text-xs leading-4 text-[#A8CABB]"><span>{field.lowLabel}</span><span className="text-right">{field.highLabel}</span></div>
+                      <div className="mt-2 flex max-w-[520px] justify-between gap-5 text-xs leading-4 text-black/55"><span>{field.lowLabel}</span><span className="text-right">{field.highLabel}</span></div>
                     </div>
                   )}
 
-                  {errors[field.name] && <p className="mt-2 w-fit rounded-md border border-[#F09595]/40 bg-[#0D2B1F] px-2.5 py-1 text-sm text-[#F09595]" role="alert">{errors[field.name]}</p>}
+                  {errors[field.name] && <p className="mt-2 w-fit rounded-md border border-black bg-black px-2.5 py-1 text-sm text-white" role="alert">{errors[field.name]}</p>}
                 </fieldset>
               );
             })}
@@ -271,13 +271,13 @@ export default function InterestForm() {
         </motion.section>
       </AnimatePresence>
 
-      {submitError && <p className="mt-6 rounded-lg border border-[#F09595] bg-[#0D2B1F] p-3 text-sm text-[#F09595]" role="alert">{submitError}</p>}
+      {submitError && <p className="mt-6 rounded-lg border border-black bg-black p-3 text-sm text-white" role="alert">{submitError}</p>}
       <div className="mt-9 flex flex-wrap justify-between gap-3">
-        {page > 0 ? <button className="rounded-full border border-[#74C69D] bg-transparent px-6 py-3 text-[#E8F5EE] transition hover:bg-[#74C69D]/10" type="button" onClick={() => { setErrors({}); setPage((currentPage) => currentPage - 1); }}>Back</button> : <span />}
+        {page > 0 ? <button className="rounded-full border border-black bg-transparent px-6 py-3 text-black transition hover:bg-black/5" type="button" onClick={() => { setErrors({}); setPage((currentPage) => currentPage - 1); }}>Back</button> : <span />}
         {page < pages.length - 1 ? (
-          <button className="rounded-full border border-[#E8F5EE]/35 bg-[#C8A84B] px-7 py-3 text-[#0D2B1F] transition hover:scale-[1.02] hover:bg-[#d6b95e]" type="button" onClick={nextPage}>Next</button>
+          <button className="rounded-full border border-black bg-black px-7 py-3 text-white transition hover:scale-[1.02] hover:bg-black/80" type="button" onClick={nextPage}>Next</button>
         ) : (
-          <button className="inline-flex min-w-[190px] items-center justify-center gap-2 rounded-full border border-[#E8F5EE]/35 bg-[#C8A84B] px-7 py-3 text-[#0D2B1F] transition hover:scale-[1.02] hover:bg-[#d6b95e] disabled:cursor-wait disabled:opacity-70" type="button" onClick={submit} disabled={sending}>
+          <button className="inline-flex min-w-[190px] items-center justify-center gap-2 rounded-full border border-black bg-black px-7 py-3 text-white transition hover:scale-[1.02] hover:bg-black/80 disabled:cursor-wait disabled:opacity-70" type="button" onClick={submit} disabled={sending}>
             {sending && <LoaderCircle className="size-5 animate-spin" />} {sending ? "Sending…" : "Submit my interest"}
           </button>
         )}

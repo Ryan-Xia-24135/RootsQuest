@@ -8,6 +8,7 @@ import {
   type ReactNode,
   type TouchEvent,
   type WheelEvent,
+  useEffect,
   useRef,
 } from "react";
 import SiteNav from "@/components/SiteNav";
@@ -28,7 +29,14 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
   const currentPage = useRef(0);
   const isMoving = useRef(false);
   const touchStartScroll = useRef(0);
+  const touchGestureLocked = useRef(false);
+  const wheelGestureLocked = useRef(false);
+  const wheelUnlockTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const reduceMotion = useReducedMotion();
+
+  useEffect(() => () => {
+    if (wheelUnlockTimer.current) clearTimeout(wheelUnlockTimer.current);
+  }, []);
 
   const moveToPage = (page: number, settleCurrentPage = false) => {
     const container = containerRef.current;
@@ -63,18 +71,26 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
     }
 
     event.preventDefault();
-    if (isMoving.current || Math.abs(event.deltaY) < 0.5) return;
+    if (wheelUnlockTimer.current) clearTimeout(wheelUnlockTimer.current);
+    wheelUnlockTimer.current = setTimeout(() => {
+      wheelGestureLocked.current = false;
+    }, 350);
+
+    if (wheelGestureLocked.current || isMoving.current || Math.abs(event.deltaY) < 0.5) return;
+    wheelGestureLocked.current = true;
     moveToPage(currentPage.current + (event.deltaY > 0 ? 1 : -1));
   };
 
   const handleTouchStart = (event: TouchEvent<HTMLElement>) => {
     touchStartScroll.current = event.currentTarget.scrollTop;
+    touchGestureLocked.current = false;
   };
 
   const handleTouchMove = (event: TouchEvent<HTMLElement>) => {
-    if (isMoving.current) return;
+    if (touchGestureLocked.current || isMoving.current) return;
     const movement = event.currentTarget.scrollTop - touchStartScroll.current;
-    if (Math.abs(movement) < 2) return;
+    if (Math.abs(movement) < 12) return;
+    touchGestureLocked.current = true;
     moveToPage(currentPage.current + (movement > 0 ? 1 : -1));
   };
 
@@ -89,6 +105,7 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
     else if (Math.abs(container.scrollTop - touchStartScroll.current) > 1) {
       moveToPage(currentPage.current, true);
     }
+    touchGestureLocked.current = false;
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
