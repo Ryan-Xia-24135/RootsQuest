@@ -3,7 +3,7 @@
 import { Mail, Send } from "lucide-react";
 import { type FormEvent, useState } from "react";
 
-const contactEmail = "ryanzihengxia@gmail.com";
+const contactEmail = "rootsquestyyc@gmail.com";
 
 export default function ContactForm() {
   const [email, setEmail] = useState("");

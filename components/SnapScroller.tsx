@@ -30,12 +30,13 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
   const isMoving = useRef(false);
   const touchStartScroll = useRef(0);
   const touchGestureLocked = useRef(false);
-  const wheelGestureLocked = useRef(false);
-  const wheelUnlockTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const wheelAccumulator = useRef(0);
+  const wheelDirection = useRef(0);
+  const wheelResetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => () => {
-    if (wheelUnlockTimer.current) clearTimeout(wheelUnlockTimer.current);
+    if (wheelResetTimer.current) clearTimeout(wheelResetTimer.current);
   }, []);
 
   const moveToPage = (page: number, settleCurrentPage = false) => {
@@ -50,7 +51,7 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
 
     const destination = nextPage * container.clientHeight;
     animate(container.scrollTop, destination, {
-      duration: reduceMotion ? 0 : 0.3,
+      duration: reduceMotion ? 0 : 0.22,
       ease: [0.76, 0, 0.24, 1],
       onUpdate: (position) => {
         container.scrollTop = position;
@@ -58,6 +59,12 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
       onComplete: () => {
         container.scrollTop = destination;
         isMoving.current = false;
+
+        if (Math.abs(wheelAccumulator.current) >= 45) {
+          const direction = wheelAccumulator.current > 0 ? 1 : -1;
+          wheelAccumulator.current = 0;
+          requestAnimationFrame(() => moveToPage(currentPage.current + direction));
+        }
       },
     });
   };
@@ -71,14 +78,24 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
     }
 
     event.preventDefault();
-    if (wheelUnlockTimer.current) clearTimeout(wheelUnlockTimer.current);
-    wheelUnlockTimer.current = setTimeout(() => {
-      wheelGestureLocked.current = false;
-    }, 350);
+    if (Math.abs(event.deltaY) < 0.5) return;
 
-    if (wheelGestureLocked.current || isMoving.current || Math.abs(event.deltaY) < 0.5) return;
-    wheelGestureLocked.current = true;
-    moveToPage(currentPage.current + (event.deltaY > 0 ? 1 : -1));
+    const direction = event.deltaY > 0 ? 1 : -1;
+    if (direction !== wheelDirection.current) {
+      wheelAccumulator.current = 0;
+      wheelDirection.current = direction;
+    }
+
+    wheelAccumulator.current += Math.max(-100, Math.min(100, event.deltaY));
+    if (wheelResetTimer.current) clearTimeout(wheelResetTimer.current);
+    wheelResetTimer.current = setTimeout(() => {
+      wheelAccumulator.current = 0;
+      wheelDirection.current = 0;
+    }, 160);
+
+    if (isMoving.current || Math.abs(wheelAccumulator.current) < 45) return;
+    wheelAccumulator.current = 0;
+    moveToPage(currentPage.current + direction);
   };
 
   const handleTouchStart = (event: TouchEvent<HTMLElement>) => {
