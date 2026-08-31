@@ -1,14 +1,11 @@
 "use client";
 
-import { animate, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import {
   type KeyboardEvent,
   type MouseEvent,
   type ReactNode,
-  type TouchEvent,
-  type WheelEvent,
-  useEffect,
   useRef,
 } from "react";
 import SiteNav from "@/components/SiteNav";
@@ -27,102 +24,27 @@ type SnapScrollerProps = {
 export default function SnapScroller({ sections, continuousBackground }: SnapScrollerProps) {
   const containerRef = useRef<HTMLElement>(null);
   const currentPage = useRef(0);
-  const isMoving = useRef(false);
-  const touchStartScroll = useRef(0);
-  const touchGestureLocked = useRef(false);
-  const wheelAccumulator = useRef(0);
-  const wheelDirection = useRef(0);
-  const wheelResetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const reduceMotion = useReducedMotion();
 
-  useEffect(() => () => {
-    if (wheelResetTimer.current) clearTimeout(wheelResetTimer.current);
-  }, []);
-
-  const moveToPage = (page: number, settleCurrentPage = false) => {
+  const moveToPage = (page: number) => {
     const container = containerRef.current;
-    if (!container || isMoving.current) return;
+    if (!container) return;
 
     const nextPage = Math.max(0, Math.min(sections.length - 1, page));
-    if (nextPage === currentPage.current && !settleCurrentPage) return;
-
     currentPage.current = nextPage;
-    isMoving.current = true;
-
-    const destination = nextPage * container.clientHeight;
-    animate(container.scrollTop, destination, {
-      duration: reduceMotion ? 0 : 0.22,
-      ease: [0.76, 0, 0.24, 1],
-      onUpdate: (position) => {
-        container.scrollTop = position;
-      },
-      onComplete: () => {
-        container.scrollTop = destination;
-        isMoving.current = false;
-
-        if (Math.abs(wheelAccumulator.current) >= 45) {
-          const direction = wheelAccumulator.current > 0 ? 1 : -1;
-          wheelAccumulator.current = 0;
-          requestAnimationFrame(() => moveToPage(currentPage.current + direction));
-        }
-      },
+    container.scrollTo({
+      top: nextPage * container.clientHeight,
+      behavior: reduceMotion ? "auto" : "smooth",
     });
   };
 
-  const handleWheel = (event: WheelEvent<HTMLElement>) => {
-    const scrollArea = (event.target as Element).closest<HTMLElement>("[data-snap-scroll]");
-    if (scrollArea) {
-      const canScrollDown = event.deltaY > 0 && scrollArea.scrollTop + scrollArea.clientHeight < scrollArea.scrollHeight - 1;
-      const canScrollUp = event.deltaY < 0 && scrollArea.scrollTop > 1;
-      if (canScrollDown || canScrollUp) return;
-    }
-
-    event.preventDefault();
-    if (Math.abs(event.deltaY) < 0.5) return;
-
-    const direction = event.deltaY > 0 ? 1 : -1;
-    if (direction !== wheelDirection.current) {
-      wheelAccumulator.current = 0;
-      wheelDirection.current = direction;
-    }
-
-    wheelAccumulator.current += Math.max(-100, Math.min(100, event.deltaY));
-    if (wheelResetTimer.current) clearTimeout(wheelResetTimer.current);
-    wheelResetTimer.current = setTimeout(() => {
-      wheelAccumulator.current = 0;
-      wheelDirection.current = 0;
-    }, 160);
-
-    if (isMoving.current || Math.abs(wheelAccumulator.current) < 45) return;
-    wheelAccumulator.current = 0;
-    moveToPage(currentPage.current + direction);
-  };
-
-  const handleTouchStart = (event: TouchEvent<HTMLElement>) => {
-    touchStartScroll.current = event.currentTarget.scrollTop;
-    touchGestureLocked.current = false;
-  };
-
-  const handleTouchMove = (event: TouchEvent<HTMLElement>) => {
-    if (touchGestureLocked.current || isMoving.current) return;
-    const movement = event.currentTarget.scrollTop - touchStartScroll.current;
-    if (Math.abs(movement) < 12) return;
-    touchGestureLocked.current = true;
-    moveToPage(currentPage.current + (movement > 0 ? 1 : -1));
-  };
-
-  const handleTouchEnd = (event: TouchEvent<HTMLElement>) => {
-    const container = event.currentTarget;
-    const pageHeight = container.clientHeight;
-    const pageTop = currentPage.current * pageHeight;
-    const progress = (container.scrollTop - pageTop) / pageHeight;
-
-    if (progress >= 0.3) moveToPage(currentPage.current + 1);
-    else if (progress <= -0.3) moveToPage(currentPage.current - 1);
-    else if (Math.abs(container.scrollTop - touchStartScroll.current) > 1) {
-      moveToPage(currentPage.current, true);
-    }
-    touchGestureLocked.current = false;
+  const handleScroll = () => {
+    const container = containerRef.current;
+    if (!container || !container.clientHeight) return;
+    currentPage.current = Math.max(
+      0,
+      Math.min(sections.length - 1, Math.round(container.scrollTop / container.clientHeight)),
+    );
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
@@ -151,11 +73,8 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
   return (
     <main
       ref={containerRef}
-      className="home-scroll relative h-svh overflow-y-auto overscroll-none"
-      onWheel={handleWheel}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      className="home-scroll relative h-svh snap-y snap-mandatory overflow-y-auto overscroll-y-contain scroll-smooth"
+      onScroll={handleScroll}
       onKeyDown={handleKeyDown}
       onClick={handleClick}
       tabIndex={0}
@@ -173,7 +92,7 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
       {sections.map((section, index) => (
         <motion.section
           id={section.id}
-          className="relative z-10 h-svh min-h-svh w-full bg-cover bg-center bg-no-repeat"
+          className="relative z-10 h-svh min-h-svh w-full snap-start snap-always bg-cover bg-center bg-no-repeat"
           style={section.background ? { backgroundImage: `url('${section.background}')` } : undefined}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
