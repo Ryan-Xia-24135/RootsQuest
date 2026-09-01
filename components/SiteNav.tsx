@@ -26,7 +26,7 @@ export default function SiteNav() {
       <div className="flex items-center justify-self-end gap-[clamp(5px,min(0.9vw,1.5vh),14px)]">
         <a
           className="relative block size-[clamp(18px,min(2.12vw,3.4vh),32px)] rounded-sm transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-white"
-          href="https://www.linkedin.com/in/roots-quest/"
+          href="https://www.linkedin.com/company/roots-quest/about/"
           target="_blank"
           rel="noreferrer"
           aria-label="ROOTS Quest on LinkedIn"
@@ -35,7 +35,7 @@ export default function SiteNav() {
         </a>
         <a
           className="relative block size-[clamp(18px,min(2.12vw,3.4vh),32px)] rounded-sm transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-white"
-          href="https://www.instagram.com/rootsquestyyc/"
+          href="https://www.instagram.com/rootsquestorg/"
           target="_blank"
           rel="noreferrer"
           aria-label="ROOTS Quest on Instagram"
