@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Droplets, Network, ServerCog, Sprout, type LucideIcon } from "lucide-react";
 import { goldButtonEffect } from "@/components/goldButtonEffect";
+import FoldText from "@/components/ui/FoldText";
+
+const importanceHeading = "ROOTS Quest Thinking in the Real World";
+const importanceCaption = "These case studies show systems thinking, regenerative design, and nature-inspired problem solving already being applied by organizations around the world.";
 
 const cards: { title: string; image: string; href: string; icon: LucideIcon }[] = [
   {
@@ -36,10 +40,10 @@ export default function ImportanceSectionContent() {
       <div className="mx-auto flex h-full max-w-[1480px] min-h-0 flex-col rounded-[clamp(16px,1.8vw,28px)] border border-white/15 bg-black/20 px-[clamp(14px,2.7vw,42px)] py-[clamp(12px,2.6vh,26px)] shadow-[0_28px_70px_rgba(0,0,0,0.28)] backdrop-blur-[2px]">
         <header className="shrink-0 text-center text-white">
           <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(23px,min(4vw,5.4vh),60px)] font-semibold leading-[1.08] tracking-[-0.03em]">
-            ROOTS Quest Thinking in the Real World
+            <FoldText text={importanceHeading} splitBy="word" hinge="top" trigger="scroll" duration={0.62} stagger={0.06} fontSize="inherit" fontWeight={600} color="#ffffff" style={{ lineHeight: 1.08, letterSpacing: "-0.03em" }} />
           </h1>
           <p className="mx-auto mt-[clamp(6px,1.3vh,12px)] max-w-[62ch] font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.5vw,2.5vh),23px)] font-normal leading-[1.3] tracking-[-0.03em]">
-            These case studies show systems thinking, regenerative design, and nature-inspired problem solving already being applied by organizations around the world.
+            <FoldText text={importanceCaption} splitBy="word" hinge="top" trigger="scroll" duration={0.48} stagger={0.018} fontSize="inherit" fontWeight={400} color="#ffffff" style={{ lineHeight: 1.3, letterSpacing: "-0.03em" }} />
           </p>
         </header>
 

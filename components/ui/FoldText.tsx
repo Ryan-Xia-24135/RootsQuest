@@ -147,14 +147,7 @@ export default function FoldText({
       root.addEventListener("mouseenter", hoverHandler);
     } else if (trigger === "scroll") {
       gsap.set(pieces, fromVars);
-      const scrollContainer = root.closest<HTMLElement>(".home-scroll");
-      scrollTrigger = ScrollTrigger.create({
-        trigger: root,
-        scroller: scrollContainer ?? undefined,
-        start: "top 82%",
-        once: true,
-        onEnter: () => play(false),
-      });
+      scrollTrigger = ScrollTrigger.create({ trigger: root, start: "top 82%", once: true, onEnter: () => play(false) });
     } else {
       play(trigger === "loop");
     }
