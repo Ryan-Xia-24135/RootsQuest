@@ -103,11 +103,12 @@ export function CourseOutcomesContent() {
   );
 }
 
-export function CourseInstructorContent() {
+export function CourseInstructorContent({ theme = "courses" }: { theme?: "courses" | "about" }) {
+  const isAbout = theme === "about";
   return (
     <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden p-[clamp(14px,3vw,46px)] text-white max-sm:overflow-y-auto max-sm:p-3">
       <div className="mx-auto grid h-full max-w-[1480px] grid-cols-[0.92fr_1.16fr_0.92fr] gap-[clamp(12px,2vw,30px)] max-sm:h-auto max-sm:min-h-full max-sm:grid-cols-1 max-sm:gap-3">
-        <section className="flex min-h-0 flex-col rounded-[clamp(18px,2vw,30px)] border border-white/15 bg-black/35 p-[clamp(18px,2.8vw,42px)] shadow-[0_28px_70px_rgba(0,0,0,0.32)] backdrop-blur-[3px]">
+        <section className={`flex min-h-0 flex-col rounded-[clamp(18px,2vw,30px)] border p-[clamp(18px,2.8vw,42px)] shadow-[0_28px_70px_rgba(0,0,0,0.32)] backdrop-blur-[3px] ${isAbout ? "border-[#b9d4c0]/30 bg-[#102d21]/78" : "border-white/15 bg-black/35"}`}>
           <span className="mb-[clamp(10px,1.6vh,16px)] block h-px w-[clamp(58px,7vw,104px)] bg-[#c8a84b]" />
           <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(26px,min(3.5vw,5.5vh),52px)] font-semibold leading-[1.08] tracking-[-0.03em]">About the Instructor</h1>
           <p className="mt-[clamp(14px,2.2vh,22px)] min-h-0 overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(11px,min(1.36vw,2.35vh),20px)] font-normal leading-[1.45] max-sm:text-[15px]">
@@ -117,7 +118,7 @@ export function CourseInstructorContent() {
 
         <EmptyPhotoBlock label="Reserved space for a future instructor photo" />
 
-        <blockquote className="m-0 flex min-h-0 items-center rounded-[clamp(18px,2vw,30px)] border border-[#dac6b6]/35 bg-[#9c7561]/88 p-[clamp(18px,2.8vw,42px)] font-['Inter',Arial,sans-serif] text-[clamp(11px,min(1.36vw,2.35vh),20px)] font-normal leading-[1.45] shadow-[0_24px_60px_rgba(0,0,0,0.28)] max-sm:text-[15px]">
+        <blockquote className={`m-0 flex min-h-0 items-center rounded-[clamp(18px,2vw,30px)] border p-[clamp(18px,2.8vw,42px)] font-['Inter',Arial,sans-serif] text-[clamp(11px,min(1.36vw,2.35vh),20px)] font-normal leading-[1.45] shadow-[0_24px_60px_rgba(0,0,0,0.28)] max-sm:text-[15px] ${isAbout ? "border-[#d6e6d8]/45 bg-[#ccdecd]/92 text-[#153624]" : "border-[#dac6b6]/35 bg-[#9c7561]/88"}`}>
           “ROOTS Quest didn’t stem from a classroom assignment or a school project. It came from the core philosophy that regenerative thinking is one of the most important ideas of the present and future—and that its seed should be planted in our future innovators, scientists, researchers, entrepreneurs, and engineers.”
         </blockquote>
       </div>

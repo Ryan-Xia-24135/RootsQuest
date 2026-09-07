@@ -7,7 +7,6 @@ const navigation = [
   { label: "About us", href: "/about" },
   { label: "Courses", href: "/courses" },
   { label: "Contact", href: "/contact" },
-  { label: "Register", href: "/register" },
 ];
 
 export default function SiteNav() {
@@ -24,6 +23,12 @@ export default function SiteNav() {
       <AnimatedTabs tabs={navigation} />
 
       <div className="flex items-center justify-self-end gap-[clamp(5px,min(0.9vw,1.5vh),14px)]">
+        <Link
+          className="mr-[clamp(1px,0.35vw,5px)] inline-flex h-[clamp(24px,min(2.6vw,4vh),34px)] items-center rounded-full border border-[#f6d978]/70 bg-[#e5c055] px-[clamp(8px,min(1vw,1.6vh),15px)] text-[clamp(10px,min(1.15vw,1.9vh),16px)] font-semibold leading-none text-[#183023] shadow-[0_6px_18px_rgba(0,0,0,0.22)] transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-[#f0cf68] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          href="/register"
+        >
+          Register
+        </Link>
         <a
           className="relative block size-[clamp(18px,min(2.12vw,3.4vh),32px)] rounded-sm transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-white"
           href="https://www.linkedin.com/company/roots-quest/about/"

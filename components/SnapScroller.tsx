@@ -12,6 +12,8 @@ import SiteNav from "@/components/SiteNav";
 
 export type SnapSection = {
   background?: string;
+  backgroundPage?: number;
+  backgroundPageCount?: number;
   content?: ReactNode;
   id?: string;
 };
@@ -98,7 +100,15 @@ export default function SnapScroller({ sections, continuousBackground }: SnapScr
           <motion.section
             id={section.id}
             className="relative z-10 h-svh min-h-svh w-full snap-start snap-always bg-cover bg-center bg-no-repeat"
-            style={section.background ? { backgroundImage: `url('${section.background}')` } : undefined}
+            style={section.background ? {
+              backgroundImage: `url('${section.background}')`,
+              ...(section.backgroundPageCount
+                ? {
+                    backgroundSize: `100% ${section.backgroundPageCount * 100}svh`,
+                    backgroundPosition: `center ${-(section.backgroundPage ?? 0) * 100}svh`,
+                  }
+                : {}),
+            } : undefined}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: reduceMotion ? 0 : 0.35 }}

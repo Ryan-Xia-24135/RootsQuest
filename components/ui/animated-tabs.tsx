@@ -54,7 +54,7 @@ export function AnimatedTabs({ tabs }: AnimatedTabsProps) {
         <div className="flex h-full w-full items-center bg-white">
           {tabs.map((tab) => (
             <span
-              className="flex h-[clamp(22px,min(2.25vw,3.4vh),30px)] items-center whitespace-nowrap rounded-full px-[clamp(6px,min(0.85vw,1.35vh),12px)] font-['Asta_Sans',Arial,sans-serif] text-[clamp(10px,min(1.2vw,2vh),16px)] font-medium leading-none text-[#112e1b]"
+              className="flex h-[clamp(22px,min(2.25vw,3.4vh),30px)] items-center whitespace-nowrap rounded-full px-[clamp(6px,min(0.85vw,1.35vh),12px)] font-['Asta_Sans',Arial,sans-serif] text-[clamp(11px,min(1.35vw,2.15vh),18px)] font-medium leading-none text-[#112e1b]"
               key={tab.href}
             >
               {tab.label}
@@ -74,7 +74,7 @@ export function AnimatedTabs({ tabs }: AnimatedTabsProps) {
               href={tab.href}
               onClick={() => setActiveTab(tab.label)}
               aria-current={isActive ? "page" : undefined}
-              className="flex h-[clamp(22px,min(2.25vw,3.4vh),30px)] items-center whitespace-nowrap rounded-full px-[clamp(6px,min(0.85vw,1.35vh),12px)] font-['Asta_Sans',Arial,sans-serif] text-[clamp(10px,min(1.2vw,2vh),16px)] font-medium leading-none text-white/80 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="flex h-[clamp(22px,min(2.25vw,3.4vh),30px)] items-center whitespace-nowrap rounded-full px-[clamp(6px,min(0.85vw,1.35vh),12px)] font-['Asta_Sans',Arial,sans-serif] text-[clamp(11px,min(1.35vw,2.15vh),18px)] font-medium leading-none text-white/80 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               {tab.label}
             </Link>

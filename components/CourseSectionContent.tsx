@@ -1,11 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { goldButtonEffect } from "@/components/goldButtonEffect";
-import FoldText from "@/components/ui/FoldText";
-
-const courseSummary = "In the span of this 8 week course for students in grades 6-8 that teaches systems thinking, regenerative design, and nature-inspired problem solving in STEM.";
-const courseHeading = "Beyond a School Curriculum and Science Project";
-const courseCaption = "Students won’t just learn about the problems they’re interested in, they’ll learn what the system is behind the problem, the connections that relate to that problem, and designing what is their next step with this new understanding.";
 
 export default function CourseSectionContent() {
   return (
@@ -16,16 +11,16 @@ export default function CourseSectionContent() {
             <Image className="object-cover" src="/assets/spider-web.png" alt="A spider web lit by warm sunlight" fill sizes="(max-width: 640px) 92vw, 48vw" />
           </div>
           <p className="m-0 rounded-[clamp(14px,1.5vw,22px)] border border-[#dcc1aa]/55 bg-[#b7977d]/95 px-[clamp(14px,2.2vw,32px)] py-[clamp(10px,2vh,20px)] font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.6vw,2.7vh),24px)] font-normal leading-[1.3] tracking-[-0.03em] text-[#2c1f14] shadow-[0_18px_44px_rgba(0,0,0,0.22)]">
-            <FoldText text={courseSummary} splitBy="word" hinge="top" trigger="scroll" duration={0.48} stagger={0.018} fontSize="inherit" fontWeight={400} color="inherit" style={{ lineHeight: 1.3, letterSpacing: "-0.03em" }} />
+            In the span of this 8 week course for students in grades 6-8 that teaches systems thinking, regenerative design, and nature-inspired problem solving in STEM.
           </p>
         </section>
 
         <section className="flex min-h-0 flex-col rounded-[clamp(16px,1.7vw,26px)] border border-white/15 bg-black/25 p-[clamp(16px,2.7vw,40px)] shadow-[0_24px_60px_rgba(0,0,0,0.28)] backdrop-blur-[2px]">
           <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(22px,min(4vw,5.7vh),60px)] font-semibold leading-[1.1] tracking-[-0.03em] text-white">
-            <FoldText text={courseHeading} splitBy="word" hinge="top" trigger="scroll" duration={0.62} stagger={0.06} fontSize="inherit" fontWeight={600} color="#ffffff" style={{ lineHeight: 1.1, letterSpacing: "-0.03em" }} />
+            Beyond a School Curriculum and Science Project
           </h1>
           <p className="mt-[clamp(10px,2vh,20px)] max-h-[8em] overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.65vw,2.8vh),25px)] font-normal leading-[1.3] tracking-[-0.03em] text-white">
-            <FoldText text={courseCaption} splitBy="word" hinge="top" trigger="scroll" duration={0.48} stagger={0.015} fontSize="inherit" fontWeight={400} color="#ffffff" style={{ lineHeight: 1.3, letterSpacing: "-0.03em" }} />
+            Students won’t just learn about the problems they’re interested in, they’ll learn what the system is behind the problem, the connections that relate to that problem, and designing what is their next step with this new understanding.
           </p>
           <div className="relative mt-[clamp(10px,2vh,20px)] min-h-0 flex-1 overflow-hidden rounded-[clamp(12px,1.2vw,18px)] border border-white/20 shadow-[0_16px_38px_rgba(0,0,0,0.28)] max-sm:hidden">
             <Image className="object-cover object-center" src="/assets/pinecones.png" alt="Hands holding pinecones" fill sizes="48vw" />
