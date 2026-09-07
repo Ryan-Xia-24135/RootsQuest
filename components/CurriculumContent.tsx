@@ -75,7 +75,7 @@ function StickyNote({ note, index }: { note: Note; index: number }) {
 
   return (
     <motion.div
-      className={`absolute flex aspect-[1.16] w-[clamp(128px,14.9vw,225px)] items-center justify-center rounded-[4px] border border-white/55 bg-[#b6d8ee] p-[clamp(12px,1.6vw,24px)] text-center text-[#2e5167] shadow-[0_14px_34px_rgba(0,0,0,0.32)] before:absolute before:left-1/2 before:top-0 before:h-[clamp(7px,0.7vw,11px)] before:w-[42%] before:-translate-x-1/2 before:-translate-y-1/2 before:bg-white/30 before:content-[''] ${note.position} max-sm:static max-sm:aspect-auto max-sm:min-h-[120px] max-sm:w-full max-sm:translate-x-0`}
+      className={`absolute flex aspect-[1.16] w-[clamp(128px,14.9vw,225px)] items-center justify-center rounded-[4px] border border-[#dec5b0]/70 bg-[#b7977d] p-[clamp(12px,1.6vw,24px)] text-center text-[#2c1f14] shadow-[0_14px_34px_rgba(0,0,0,0.32)] before:absolute before:left-1/2 before:top-0 before:h-[clamp(7px,0.7vw,11px)] before:w-[42%] before:-translate-x-1/2 before:-translate-y-1/2 before:bg-[#f1dfcf]/45 before:content-[''] ${note.position} max-sm:static max-sm:aspect-auto max-sm:min-h-[120px] max-sm:w-full max-sm:translate-x-0`}
       initial={reduceMotion ? false : { opacity: 0, y: 54, scale: 0.78, rotate: note.rotation - 4 }}
       whileInView={{ opacity: 1, y: 0, scale: 1, rotate: note.rotation }}
       viewport={{ amount: 0.35, once: true }}
@@ -133,14 +133,14 @@ export function CurriculumOverviewHeading() {
           <Accordion type="single" defaultValue="week-1" collapsible className="w-full">
             {curriculumWeeks.map(({ week, title, description }, index) => (
               <AccordionItem className="border-white/20 last:border-b" value={`week-${index + 1}`} key={week}>
-                <AccordionTrigger className="group cursor-pointer px-[clamp(12px,1.7vw,26px)] py-[clamp(8px,min(1.25vw,1.9vh),15px)] text-left text-white/75 transition-colors hover:text-white hover:no-underline data-[state=open]:rounded-t-[14px] data-[state=open]:bg-[#b6d8ee] data-[state=open]:text-[#24475c] max-sm:px-3 max-sm:py-2 [&>svg:last-child]:hidden">
+                <AccordionTrigger className="group cursor-pointer px-[clamp(12px,1.7vw,26px)] py-[clamp(8px,min(1.25vw,1.9vh),15px)] text-left text-white/75 transition-colors hover:text-white hover:no-underline data-[state=open]:rounded-t-[14px] data-[state=open]:bg-[#b7977d] data-[state=open]:text-[#2c1f14] max-sm:px-3 max-sm:py-2 [&>svg:last-child]:hidden">
                   <div className="flex min-w-0 flex-1 items-center gap-[clamp(10px,1.5vw,22px)]">
                     <span className="w-[clamp(54px,6vw,88px)] shrink-0 font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.1vw,1.8vh),16px)] font-medium uppercase tracking-[0.08em] opacity-75 max-sm:w-[48px] max-sm:text-[10px]">{week}</span>
                     <h2 className="m-0 min-w-0 flex-1 font-['Asta_Sans',Arial,sans-serif] text-[clamp(15px,min(2vw,3.25vh),30px)] font-semibold leading-[1.1] tracking-[-0.025em] max-sm:text-[clamp(15px,4.6vw,20px)]">{title}</h2>
                     <PlusIcon className="size-[clamp(15px,min(1.7vw,2.7vh),25px)] shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-45" aria-hidden="true" />
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="rounded-b-[14px] bg-[#b6d8ee] px-[clamp(76px,9.2vw,136px)] pb-[clamp(11px,min(1.7vw,2.5vh),21px)] text-[#2e5167] max-sm:px-4 max-sm:pb-3">
+                <AccordionContent className="rounded-b-[14px] bg-[#b7977d] px-[clamp(76px,9.2vw,136px)] pb-[clamp(11px,min(1.7vw,2.5vh),21px)] text-[#2c1f14] max-sm:px-4 max-sm:pb-3">
                   <p className="m-0 max-w-[80ch] font-['Inter',Arial,sans-serif] text-[clamp(11px,min(1.35vw,2.25vh),20px)] font-normal leading-[1.42] tracking-[-0.015em] max-sm:text-[14px]">{description}</p>
                 </AccordionContent>
               </AccordionItem>
