@@ -5,6 +5,7 @@ import ImportanceSectionContent from "@/components/ImportanceSectionContent";
 import SignupSectionContent from "@/components/SignupSectionContent";
 import SnapScroller from "@/components/SnapScroller";
 import AboutDetailsContent from "@/components/AboutDetailsContent";
+import WhoIsThisForContent from "@/components/WhoIsThisForContent";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
         { background: "/assets/home-02.png", content: <AboutSectionContent /> },
         { background: "/assets/about-background-details.png", content: <AboutDetailsContent /> },
         { background: "/assets/home-03.png", content: <CourseSectionContent /> },
+        { background: "/assets/home-03.png", content: <WhoIsThisForContent /> },
         { background: "/assets/home-04.png", content: <ImportanceSectionContent /> },
         { background: "/assets/home-05.png", content: <SignupSectionContent /> },
       ]}

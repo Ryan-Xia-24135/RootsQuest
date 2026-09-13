@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2172" height="400" viewBox="0 0 2172 400">
+  <g fill="none" stroke="#F4F1E8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="145" cy="200" r="76"/>
+    <ellipse cx="145" cy="200" rx="35" ry="76"/>
+    <path d="M69 200h152M82 160h126M82 240h126"/>
+    <rect x="1132" y="124" width="152" height="152" rx="39"/>
+    <circle cx="1208" cy="200" r="35"/>
+    <circle cx="1252" cy="156" r="8" fill="#F4F1E8" stroke="none"/>
+  </g>
+  <text x="262" y="229" fill="#F4F1E8" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="86" font-weight="400" letter-spacing="-1">rootsquest.ca</text>
+  <rect x="1000" y="126" width="8" height="148" rx="4" fill="#B7A339"/>
+  <text x="1335" y="229" fill="#F4F1E8" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="86" font-weight="400" letter-spacing="-1">@rootsquestorg</text>
+</svg>
