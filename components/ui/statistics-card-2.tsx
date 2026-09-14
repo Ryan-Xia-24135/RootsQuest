@@ -14,10 +14,10 @@ type StatisticsCard2Props = {
 
 export default function StatisticsCard2({ items, className }: StatisticsCard2Props) {
   return (
-    <div className={cn("grid min-h-0 grid-cols-3 gap-[clamp(9px,1.35vw,20px)] max-md:grid-cols-2 max-sm:grid-cols-1", className)}>
+    <div className={cn("grid min-h-0 grid-cols-3 gap-[clamp(9px,1.35vw,20px)] max-md:grid-cols-2 max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:overflow-x-auto max-sm:pb-1", className)}>
       {items.map(({ title, description, icon: Icon }, index) => (
         <article
-          className="group relative flex min-h-0 flex-col overflow-hidden rounded-[clamp(14px,1.5vw,22px)] border border-[#dec5b0]/65 bg-[#b7977d]/95 p-[clamp(14px,1.8vw,27px)] text-[#2c1f14] shadow-[0_16px_38px_rgba(0,0,0,0.28)] transition-[transform,box-shadow,background-color] duration-300 hover:-translate-y-1 hover:bg-[#c4a58b] hover:shadow-[0_22px_46px_rgba(0,0,0,0.36)]"
+          className="group relative flex min-h-0 flex-col overflow-hidden rounded-[clamp(14px,1.5vw,22px)] border border-[#dec5b0]/65 bg-[#b7977d]/95 p-[clamp(14px,1.8vw,27px)] text-[#2c1f14] shadow-[0_16px_38px_rgba(0,0,0,0.28)] transition-[transform,box-shadow,background-color] duration-300 hover:-translate-y-1 hover:bg-[#c4a58b] hover:shadow-[0_22px_46px_rgba(0,0,0,0.36)] max-sm:w-[78vw] max-sm:flex-none max-sm:snap-center"
           key={title}
         >
           <svg className="pointer-events-none absolute right-0 top-0 h-full w-2/3 opacity-70" viewBox="0 0 300 200" fill="none" aria-hidden="true">
