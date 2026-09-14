@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function AboutOverviewContent() {
   return (
     <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden p-[clamp(14px,2.6vw,40px)] text-white max-sm:p-3">
-      <div className="mx-auto grid h-full max-w-[1480px] grid-cols-[1.08fr_0.92fr] gap-[clamp(12px,2vw,30px)] max-sm:flex max-sm:flex-col max-sm:gap-2.5">
+      <div className="mx-auto grid h-full max-w-[1480px] grid-cols-[1.08fr_0.92fr] gap-[clamp(12px,2vw,30px)] max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:gap-3">
         <section className="flex min-h-0 flex-col overflow-hidden rounded-[clamp(18px,2vw,30px)] border border-white/15 bg-black/35 p-[clamp(18px,3vw,44px)] shadow-[0_28px_70px_rgba(0,0,0,0.32)] backdrop-blur-[3px] max-sm:shrink-0 max-sm:p-3">
           <div className="shrink-0">
             <span className="mb-[clamp(10px,1.6vh,16px)] block h-px w-[clamp(58px,7vw,104px)] bg-[#c8a84b] max-sm:mb-2" />
@@ -16,12 +16,12 @@ export default function AboutOverviewContent() {
           </div>
         </section>
 
-        <section className="grid min-h-0 grid-rows-[1.05fr_0.95fr] gap-[clamp(12px,2vw,30px)] max-sm:flex max-sm:min-h-0 max-sm:flex-1 max-sm:flex-col max-sm:gap-2.5">
+        <section className="grid min-h-0 grid-rows-[1.05fr_0.95fr] gap-[clamp(12px,2vw,30px)] max-sm:flex max-sm:min-h-0 max-sm:flex-none max-sm:flex-col max-sm:gap-3">
           <div className="relative min-h-0 overflow-hidden rounded-[clamp(18px,2vw,30px)] border border-white/15 shadow-[0_24px_60px_rgba(0,0,0,0.3)] max-sm:h-[16svh] max-sm:min-h-[110px] max-sm:shrink-0">
             <Image className="object-cover" src="/assets/about-forest-photo.png" alt="Sunlight passing through a moss-covered forest" fill sizes="(max-width: 640px) 94vw, 42vw" />
           </div>
-          <div className="flex min-h-0 items-center rounded-[clamp(18px,2vw,30px)] border border-[#dbeada]/45 bg-[#ccdecd]/92 p-[clamp(18px,3vw,42px)] text-[#112e1b] shadow-[0_24px_60px_rgba(0,0,0,0.3)] backdrop-blur-sm max-sm:min-h-0 max-sm:flex-1 max-sm:p-3">
-            <p className="m-0 max-h-full overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(12px,min(1.7vw,2.9vh),26px)] font-normal leading-[1.45] max-sm:text-[13.5px] max-sm:leading-[1.35]">Through systems thinking, regenerative design, and innovation inspired by nature, students explore how people, technology, and the environment are connected—and how thoughtful design can strengthen those relationships instead of breaking them.</p>
+          <div className="flex min-h-0 items-center rounded-[clamp(18px,2vw,30px)] border border-[#dbeada]/45 bg-[#ccdecd]/92 p-[clamp(18px,3vw,42px)] text-[#112e1b] shadow-[0_24px_60px_rgba(0,0,0,0.3)] backdrop-blur-sm max-sm:min-h-0 max-sm:flex-none max-sm:p-3.5">
+            <p className="m-0 max-h-full overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(12px,min(1.7vw,2.9vh),26px)] font-normal leading-[1.45] max-sm:text-[13.5px] max-sm:leading-[1.4]">Through systems thinking, regenerative design, and innovation inspired by nature, students explore how people, technology, and the environment are connected—and how thoughtful design can strengthen those relationships instead of breaking them.</p>
           </div>
         </section>
       </div>

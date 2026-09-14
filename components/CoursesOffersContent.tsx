@@ -70,7 +70,7 @@ export function CourseOutcomesContent() {
 
   return (
     <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden p-[clamp(14px,3vw,46px)] text-white max-sm:p-3">
-      <div className="mx-auto flex h-full max-w-[1480px] min-h-0 flex-col rounded-[clamp(18px,2vw,30px)] border border-white/15 bg-black/30 p-[clamp(18px,3vw,44px)] shadow-[0_28px_70px_rgba(0,0,0,0.32)] backdrop-blur-[3px] max-sm:p-3">
+      <div className="mx-auto flex h-full max-w-[1480px] min-h-0 flex-col rounded-[clamp(18px,2vw,30px)] border border-white/15 bg-black/30 p-[clamp(18px,3vw,44px)] shadow-[0_28px_70px_rgba(0,0,0,0.32)] backdrop-blur-[3px] max-sm:justify-center max-sm:p-3">
         <header className="shrink-0 text-center">
           <span className="mx-auto mb-[clamp(10px,1.6vh,16px)] block h-px w-[clamp(72px,9vw,130px)] bg-[#c8a84b]" />
           <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(27px,min(4.25vw,6vh),64px)] font-semibold leading-[1.08] tracking-[-0.03em] max-sm:text-[clamp(25px,7.7vw,38px)]">
@@ -78,7 +78,7 @@ export function CourseOutcomesContent() {
           </h1>
         </header>
 
-        <div className="mt-[clamp(16px,3vh,30px)] grid min-h-0 flex-1 grid-cols-4 gap-[clamp(10px,1.6vw,24px)] max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:overflow-x-auto max-sm:pb-2">
+        <div className="mt-[clamp(16px,3vh,30px)] grid min-h-0 flex-1 grid-cols-4 gap-[clamp(10px,1.6vw,24px)] max-sm:mt-4 max-sm:flex max-sm:flex-none max-sm:snap-x max-sm:snap-mandatory max-sm:overflow-x-auto max-sm:pb-2">
           {outcomes.map((outcome, index) => (
             <motion.article
               className="flex min-h-0 flex-col overflow-hidden rounded-[clamp(14px,1.5vw,22px)] border border-[#e2cdbd]/35 bg-[#9c7561]/90 text-white shadow-[0_18px_45px_rgba(0,0,0,0.28)] max-sm:w-[84vw] max-sm:flex-none max-sm:snap-center"

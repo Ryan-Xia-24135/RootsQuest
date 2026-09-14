@@ -35,10 +35,10 @@ export default function AboutMeaningContent() {
           What Does ROOTS Mean?
         </h1>
 
-        <div className="mt-[3.6vh] grid min-h-0 flex-1 grid-rows-5 gap-[3.3vh] max-md:mt-[2.2vh] max-md:gap-[1.7vh] max-sm:mt-2 max-sm:flex max-sm:flex-col max-sm:gap-1.5">
+        <div className="mt-[3.6vh] grid min-h-0 flex-1 grid-rows-5 gap-[3.3vh] max-md:mt-[2.2vh] max-md:gap-[1.7vh] max-sm:mt-2 max-sm:flex max-sm:flex-1 max-sm:flex-col max-sm:justify-center max-sm:gap-2">
           {meanings.map(({ letter, text }, index) => (
             <motion.div
-              className="relative flex min-h-0 items-stretch pl-[2.55%] max-sm:min-h-0 max-sm:flex-1 max-sm:pl-4"
+              className="relative flex min-h-0 items-stretch pl-[2.55%] max-sm:min-h-0 max-sm:flex-none max-sm:pl-4"
               initial={reduceMotion ? false : { opacity: 0, y: 72, scale: 0.975 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ amount: 0.25 }}
@@ -49,8 +49,8 @@ export default function AboutMeaningContent() {
               }}
               key={`${letter}-${text}`}
             >
-              <div className="flex min-w-0 flex-1 items-center rounded-[0_10px_10px_10px] bg-[#ccdecd] py-[0.7vh] pl-[4.75%] pr-[2%] text-[#112e1b] max-md:pl-[11%] max-md:pr-[2.5%] max-sm:pl-[19%] max-sm:pr-[4%]">
-                <p className="m-0 max-h-full overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(11px,min(2.25vw,3.5vh),34px)] font-normal leading-[1.2] tracking-[-0.03em] max-md:text-[clamp(8px,min(3.15vw,2.25vh),16px)] max-sm:text-[12.5px] max-sm:leading-[1.28]">
+              <div className="flex min-w-0 flex-1 items-center rounded-[0_10px_10px_10px] bg-[#ccdecd] py-[0.7vh] pl-[4.75%] pr-[2%] text-[#112e1b] max-md:pl-[11%] max-md:pr-[2.5%] max-sm:py-2.5 max-sm:pl-[19%] max-sm:pr-[4%]">
+                <p className="m-0 max-h-full overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(11px,min(2.25vw,3.5vh),34px)] font-normal leading-[1.2] tracking-[-0.03em] max-md:text-[clamp(8px,min(3.15vw,2.25vh),16px)] max-sm:text-[12.5px] max-sm:leading-[1.32]">
                   {text}
                 </p>
               </div>

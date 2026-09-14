@@ -5,7 +5,7 @@ import { goldButtonEffect } from "@/components/goldButtonEffect";
 export default function AboutSectionContent() {
   return (
     <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden p-[clamp(14px,3.3vw,50px)] max-sm:p-3">
-      <div className="mx-auto grid h-full max-w-[1450px] grid-cols-[0.82fr_1.18fr] gap-[clamp(12px,2.5vw,38px)] max-sm:flex max-sm:flex-col max-sm:gap-2.5">
+      <div className="mx-auto grid h-full max-w-[1450px] grid-cols-[0.82fr_1.18fr] gap-[clamp(12px,2.5vw,38px)] max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:gap-3">
         <section className="flex min-h-0 flex-col rounded-[clamp(16px,1.7vw,26px)] border border-white/15 bg-black/20 p-[clamp(14px,2.5vw,38px)] shadow-[0_24px_60px_rgba(0,0,0,0.25)] backdrop-blur-[2px] max-sm:shrink-0 max-sm:p-3">
           <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(23px,min(4.1vw,5.8vh),62px)] font-semibold leading-[1.12] tracking-[-0.03em] text-[#d9d9d9] max-sm:text-[clamp(22px,7vw,30px)]">
             Where curious, young minds learn to<br />‘think like a forest’
@@ -15,13 +15,13 @@ export default function AboutSectionContent() {
           </div>
         </section>
 
-        <section className="grid min-h-0 grid-rows-[1.12fr_0.88fr] gap-[clamp(12px,2vh,22px)] max-sm:flex max-sm:min-h-0 max-sm:flex-1 max-sm:flex-col max-sm:gap-2.5">
+        <section className="grid min-h-0 grid-rows-[1.12fr_0.88fr] gap-[clamp(12px,2vh,22px)] max-sm:flex max-sm:min-h-0 max-sm:flex-none max-sm:flex-col max-sm:gap-3">
           <div className="relative min-h-0 overflow-hidden rounded-[clamp(16px,1.7vw,26px)] border border-white/25 shadow-[0_24px_60px_rgba(0,0,0,0.3)] max-sm:h-[22svh] max-sm:min-h-[160px] max-sm:shrink-0">
             <Image className="object-cover object-bottom" src="/assets/student-writing.png" alt="A student writing while seated in a forest" fill sizes="(max-width: 640px) 92vw, 58vw" />
           </div>
 
-          <div className="flex min-h-0 flex-col items-start justify-center rounded-[clamp(16px,1.7vw,26px)] border border-[#dcebdd]/70 bg-[#ccdecd]/95 px-[clamp(16px,3vw,46px)] py-[clamp(12px,2.5vh,26px)] text-[#112e1b] shadow-[0_20px_50px_rgba(0,0,0,0.25)] max-sm:min-h-0 max-sm:flex-1 max-sm:px-4 max-sm:py-3">
-            <p className="m-0 max-h-[9em] overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(11px,min(1.85vw,3vh),28px)] font-normal leading-[1.3] tracking-[-0.03em] max-sm:max-h-none max-sm:text-[14px] max-sm:leading-[1.35]">
+          <div className="flex min-h-0 flex-col items-start justify-center rounded-[clamp(16px,1.7vw,26px)] border border-[#dcebdd]/70 bg-[#ccdecd]/95 px-[clamp(16px,3vw,46px)] py-[clamp(12px,2.5vh,26px)] text-[#112e1b] shadow-[0_20px_50px_rgba(0,0,0,0.25)] max-sm:min-h-0 max-sm:flex-none max-sm:px-4 max-sm:py-3.5">
+            <p className="m-0 max-h-[9em] overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(11px,min(1.85vw,3vh),28px)] font-normal leading-[1.3] tracking-[-0.03em] max-sm:max-h-none max-sm:text-[14px] max-sm:leading-[1.4]">
               It empowers students ages 11-14 in grades 6-8 to understand problems and ask questions with consideration of the entire system, every angle and scale, and how it supports life on earth.
             </p>
             <Link
