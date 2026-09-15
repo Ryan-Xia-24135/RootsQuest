@@ -31,7 +31,7 @@ export default function AboutMeaningContent() {
   return (
     <div className="absolute inset-0 z-10 overflow-hidden px-[3.17%] pb-[6.3vh] pt-[calc(var(--nav-height)+3.4vh)] text-white max-md:px-[4%] max-md:pb-[3vh] max-md:pt-[calc(var(--nav-height)+2.3vh)] max-sm:pb-3 max-sm:pt-[calc(var(--nav-height)+1.4vh)]">
       <div className="flex h-full min-h-0 flex-col">
-        <h1 className="m-0 shrink-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(24px,min(4.24vw,6vh),64px)] font-semibold leading-[1.2] tracking-[-0.03em] max-md:text-[clamp(20px,min(7vw,4.8vh),40px)] max-sm:text-[22px]">
+        <h1 className="m-0 shrink-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(24px,min(4.24vw,6vh),64px)] font-semibold leading-[1.2] tracking-[-0.03em] max-md:text-[clamp(20px,min(7vw,4.8vh),40px)] max-sm:text-[22px] portrait:text-[clamp(26px,7vw,36px)] portrait:font-bold">
           What Does ROOTS Mean?
         </h1>
 
@@ -50,12 +50,12 @@ export default function AboutMeaningContent() {
               key={`${letter}-${text}`}
             >
               <div className="flex min-w-0 flex-1 items-center rounded-[0_10px_10px_10px] bg-[#ccdecd] py-[0.7vh] pl-[4.75%] pr-[2%] text-[#112e1b] max-md:pl-[11%] max-md:pr-[2.5%] max-sm:py-2.5 max-sm:pl-[19%] max-sm:pr-[4%]">
-                <p className="m-0 max-h-full overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(11px,min(2.25vw,3.5vh),34px)] font-normal leading-[1.2] tracking-[-0.03em] max-md:text-[clamp(8px,min(3.15vw,2.25vh),16px)] max-sm:text-[12.5px] max-sm:leading-[1.32]">
+                <p className="m-0 max-h-full overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(11px,min(2.25vw,3.5vh),34px)] font-normal leading-[1.2] tracking-[-0.03em] max-md:text-[clamp(8px,min(3.15vw,2.25vh),16px)] max-sm:text-[12.5px] max-sm:leading-[1.32] portrait:text-[14.5px] portrait:leading-[1.36]">
                   {text}
                 </p>
               </div>
 
-              <div className="absolute left-0 top-0 flex aspect-square h-[70.35%] max-h-[88px] items-center justify-center rounded-[clamp(8px,0.88vw,13px)] bg-[#c8a84b] font-['Asta_Sans',Arial,sans-serif] text-[clamp(22px,min(3.44vw,5.4vh),52px)] font-semibold leading-none tracking-[-0.03em] text-white max-md:h-[62%] max-md:text-[clamp(18px,min(5vw,3.6vh),30px)] max-sm:h-[58%] max-sm:text-[18px]">
+              <div className="absolute left-0 top-0 flex aspect-square h-[70.35%] max-h-[88px] items-center justify-center rounded-[clamp(8px,0.88vw,13px)] bg-[#c8a84b] font-['Asta_Sans',Arial,sans-serif] text-[clamp(22px,min(3.44vw,5.4vh),52px)] font-semibold leading-none tracking-[-0.03em] text-white max-md:h-[62%] max-md:text-[clamp(18px,min(5vw,3.6vh),30px)] max-sm:h-[58%] max-sm:text-[18px] portrait:text-[21px]">
                 {letter}
               </div>
             </motion.div>

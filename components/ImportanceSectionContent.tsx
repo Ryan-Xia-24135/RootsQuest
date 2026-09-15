@@ -33,10 +33,10 @@ export default function ImportanceSectionContent() {
     <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden p-[clamp(12px,2.6vw,40px)]">
       <div className="mx-auto flex h-full max-w-[1480px] min-h-0 flex-col rounded-[clamp(16px,1.8vw,28px)] border border-white/15 bg-black/20 px-[clamp(14px,2.7vw,42px)] py-[clamp(12px,2.6vh,26px)] shadow-[0_28px_70px_rgba(0,0,0,0.28)] backdrop-blur-[2px]">
         <header className="shrink-0 text-center text-white">
-          <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(23px,min(4vw,5.4vh),60px)] font-semibold leading-[1.08] tracking-[-0.03em] max-sm:text-[clamp(21px,6.5vw,26px)]">
+          <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(23px,min(4vw,5.4vh),60px)] font-semibold leading-[1.08] tracking-[-0.03em] max-sm:text-[clamp(21px,6.5vw,26px)] portrait:text-[clamp(26px,7.5vw,34px)] portrait:font-bold">
             ROOTS Quest Thinking in the Real World
           </h1>
-          <p className="mx-auto mt-[clamp(6px,1.3vh,12px)] max-w-[62ch] font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.5vw,2.5vh),23px)] font-normal leading-[1.3] tracking-[-0.03em] max-sm:mt-1.5 max-sm:max-w-none max-sm:text-[13px]">
+          <p className="mx-auto mt-[clamp(6px,1.3vh,12px)] max-w-[62ch] font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.5vw,2.5vh),23px)] font-normal leading-[1.3] tracking-[-0.03em] max-sm:mt-1.5 max-sm:max-w-none max-sm:text-[13px] portrait:text-[15px]">
             These case studies show systems thinking, regenerative design, and nature-inspired problem solving already being applied by organizations around the world.
           </p>
         </header>
@@ -56,7 +56,7 @@ export default function ImportanceSectionContent() {
                   <card.icon className="size-[56%]" strokeWidth={1.7} aria-hidden="true" />
                 </div>
               </div>
-              <span className="flex min-h-[3.4em] shrink-0 items-center justify-end px-[8%] py-[5%] text-right font-['Inter',Arial,sans-serif] text-[clamp(9px,min(1.15vw,2vh),17px)] font-medium leading-[1.2] tracking-[-0.03em] max-sm:text-[13px]">
+              <span className="flex min-h-[3.4em] shrink-0 items-center justify-end px-[8%] py-[5%] text-right font-['Inter',Arial,sans-serif] text-[clamp(9px,min(1.15vw,2vh),17px)] font-medium leading-[1.2] tracking-[-0.03em] max-sm:text-[13px] portrait:text-[15px] portrait:font-semibold">
                 {card.title}
               </span>
             </a>

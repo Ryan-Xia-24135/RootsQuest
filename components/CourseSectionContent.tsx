@@ -10,16 +10,16 @@ export default function CourseSectionContent() {
           <div className="relative min-h-0 overflow-hidden rounded-[clamp(16px,1.7vw,26px)] border border-[#f1d5b7]/40 shadow-[0_24px_60px_rgba(0,0,0,0.3)] max-sm:h-[20svh] max-sm:min-h-[150px]">
             <Image className="object-cover" src="/assets/spider-web.png" alt="A spider web lit by warm sunlight" fill sizes="(max-width: 640px) 92vw, 48vw" />
           </div>
-          <p className="m-0 rounded-[clamp(14px,1.5vw,22px)] border border-[#dcc1aa]/55 bg-[#b7977d]/95 px-[clamp(14px,2.2vw,32px)] py-[clamp(10px,2vh,20px)] font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.6vw,2.7vh),24px)] font-normal leading-[1.3] tracking-[-0.03em] text-[#2c1f14] shadow-[0_18px_44px_rgba(0,0,0,0.22)] max-sm:px-4 max-sm:py-2.5 max-sm:text-[13px]">
+          <p className="m-0 rounded-[clamp(14px,1.5vw,22px)] border border-[#dcc1aa]/55 bg-[#b7977d]/95 px-[clamp(14px,2.2vw,32px)] py-[clamp(10px,2vh,20px)] font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.6vw,2.7vh),24px)] font-normal leading-[1.3] tracking-[-0.03em] text-[#2c1f14] shadow-[0_18px_44px_rgba(0,0,0,0.22)] max-sm:px-4 max-sm:py-2.5 max-sm:text-[13px] portrait:text-[15px] portrait:font-medium">
             In the span of this 8 week course for students in grades 6-8 that teaches systems thinking, regenerative design, and nature-inspired problem solving in STEM.
           </p>
         </section>
 
         <section className="flex min-h-0 flex-col rounded-[clamp(16px,1.7vw,26px)] border border-white/15 bg-black/25 p-[clamp(16px,2.7vw,40px)] shadow-[0_24px_60px_rgba(0,0,0,0.28)] backdrop-blur-[2px] max-sm:min-h-0 max-sm:flex-none max-sm:p-3.5">
-          <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(22px,min(4vw,5.7vh),60px)] font-semibold leading-[1.1] tracking-[-0.03em] text-white max-sm:text-[clamp(20px,6.5vw,26px)]">
+          <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(22px,min(4vw,5.7vh),60px)] font-semibold leading-[1.1] tracking-[-0.03em] text-white max-sm:text-[clamp(20px,6.5vw,26px)] portrait:text-[clamp(26px,7.5vw,34px)] portrait:font-bold">
             Beyond a School Curriculum and Science Project
           </h1>
-          <p className="mt-[clamp(10px,2vh,20px)] max-h-[8em] overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.65vw,2.8vh),25px)] font-normal leading-[1.3] tracking-[-0.03em] text-white max-sm:mt-2.5 max-sm:max-h-none max-sm:text-[13px] max-sm:leading-[1.35]">
+          <p className="mt-[clamp(10px,2vh,20px)] max-h-[8em] overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.65vw,2.8vh),25px)] font-normal leading-[1.3] tracking-[-0.03em] text-white max-sm:mt-2.5 max-sm:max-h-none max-sm:text-[13px] max-sm:leading-[1.35] portrait:text-[15px] portrait:leading-[1.4]">
             Students won’t just learn about the problems they’re interested in, they’ll learn what the system is behind the problem, the connections that relate to that problem, and designing what is their next step with this new understanding.
           </p>
           <div className="relative mt-[clamp(10px,2vh,20px)] min-h-0 flex-1 overflow-hidden rounded-[clamp(12px,1.2vw,18px)] border border-white/20 shadow-[0_16px_38px_rgba(0,0,0,0.28)] max-sm:hidden">

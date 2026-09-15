@@ -81,7 +81,7 @@ function StickyNote({ note, index }: { note: Note; index: number }) {
       viewport={{ amount: 0.35, once: true }}
       transition={{ duration: reduceMotion ? 0 : 0.38, delay: reduceMotion ? 0 : index * 0.075, ease: [0.22, 1, 0.36, 1] }}
     >
-      <p className="m-0 font-['Georgia',serif] text-[clamp(14px,min(1.55vw,2.7vh),23px)] font-medium leading-[1.22] tracking-[-0.025em] max-sm:text-[17px]">
+      <p className="m-0 font-['Georgia',serif] text-[clamp(14px,min(1.55vw,2.7vh),23px)] font-medium leading-[1.22] tracking-[-0.025em] max-sm:text-[17px] portrait:text-[19px]">
         {note.text}
       </p>
     </motion.div>
@@ -93,7 +93,7 @@ function CurriculumTopic({ heading, notes, compactHeading = false }: { heading: 
     <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden px-[clamp(14px,3vw,46px)] py-[clamp(16px,3vh,30px)] text-white max-sm:overflow-y-auto max-sm:p-3">
       <div className="relative mx-auto h-full max-w-[1480px] max-sm:flex max-sm:h-auto max-sm:min-h-full max-sm:flex-col">
         <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[clamp(18px,2vw,30px)] border border-white/15 bg-black/18 px-[clamp(18px,4vw,60px)] py-[clamp(20px,4vh,42px)] text-center shadow-[0_24px_65px_rgba(0,0,0,0.24)] backdrop-blur-[2px] max-sm:static max-sm:mb-3 max-sm:w-auto max-sm:translate-x-0 max-sm:translate-y-0 ${compactHeading ? "w-[min(62vw,900px)]" : "w-[min(72vw,1020px)]"}`}>
-          <h1 className={`m-0 font-['Asta_Sans',Arial,sans-serif] font-semibold leading-[1.18] tracking-[-0.03em] max-sm:text-[clamp(28px,9vw,42px)] ${compactHeading ? "text-[clamp(28px,min(3.7vw,6vh),56px)]" : "text-[clamp(30px,min(5.3vw,8vh),80px)]"}`}>
+          <h1 className={`m-0 font-['Asta_Sans',Arial,sans-serif] font-semibold leading-[1.18] tracking-[-0.03em] max-sm:text-[clamp(28px,9vw,42px)] portrait:text-[clamp(32px,10vw,52px)] portrait:font-bold ${compactHeading ? "text-[clamp(28px,min(3.7vw,6vh),56px)]" : "text-[clamp(30px,min(5.3vw,8vh),80px)]"}`}>
             {heading}
           </h1>
         </div>
@@ -124,7 +124,7 @@ export function CurriculumOverviewHeading() {
     <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden px-[clamp(14px,3vw,46px)] py-[clamp(14px,2.7vh,28px)] text-white max-sm:p-3">
       <div className="mx-auto flex h-full max-w-[1420px] min-h-0 flex-col rounded-[clamp(18px,2vw,30px)] border border-white/15 bg-black/25 p-[clamp(14px,2.5vw,36px)] shadow-[0_28px_70px_rgba(0,0,0,0.3)] backdrop-blur-[3px]">
         <header className="shrink-0 border-b border-white/65 pb-[clamp(10px,1.8vh,18px)] text-center">
-          <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(23px,min(3.7vw,5.7vh),56px)] font-semibold leading-[1.12] tracking-[-0.03em] max-sm:text-[clamp(23px,7vw,34px)]">
+          <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(23px,min(3.7vw,5.7vh),56px)] font-semibold leading-[1.12] tracking-[-0.03em] max-sm:text-[clamp(23px,7vw,34px)] portrait:text-[clamp(26px,7.5vw,38px)] portrait:font-bold">
           How the Course Unfolds: 8-Week Curriculum Overview
           </h1>
         </header>
@@ -136,12 +136,12 @@ export function CurriculumOverviewHeading() {
                 <AccordionTrigger className="group cursor-pointer px-[clamp(12px,1.7vw,26px)] py-[clamp(8px,min(1.25vw,1.9vh),15px)] text-left text-white/75 transition-colors hover:text-white hover:no-underline data-[state=open]:rounded-t-[14px] data-[state=open]:bg-[#b7977d] data-[state=open]:text-[#2c1f14] max-sm:px-3 max-sm:py-2 [&>svg:last-child]:hidden">
                   <div className="flex min-w-0 flex-1 items-center gap-[clamp(10px,1.5vw,22px)]">
                     <span className="w-[clamp(54px,6vw,88px)] shrink-0 font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.1vw,1.8vh),16px)] font-medium uppercase tracking-[0.08em] opacity-75 max-sm:w-[48px] max-sm:text-[10px]">{week}</span>
-                    <h2 className="m-0 min-w-0 flex-1 font-['Asta_Sans',Arial,sans-serif] text-[clamp(15px,min(2vw,3.25vh),30px)] font-semibold leading-[1.1] tracking-[-0.025em] max-sm:text-[clamp(15px,4.6vw,20px)]">{title}</h2>
+                    <h2 className="m-0 min-w-0 flex-1 font-['Asta_Sans',Arial,sans-serif] text-[clamp(15px,min(2vw,3.25vh),30px)] font-semibold leading-[1.1] tracking-[-0.025em] max-sm:text-[clamp(15px,4.6vw,20px)] portrait:text-[clamp(17px,5vw,23px)]">{title}</h2>
                     <PlusIcon className="size-[clamp(15px,min(1.7vw,2.7vh),25px)] shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-45" aria-hidden="true" />
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="rounded-b-[14px] bg-[#b7977d] px-[clamp(76px,9.2vw,136px)] pb-[clamp(11px,min(1.7vw,2.5vh),21px)] text-[#2c1f14] max-sm:px-4 max-sm:pb-3">
-                  <p className="m-0 max-w-[80ch] font-['Inter',Arial,sans-serif] text-[clamp(11px,min(1.35vw,2.25vh),20px)] font-normal leading-[1.42] tracking-[-0.015em] max-sm:text-[14px]">{description}</p>
+                  <p className="m-0 max-w-[80ch] font-['Inter',Arial,sans-serif] text-[clamp(11px,min(1.35vw,2.25vh),20px)] font-normal leading-[1.42] tracking-[-0.015em] max-sm:text-[14px] portrait:text-[16px]">{description}</p>
                 </AccordionContent>
               </AccordionItem>
             ))}

@@ -36,8 +36,8 @@ export default function StatisticsCard2({ items, className }: StatisticsCard2Pro
           </header>
 
           <div className="relative z-10 mt-auto pt-[clamp(10px,1.8vh,18px)]">
-            <h2 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(17px,min(2vw,3vh),30px)] font-semibold leading-[1.08] tracking-[-0.03em]">{title}</h2>
-            <p className="mb-0 mt-[clamp(6px,1.1vh,10px)] font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.08vw,1.8vh),16px)] font-normal leading-[1.38]">{description}</p>
+            <h2 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(17px,min(2vw,3vh),30px)] font-semibold leading-[1.08] tracking-[-0.03em] portrait:text-[22px] portrait:font-bold">{title}</h2>
+            <p className="mb-0 mt-[clamp(6px,1.1vh,10px)] font-['Inter',Arial,sans-serif] text-[clamp(10px,min(1.08vw,1.8vh),16px)] font-normal leading-[1.38] portrait:text-[14px]">{description}</p>
           </div>
         </article>
       ))}

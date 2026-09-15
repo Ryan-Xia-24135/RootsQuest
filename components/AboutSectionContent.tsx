@@ -7,7 +7,7 @@ export default function AboutSectionContent() {
     <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] z-10 overflow-hidden p-[clamp(14px,3.3vw,50px)] max-sm:p-3">
       <div className="mx-auto grid h-full max-w-[1450px] grid-cols-[0.82fr_1.18fr] gap-[clamp(12px,2.5vw,38px)] max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:gap-3">
         <section className="flex min-h-0 flex-col rounded-[clamp(16px,1.7vw,26px)] border border-white/15 bg-black/20 p-[clamp(14px,2.5vw,38px)] shadow-[0_24px_60px_rgba(0,0,0,0.25)] backdrop-blur-[2px] max-sm:shrink-0 max-sm:p-3">
-          <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(23px,min(4.1vw,5.8vh),62px)] font-semibold leading-[1.12] tracking-[-0.03em] text-[#d9d9d9] max-sm:text-[clamp(22px,7vw,30px)]">
+          <h1 className="m-0 font-['Asta_Sans',Arial,sans-serif] text-[clamp(23px,min(4.1vw,5.8vh),62px)] font-semibold leading-[1.12] tracking-[-0.03em] text-[#d9d9d9] max-sm:text-[clamp(22px,7vw,30px)] portrait:text-[clamp(28px,8vw,36px)] portrait:font-bold">
             Where curious, young minds learn to<br />‘think like a forest’
           </h1>
           <div className="relative mt-[clamp(12px,2.5vh,24px)] min-h-0 flex-1 overflow-hidden rounded-[clamp(12px,1.2vw,18px)] border border-white/25 shadow-[0_18px_40px_rgba(0,0,0,0.28)] max-sm:mt-2.5 max-sm:h-[16svh] max-sm:min-h-[110px] max-sm:flex-none">
@@ -21,11 +21,11 @@ export default function AboutSectionContent() {
           </div>
 
           <div className="flex min-h-0 flex-col items-start justify-center rounded-[clamp(16px,1.7vw,26px)] border border-[#dcebdd]/70 bg-[#ccdecd]/95 px-[clamp(16px,3vw,46px)] py-[clamp(12px,2.5vh,26px)] text-[#112e1b] shadow-[0_20px_50px_rgba(0,0,0,0.25)] max-sm:min-h-0 max-sm:flex-none max-sm:px-4 max-sm:py-3.5">
-            <p className="m-0 max-h-[9em] overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(11px,min(1.85vw,3vh),28px)] font-normal leading-[1.3] tracking-[-0.03em] max-sm:max-h-none max-sm:text-[14px] max-sm:leading-[1.4]">
+            <p className="m-0 max-h-[9em] overflow-y-auto font-['Inter',Arial,sans-serif] text-[clamp(11px,min(1.85vw,3vh),28px)] font-normal leading-[1.3] tracking-[-0.03em] max-sm:max-h-none max-sm:text-[14px] max-sm:leading-[1.4] portrait:text-[16px] portrait:leading-[1.45]">
               It empowers students ages 11-14 in grades 6-8 to understand problems and ask questions with consideration of the entire system, every angle and scale, and how it supports life on earth.
             </p>
             <Link
-              className={`mt-[clamp(10px,2.2vh,22px)] inline-flex min-h-[clamp(38px,5.8vh,58px)] items-center justify-center rounded-[14px] bg-[#e5c055] px-[clamp(16px,2.4vw,36px)] text-center font-['Inter',Arial,sans-serif] text-[clamp(12px,min(1.55vw,2.6vh),23px)] font-medium leading-[1.15] text-[#184327] max-sm:mt-2 max-sm:min-h-[40px] max-sm:px-4 max-sm:text-[13px] ${goldButtonEffect}`}
+              className={`mt-[clamp(10px,2.2vh,22px)] inline-flex min-h-[clamp(38px,5.8vh,58px)] items-center justify-center rounded-[14px] bg-[#e5c055] px-[clamp(16px,2.4vw,36px)] text-center font-['Inter',Arial,sans-serif] text-[clamp(12px,min(1.55vw,2.6vh),23px)] font-medium leading-[1.15] text-[#184327] max-sm:mt-2 max-sm:min-h-[40px] max-sm:px-4 max-sm:text-[13px] portrait:text-[14px] ${goldButtonEffect}`}
               href="/about"
             >
               Learn More About ROOTS Quest
