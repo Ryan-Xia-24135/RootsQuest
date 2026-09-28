@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join ROOTS Quest — Register</title>
+  <meta name="description" content="Register for the free ROOTS Quest course (starts October 18, registration closes October 16) or save your spot at the October 11 webinar." />
+  <link rel="icon" href="assets/icon.png" type="image/png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Minimal, pure-white registration page. Same type and gold accent as the site. */
+    body.register { background: #fff; color: #111; }
+    .reg-nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 16px; height: var(--nav-height); padding: 0 clamp(16px, 3vw, 32px); background: rgba(255,255,255,.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,.06); }
+    .reg-nav__brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #111; font-family: var(--display); font-weight: 600; font-size: 18px; letter-spacing: -0.02em; }
+    .reg-nav__brand img { width: 34px; height: 34px; border-radius: 50%; }
+    .reg-nav__back { font-size: 14px; color: rgba(0,0,0,.6); text-decoration: none; }
+    .reg-nav__back:hover { color: #111; }
+
+    .reg { max-width: 640px; margin: 0 auto; padding: clamp(36px, 7vh, 80px) 20px clamp(60px, 10vh, 120px); }
+    .reg__eyebrow { display: block; font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(0,0,0,.5); }
+    .reg h1 { margin-top: 10px; font-family: var(--display); font-weight: 600; letter-spacing: -0.035em; line-height: 1.02; font-size: clamp(38px, 6vw, 60px); }
+    .reg__lede { margin-top: 14px; font-size: 17px; line-height: 1.55; color: rgba(0,0,0,.65); max-width: 46ch; }
+    .reg__dates { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .reg__dates span { padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(0,0,0,.14); font-size: 13px; color: rgba(0,0,0,.7); }
+    .reg__dates span b { color: #111; font-weight: 600; }
+
+    .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 34px; padding: 5px; border-radius: 16px; background: #f2f2ef; }
+    .seg button { border: 0; border-radius: 12px; background: transparent; padding: 12px 14px; font-family: var(--display); font-weight: 600; font-size: 16px; letter-spacing: -0.01em; color: rgba(0,0,0,.55); cursor: pointer; transition: background .2s, color .2s, box-shadow .2s; }
+    .seg button[aria-pressed="true"] { background: #fff; color: #111; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    .seg button small { display: block; margin-top: 3px; font-family: var(--body); font-weight: 400; font-size: 12px; color: rgba(0,0,0,.5); }
+
+    form { margin-top: 30px; }
+    .field { margin-top: 22px; }
+    .field label, .field legend { display: block; font-size: 15px; font-weight: 500; color: #111; padding: 0; }
+    .field .hint { display: block; margin-top: 4px; font-size: 13px; color: rgba(0,0,0,.5); }
+    .req { color: var(--gold-shadow); margin-left: 2px; }
+    .input { margin-top: 8px; width: 100%; padding: 13px 14px; border-radius: 12px; border: 1px solid rgba(0,0,0,.2); background: #fff; font: inherit; font-size: 16px; color: #111; outline: none; transition: border-color .15s, box-shadow .15s; }
+    .input:focus { border-color: #111; box-shadow: 0 0 0 4px rgba(200,168,75,.22); }
+    .input::placeholder { color: rgba(0,0,0,.35); }
+    textarea.input { min-height: 150px; resize: vertical; line-height: 1.5; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 480px) { .two { grid-template-columns: 1fr; } }
+    fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .pill { padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(0,0,0,.25); background: #fff; font-size: 14px; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+    .pill:hover { background: rgba(0,0,0,.04); }
+    .pill[aria-pressed="true"] { background: #111; color: #fff; border-color: #111; }
+    .error { display: none; margin-top: 8px; font-size: 13px; color: #9b1c1c; }
+    .field.is-invalid .error { display: block; }
+    .field.is-invalid .input { border-color: #c53030; }
+    .field.is-invalid .pill { border-color: #c53030; }
+    .group[hidden] { display: none; }
+
+    .submit { margin-top: 30px; width: 100%; min-height: 58px; font-size: 19px; }
+    .fine { margin-top: 14px; font-size: 13px; line-height: 1.5; color: rgba(0,0,0,.5); text-align: center; }
+    .alert { display: none; margin-top: 18px; padding: 12px 14px; border-radius: 12px; background: #fff4f4; border: 1px solid #f3c2c2; color: #7f1d1d; font-size: 14px; }
+    .alert.is-visible { display: block; }
+
+    .done { display: none; text-align: center; padding-top: clamp(20px, 6vh, 60px); }
+    .done.is-visible { display: block; }
+    .done__check { width: 64px; height: 64px; margin: 0 auto; border-radius: 50%; display: grid; place-items: center; background: var(--gold-bright); color: #1e1e1e; box-shadow: 0 4px 0 var(--gold-shadow), 0 10px 24px rgba(0,0,0,.15); }
+    .done__check .icon { width: 30px; height: 30px; stroke-width: 2.4; }
+    .done h2 { margin-top: 24px; font-family: var(--display); font-weight: 600; font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.03em; line-height: 1.1; }
+    .done p { margin: 14px auto 0; max-width: 44ch; font-size: 16px; line-height: 1.6; color: rgba(0,0,0,.65); }
+    .done .btn { margin-top: 28px; }
+    .spin { animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="register">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-loader" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></symbol>
+</svg>
+
+<nav class="reg-nav" aria-label="Registration">
+  <a class="reg-nav__brand" href="index.html"><img src="assets/roots-light-logo.png" alt="" /> ROOTS Quest</a>
+  <a class="reg-nav__back" href="index.html">← Back to the site</a>
+</nav>
+
+<main class="reg">
+  <div id="intro">
+    <span class="reg__eyebrow">Free · Grades 6–8 · Live on Zoom</span>
+    <h1 id="title">Join ROOTS Quest</h1>
+    <p class="reg__lede" id="lede">Spots are limited to 15 students. Tell us a little about you and we’ll be in touch before the cohort begins.</p>
+    <div class="reg__dates" aria-label="Key dates">
+      <span><b>Webinar</b> October 11</span>
+      <span><b>Registration closes</b> October 16</span>
+      <span><b>Course starts</b> October 18</span>
+    </div>
+
+    <div class="seg" role="group" aria-label="What are you signing up for?">
+      <button type="button" data-mode="course" aria-pressed="true">Register for the course<small>8 weeks · starts October 18</small></button>
+      <button type="button" data-mode="webinar" aria-pressed="false">Save a webinar spot<small>Free intro session · October 11</small></button>
+    </div>
+  </div>
+
+  <form id="form" novalidate>
+    <input type="hidden" name="Sign-up type" id="signupType" value="Course registration" />
+
+    <div class="field">
+      <label>Student name<span class="req" aria-hidden="true">*</span></label>
+      <div class="two">
+        <div><label class="sr-only" for="studentFirst">Student first name</label><input class="input" id="studentFirst" name="Student first name" placeholder="First" autocomplete="given-name" required /></div>
+        <div><label class="sr-only" for="studentLast">Student last name</label><input class="input" id="studentLast" name="Student last name" placeholder="Last" autocomplete="family-name" required /></div>
+      </div>
+      <p class="error">Please enter the student’s first and last name.</p>
+    </div>
+
+    <div class="field group" data-group="course">
+      <label>Parent or guardian name<span class="req" aria-hidden="true">*</span></label>
+      <div class="two">
+        <div><label class="sr-only" for="guardianFirst">Guardian first name</label><input class="input" id="guardianFirst" name="Guardian first name" placeholder="First" /></div>
+        <div><label class="sr-only" for="guardianLast">Guardian last name</label><input class="input" id="guardianLast" name="Guardian last name" placeholder="Last" /></div>
+      </div>
+      <p class="error">Please enter the guardian’s first and last name.</p>
+    </div>
+
+    <div class="field">
+      <label for="email">Email<span class="req" aria-hidden="true">*</span></label>
+      <span class="hint">The student’s or the guardian’s — whichever is best to reach you.</span>
+      <input class="input" id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+      <p class="error">Please enter a valid email address.</p>
+    </div>
+
+    <div class="field">
+      <fieldset>
+        <legend>Grade<span class="req" aria-hidden="true">*</span></legend>
+        <div class="pills" id="gradePills">
+          <button class="pill" type="button" data-value="Grade 6" aria-pressed="false">Grade 6</button>
+          <button class="pill" type="button" data-value="Grade 7" aria-pressed="false">Grade 7</button>
+          <button class="pill" type="button" data-value="Grade 8" aria-pressed="false">Grade 8</button>
+        </div>
+        <input type="hidden" name="Grade" id="grade" />
+      </fieldset>
+      <p class="error">Please choose a grade.</p>
+    </div>
+
+    <div class="field group" data-group="course">
+      <label for="why">Why are you interested in sustainability or regenerative design?<span class="req" aria-hidden="true">*</span></label>
+      <span class="hint">What excites you most about taking this course? A few sentences is plenty — there are no wrong answers.</span>
+      <textarea class="input" id="why" name="Why are you interested" placeholder="I’m interested because…"></textarea>
+      <p class="error">Tell us a little about why you’re interested.</p>
+    </div>
+
+    <div class="alert" id="alert" role="alert">We couldn’t send your form. Please check your connection and try again.</div>
+
+    <button class="btn btn--gold submit" type="submit" id="submit">Submit my registration</button>
+    <p class="fine" id="fine">Registration closes October 16. We’ll confirm your place by email before the course begins on October 18.</p>
+  </form>
+
+  <section class="done" id="done" aria-live="polite">
+    <span class="done__check"><svg class="icon"><use href="#i-check"/></svg></span>
+    <h2 id="doneTitle">Thanks for joining ROOTS Quest.</h2>
+    <p id="doneCopy">We’ve received your registration and will be in touch by email before the cohort begins on October 18.</p>
+    <a class="btn btn--gold" href="index.html">Back to the site</a>
+  </section>
+</main>
+
+<script>
+(function () {
+  const FORMSPREE = "https://formspree.io/f/xkjnoorp";
+
+  const form = document.getElementById("form");
+  const seg = document.querySelectorAll(".seg button");
+  const groups = document.querySelectorAll(".group");
+  const signupType = document.getElementById("signupType");
+  const title = document.getElementById("title");
+  const lede = document.getElementById("lede");
+  const fine = document.getElementById("fine");
+  const submit = document.getElementById("submit");
+  const alertBox = document.getElementById("alert");
+  const doneTitle = document.getElementById("doneTitle");
+  const doneCopy = document.getElementById("doneCopy");
+  const gradeInput = document.getElementById("grade");
+
+  const copy = {
+    course: {
+      type: "Course registration",
+      title: "Join ROOTS Quest",
+      lede: "Spots are limited to 15 students. Tell us a little about you and we’ll be in touch before the cohort begins.",
+      submit: "Submit my registration",
+      fine: "Registration closes October 16. We’ll confirm your place by email before the course begins on October 18.",
+      doneTitle: "Thanks for joining ROOTS Quest.",
+      doneCopy: "We’ve received your registration and will be in touch by email before the cohort begins on October 18.",
+    },
+    webinar: {
+      type: "Webinar signup",
+      title: "Save your webinar spot",
+      lede: "Join a free online session on October 11 to hear what ROOTS Quest is, how the 8 weeks unfold, and ask Ryan anything before registration closes.",
+      submit: "Save my spot",
+      fine: "We’ll email the Zoom link before the webinar on October 11. Course registration stays open until October 16.",
+      doneTitle: "You’re on the list.",
+      doneCopy: "We’ll email the Zoom link for the October 11 webinar. Course registration is open until October 16.",
+    },
+  };
+
+  let mode = "course";
+  function setMode(next) {
+    mode = next;
+    const c = copy[mode];
+    seg.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === mode)));
+    groups.forEach((g) => { g.hidden = g.dataset.group !== mode && g.dataset.group !== "both"; });
+    signupType.value = c.type;
+    title.textContent = c.title;
+    lede.textContent = c.lede;
+    submit.textContent = c.submit;
+    fine.textContent = c.fine;
+    doneTitle.textContent = c.doneTitle;
+    doneCopy.textContent = c.doneCopy;
+    document.querySelectorAll(".field").forEach((f) => f.classList.remove("is-invalid"));
+    const url = new URL(location.href);
+    if (mode === "webinar") url.searchParams.set("for", "webinar"); else url.searchParams.delete("for");
+    history.replaceState(null, "", url);
+  }
+  seg.forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode)));
+  if (new URLSearchParams(location.search).get("for") === "webinar") setMode("webinar");
+
+  // Grade pills
+  document.querySelectorAll("#gradePills .pill").forEach((pill) => {
+    pill.addEventListener("click", () => {
+      document.querySelectorAll("#gradePills .pill").forEach((p) => p.setAttribute("aria-pressed", "false"));
+      pill.setAttribute("aria-pressed", "true");
+      gradeInput.value = pill.dataset.value;
+      pill.closest(".field").classList.remove("is-invalid");
+    });
+  });
+  form.querySelectorAll(".input").forEach((input) =>
+    input.addEventListener("input", () => input.closest(".field").classList.remove("is-invalid"))
+  );
+
+  function fieldOf(id) { return document.getElementById(id).closest(".field"); }
+  function invalid(field) { field.classList.add("is-invalid"); return field; }
+
+  function validate() {
+    const bad = [];
+    const val = (id) => document.getElementById(id).value.trim();
+    if (!val("studentFirst") || !val("studentLast")) bad.push(invalid(fieldOf("studentFirst")));
+    if (mode === "course" && (!val("guardianFirst") || !val("guardianLast"))) bad.push(invalid(fieldOf("guardianFirst")));
+    if (!/^\S+@\S+\.\S+$/.test(val("email"))) bad.push(invalid(fieldOf("email")));
+    if (!gradeInput.value) bad.push(invalid(fieldOf("grade")));
+    if (mode === "course" && !val("why")) bad.push(invalid(fieldOf("why")));
+    if (bad.length) {
+      bad[0].scrollIntoView({ behavior: "smooth", block: "center" });
+      const focusable = bad[0].querySelector("input, textarea, button");
+      if (focusable) focusable.focus({ preventScroll: true });
+    }
+    return bad.length === 0;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    alertBox.classList.remove("is-visible");
+    if (!validate()) return;
+
+    const data = new FormData(form);
+    // Drop hidden-group fields so webinar signups don't send empty course fields
+    groups.forEach((g) => { if (g.hidden) g.querySelectorAll("input, textarea").forEach((el) => data.delete(el.name)); });
+    const payload = Object.fromEntries(data.entries());
+    payload._subject = mode === "course" ? "New ROOTS Quest course registration" : "New ROOTS Quest webinar signup";
+
+    submit.disabled = true;
+    submit.innerHTML = '<svg class="icon spin"><use href="#i-loader"/></svg> Sending…';
+    try {
+      const res = await fetch(FORMSPREE, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
+      if (!res.ok) throw new Error("bad response");
+      document.getElementById("intro").hidden = true;
+      form.hidden = true;
+      document.getElementById("done").classList.add("is-visible");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch {
+      alertBox.classList.add("is-visible");
+      submit.disabled = false;
+      submit.textContent = copy[mode].submit;
+    }
+  });
+})();
+</script>
+</body>
+</html>

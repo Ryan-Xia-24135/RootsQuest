@@ -1,2 +1,0 @@
-export const goldButtonEffect =
-  "relative overflow-hidden border border-[#fff0a6]/80 shadow-[0_4px_0_#8f7222,0_10px_24px_rgba(0,0,0,0.22)] transition-[transform,box-shadow,filter] duration-300 ease-out hover:-translate-y-1 hover:scale-[1.025] hover:brightness-105 hover:shadow-[0_6px_0_#8f7222,0_16px_30px_rgba(0,0,0,0.3)] active:translate-y-0 active:scale-[0.99] active:shadow-[0_2px_0_#8f7222,0_6px_14px_rgba(0,0,0,0.22)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none motion-reduce:hover:transform-none";

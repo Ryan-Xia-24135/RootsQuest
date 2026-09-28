@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ROOTS Quest — A youth-led course in systems thinking and regenerative design</title>
+  <meta name="description" content="A free, youth-led 8-week course helping STEM-curious students in Grades 6–8 think regeneratively and see the whole system. Live on Zoom, 15 students per cohort. Course starts October 18." />
+  <link rel="icon" href="assets/icon.png" type="image/png" />
+  <meta property="og:title" content="ROOTS Quest" />
+  <meta property="og:description" content="A youth-led course helping STEM-curious students in Grades 6–8 think regeneratively and see the whole system." />
+  <meta property="og:image" content="assets/home-01.png" />
+  <link rel="preload" as="image" href="assets/home-01.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-telescope" viewBox="0 0 24 24"><path d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44"/><path d="m13.56 11.747 4.332-.924"/><path d="m16 21-3.105-6.21"/><path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z"/><path d="m6.158 8.633 1.114 4.456"/><path d="m8 21 3.105-6.21"/><circle cx="12" cy="13" r="2"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5v16"/><path d="M16 13h2"/><path d="M16 9h2"/><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"/><path d="M6 13h2"/><path d="M6 9h2"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+  <symbol id="i-earth" viewBox="0 0 24 24"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/><path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/><path d="M5 21h14"/></symbol>
+  <symbol id="i-droplets" viewBox="0 0 24 24"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><path d="m10.852 14.772-.383.923"/><path d="M13.148 14.772a3 3 0 1 0-2.296-5.544l-.383-.923"/><path d="m13.148 9.228.383-.923"/><path d="m13.53 15.696-.382-.924a3 3 0 1 1-2.296-5.544"/><path d="m14.772 10.852.923-.383"/><path d="m14.772 13.148.923.383"/><path d="M4.5 10H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.5"/><path d="M4.5 14H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-.5"/><path d="M6 18h.01"/><path d="M6 6h.01"/><path d="m9.228 10.852-.923-.383"/><path d="m9.228 13.148-.923.383"/></symbol>
+  <symbol id="i-network" viewBox="0 0 24 24"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+</svg>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" aria-label="Primary">
+  <a class="nav__logo" href="#top" aria-label="ROOTS Quest home"><img src="assets/roots-light-logo.png" alt="" /></a>
+
+  <div class="tabs">
+    <div class="tabs__indicator" aria-hidden="true">
+      <div class="tabs__indicator-inner">
+        <span class="tabs__ghost">Home</span>
+        <span class="tabs__ghost">About us</span>
+        <span class="tabs__ghost">Courses</span>
+        <span class="tabs__ghost">Instructor</span>
+        <span class="tabs__ghost">Real world</span>
+        <span class="tabs__ghost">Contact</span>
+      </div>
+    </div>
+    <div class="tabs__list">
+      <a class="tabs__link" href="#top" aria-current="true">Home</a>
+      <a class="tabs__link" href="#about">About us</a>
+      <a class="tabs__link" href="#courses">Courses</a>
+      <a class="tabs__link" href="#instructor">Instructor</a>
+      <a class="tabs__link" href="#real-world">Real world</a>
+      <a class="tabs__link" href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="nav__right">
+    <a class="nav__register" href="register.html">Register</a>
+    <a class="nav__social" href="https://www.linkedin.com/company/roots-quest/about/" target="_blank" rel="noreferrer" aria-label="ROOTS Quest on LinkedIn"><img src="assets/linkedin.svg" alt="" /></a>
+    <a class="nav__social" href="https://www.instagram.com/rootsquestorg/" target="_blank" rel="noreferrer" aria-label="ROOTS Quest on Instagram"><img src="assets/instagram.svg" alt="" /></a>
+    <button class="nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="icon icon--menu"><use href="#i-menu"/></svg>
+      <svg class="icon icon--x"><use href="#i-x"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="nav__menu" id="mobile-menu">
+  <a href="#top">Home</a>
+  <a href="#about">About us</a>
+  <a href="#courses">Courses</a>
+  <a href="#instructor">Instructor</a>
+  <a href="#real-world">Real world</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="section hero" id="top" style="background-image:url('assets/home-01.png')">
+  <div class="hero__card reveal in">
+    <span class="rule rule--white rule--center"></span>
+    <h1 class="display hero__title">ROOTS Quest</h1>
+    <p class="hero__tagline">A youth-led course helping STEM-curious students in Grades 6–8 think regeneratively and see the whole system.</p>
+
+    <div class="btn-row" style="margin-top:clamp(22px,4vh,38px);justify-content:center">
+      <a class="btn btn--gold btn--deep hero__cta" style="margin-top:0" href="register.html">Join ROOTS Quest</a>
+      <a class="btn btn--ghost hero__cta" style="margin-top:0" href="register.html?for=webinar">
+        <svg class="icon"><use href="#i-calendar"/></svg>
+        Free webinar · October 11
+      </a>
+    </div>
+
+    <div class="hero__facts" aria-label="Key dates">
+      <span>Webinar — October 11</span>
+      <span>Registration closes — October 16</span>
+      <span>Course starts — October 18</span>
+    </div>
+  </div>
+  <a class="hero__scroll" href="#about" aria-label="Continue to the next section"><svg class="icon"><use href="#i-chevron"/></svg></a>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="section" id="about" style="background-image:url('assets/home-02.png')">
+  <div class="wrap stack">
+
+    <div class="grid grid--about">
+      <div class="glass about-intro reveal">
+        <div>
+          <span class="rule"></span>
+          <span class="eyebrow" style="display:block;margin-bottom:10px">About us</span>
+          <h2 class="h2">What Truly is ROOTS Quest?</h2>
+        </div>
+        <p class="lede">ROOTS Quest is an 8-week project-based STEM program for students in Grades 6–8 that teaches young people to see the world differently.</p>
+        <p class="copy">Rather than beginning with solutions or answers, students first learn how to understand the systems behind the problems they care about.</p>
+        <p class="copy">Through systems thinking, regenerative design, and innovation inspired by nature, students explore how people, technology, and the environment are connected—and how thoughtful design can strengthen those relationships instead of breaking them.</p>
+
+        <div class="facts" aria-label="Course at a glance">
+          <div class="fact"><b>Completely free</b><span>No tuition, no fees, no catch</span></div>
+          <div class="fact"><b>8 weeks</b><span>One live one-hour session per week</span></div>
+          <div class="fact"><b>Grades 6–8</b><span>Students ages 11–14</span></div>
+          <div class="fact"><b>15 students</b><span>Small cohorts, real conversations</span></div>
+          <div class="fact"><b>Live over Zoom</b><span>Join from anywhere with internet</span></div>
+          <div class="fact"><b>Based in Calgary</b><span>Open to students everywhere</span></div>
+        </div>
+      </div>
+
+      <div class="about-video reveal" style="--d:.1s">
+        <div class="video">
+          <div class="video__placeholder">
+            <span class="play"><svg class="icon"><use href="#i-play"/></svg></span>
+            <strong>Meet ROOTS Quest in one minute</strong>
+            <span>A short introduction to the course from Ryan Xia, founder and facilitator.</span>
+          </div>
+        </div>
+        <p class="video__caption">Ryan Xia, founder and facilitator of ROOTS Quest, walks through what the course is and who it is for.</p>
+        <div class="panel panel--sage">
+          <h3 class="h3 forest-card__title" style="color:var(--sage-text)">Where curious, young minds learn to<br />‘think like a forest’</h3>
+          <p class="copy" style="margin-top:12px">It empowers students ages 11-14 in grades 6-8 to understand problems and ask questions with consideration of the entire system, every angle and scale, and how it supports life on earth.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="forest-card">
+      <div class="photo photo--fill reveal"><img src="assets/forest-roots.jpg" alt="A forest tree with exposed roots" loading="lazy" /></div>
+      <div class="glass reveal" style="--d:.1s">
+        <span class="rule"></span>
+        <h2 class="h2">What Does ROOTS Mean?</h2>
+        <div class="meaning">
+          <div class="meaning__row reveal" style="--d:.05s"><div class="meaning__bar">Regenerative - Thinking, planning, and designing not just to ‘make things last’ or ‘a little less bad’, but to make them actively good for the ecosystem for the future.</div><div class="meaning__letter">R</div></div>
+          <div class="meaning__row reveal" style="--d:.1s"><div class="meaning__bar">Observant - Not just seeing, but slowing down, looking closely, and finding patterns and asking questions about what other people just walk by or dismiss</div><div class="meaning__letter">O</div></div>
+          <div class="meaning__row reveal" style="--d:.15s"><div class="meaning__bar">Organic - Looking to nature for technological answers and solving problems with assistance from nature’s billions of years or experience in designing solutions.</div><div class="meaning__letter">O</div></div>
+          <div class="meaning__row reveal" style="--d:.2s"><div class="meaning__bar">Thinking - Not just memorizing answers, but asking questions to carve out better questions. Not just asking what is right, but what is the right question to ask.</div><div class="meaning__letter">T</div></div>
+          <div class="meaning__row reveal" style="--d:.25s"><div class="meaning__bar">Systems - Understanding that everything is connected, seeing feedback loops, relationships, how the growth of one can stifle the growth of another.</div><div class="meaning__letter">S</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass reveal">
+      <h2 class="h2">Everything you need to know</h2>
+      <div class="acc acc--faq" id="faq" style="margin-top:clamp(14px,2.4vh,26px)">
+        <div class="acc__item is-open">
+          <button class="acc__btn" type="button"><span class="acc__num">01</span><span class="acc__title">Who is this course designed for?</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">ROOTS Quest is built for curious STEM students in grades 6–8 who want to think beyond the textbook and tackle real-world problems.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" type="button"><span class="acc__num">02</span><span class="acc__title">How much does it cost?</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">ROOTS Quest is completely free — no tuition, no fees, no catch — because meaningful learning should be accessible to every student.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" type="button"><span class="acc__num">03</span><span class="acc__title">How long does the course run?</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">The course runs for 8 weeks with one live one-hour session per week, making it easy to fit into any schedule.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" type="button"><span class="acc__num">04</span><span class="acc__title">How are sessions delivered?</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">Every session happens live over Zoom, giving students a real-time interactive experience from wherever they are.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" type="button"><span class="acc__num">05</span><span class="acc__title">What does the class structure look like?</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">ROOTS Quest runs in small cohorts of 15 students, keeping every session intimate enough for real conversations and genuine peer feedback.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" type="button"><span class="acc__num">06</span><span class="acc__title">Where does this course take place?</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">ROOTS Quest is based out of Calgary but designed to be fully accessible to students anywhere with an internet connection.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== THE PROBLEM ===== -->
+<section class="section" id="problem" style="background-image:url('assets/about-background-meaning.png')">
+  <div class="wrap stack">
+    <div class="glass reveal">
+      <div class="section-head">
+        <span class="rule"></span>
+        <span class="eyebrow">The problem</span>
+        <h2 class="h2">School teaches the answers. It rarely teaches the system behind the question.</h2>
+        <p class="lede">Most solutions only treat the surface. Students who love science are handed problems from a textbook, asked to memorize what is right, and are never shown how the pieces connect.</p>
+      </div>
+      <div class="problem">
+        <div class="problem__card reveal" style="--d:.05s">
+          <span class="num">01</span>
+          <h3 class="h3">Surface-level solutions</h3>
+          <p>Students are taught to fix the symptom in front of them, not to ask why the problem exists or what it is connected to.</p>
+        </div>
+        <div class="problem__card reveal" style="--d:.1s">
+          <span class="num">02</span>
+          <h3 class="h3">Problems assigned, not chosen</h3>
+          <p>Science fairs and school projects hand students a problem. Curiosity fades when the question was never theirs to begin with.</p>
+        </div>
+        <div class="problem__card reveal" style="--d:.15s">
+          <span class="num">03</span>
+          <h3 class="h3">Nature is left out of the lab</h3>
+          <p>STEM is taught as separate from the living world, even though nature has been solving hard problems for billions of years.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="beyond">
+      <div class="glass beyond__text reveal">
+        <div>
+          <span class="rule"></span>
+          <h2 class="h2">Beyond a School Curriculum and Science Project</h2>
+        </div>
+        <p class="lede">Students won’t just learn about the problems they’re interested in, they’ll learn what the system is behind the problem, the connections that relate to that problem, and designing what is their next step with this new understanding.</p>
+        <p class="panel panel--tan copy">In the span of this 8 week course for students in grades 6-8 that teaches systems thinking, regenerative design, and nature-inspired problem solving in STEM.</p>
+        <div class="btn-row" style="margin-top:auto">
+          <a class="btn btn--gold" href="register.html">Join ROOTS Quest</a>
+          <span class="btn-note">Free · Registration closes October 16</span>
+        </div>
+      </div>
+      <div class="beyond__photos">
+        <div class="photo photo--fill reveal" style="--d:.1s"><img src="assets/pinecones.jpg" alt="Hands holding pinecones" loading="lazy" /></div>
+        <div class="photo photo--fill reveal" style="--d:.15s"><img src="assets/student-writing.jpg" alt="A student writing while seated in a forest" loading="lazy" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COURSES ===== -->
+<section class="section section--tall" id="courses" style="background-image:url('assets/courses-offers-background.png')">
+  <div class="wrap stack">
+
+    <div class="connection">
+      <div class="glass connection__text reveal">
+        <div>
+          <span class="rule"></span>
+          <span class="eyebrow" style="display:block;margin-bottom:10px">Courses</span>
+          <h2 class="display connection__title">The Connection Between Everything</h2>
+          <p class="lede" style="margin-top:clamp(14px,2.3vh,24px);max-width:38ch">Within a forest, everything is connected. The ecosystem’s health sits on a tightrope, yet nature manages to keep it balanced.</p>
+        </div>
+        <p class="panel panel--brown copy">ROOTS Quest strives to build a connection between passionate young students in STEM and the natural ecosystem through regenerative and systems thinking.</p>
+      </div>
+      <div class="connection__right">
+        <div class="photo photo--fill reveal" style="--d:.1s"><img src="assets/spider-web.jpg" alt="A spider web lit by warm sunlight" loading="lazy" /></div>
+        <div class="photo photo--3x2 reveal" style="--d:.15s;aspect-ratio:5/2"><img src="assets/about-project-photo.jpg" alt="Students participating in a hands-on outdoor project" loading="lazy" /></div>
+      </div>
+    </div>
+
+    <div class="glass reveal">
+      <div class="section-head section-head--center">
+        <span class="rule rule--center"></span>
+        <h2 class="h2">4 Things Every Student Walks Away With</h2>
+      </div>
+      <div class="grid grid--4 outcomes">
+        <article class="outcome reveal" style="--d:0s">
+          <div class="outcome__text"><h3 class="h3">Process Journal</h3><p>A journal of how their thinking grew and changed and how their questions evolved, in any format they choose: written, drawn, or voice-recorded.</p></div>
+          <div class="outcome__img"><img src="assets/course-process-journal.jpg" alt="" loading="lazy" /></div>
+        </article>
+        <article class="outcome reveal" style="--d:.06s">
+          <div class="outcome__text"><h3 class="h3">Systems Map</h3><p>A diagram connecting and linking their problem to the larger system behind and around it, including causes, loops, and relationships.</p></div>
+          <div class="outcome__img"><img src="assets/course-systems-map.jpg" alt="" loading="lazy" /></div>
+        </article>
+        <article class="outcome reveal" style="--d:.12s">
+          <div class="outcome__text"><h3 class="h3">Lo-Fi Prototype</h3><p>A first version of their solution in any form: a sketch, physical model, diagram, or written proposal.</p></div>
+          <div class="outcome__img"><img src="assets/course-lofi-prototype.jpg" alt="" loading="lazy" /></div>
+        </article>
+        <article class="outcome reveal" style="--d:.18s">
+          <div class="outcome__text"><h3 class="h3">Pitch Deck</h3><p>A short slideshow presenting their problem, research, and proposed solution to an audience of parents and peers.</p></div>
+          <div class="outcome__img"><img src="assets/course-pitch-deck.jpg" alt="" loading="lazy" /></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="topic">
+      <div class="topic__head reveal">
+        <h3 class="display"><span>System Design</span><span>&amp;</span><span>Regenerative Thinking</span></h3>
+      </div>
+      <div class="notes">
+        <div class="note reveal reveal--scale" style="--r:-2deg;--d:0s"><p>Degenerative vs. Regenerative Thinking</p></div>
+        <div class="note reveal reveal--scale" style="--r:1deg;--d:.075s"><p>Mapping Systems and Feedback Loops</p></div>
+        <div class="note reveal reveal--scale" style="--r:2deg;--d:.15s"><p>Connecting Environment, Tech, and Society</p></div>
+        <div class="note reveal reveal--scale" style="--r:1deg;--d:.225s"><p>Learning Design from Nature</p></div>
+        <div class="note reveal reveal--scale" style="--r:-1deg;--d:.3s"><p>Proposing Nature-Inspired Solutions</p></div>
+        <div class="note reveal reveal--scale" style="--r:-2deg;--d:.375s"><p>Finding Real Points of Change</p></div>
+      </div>
+    </div>
+
+    <div class="topic">
+      <div class="topic__head reveal">
+        <h3 class="display" style="font-size:clamp(26px,3.7vw,56px)">Technical, Scientific &amp; Research Skills</h3>
+      </div>
+      <div class="notes notes--5">
+        <div class="note reveal reveal--scale" style="--r:-1deg;--d:0s"><p>Designing a Pitch Deck</p></div>
+        <div class="note reveal reveal--scale" style="--r:-2deg;--d:.075s"><p>Finding and Evaluating Sources</p></div>
+        <div class="note reveal reveal--scale" style="--r:2deg;--d:.15s"><p>Building a Lo-Fi Prototype</p></div>
+        <div class="note reveal reveal--scale" style="--r:1deg;--d:.225s"><p>Keeping a Weekly Journal</p></div>
+        <div class="note reveal reveal--scale" style="--r:-1deg;--d:.3s"><p>Giving and Receiving Feedback</p></div>
+      </div>
+    </div>
+
+    <div class="glass weeks reveal">
+      <div class="weeks__head"><h3 class="display">How the Course Unfolds: 8-Week Curriculum Overview</h3></div>
+      <div class="acc acc--weeks" id="weeks">
+        <div class="acc__item is-open">
+          <button class="acc__btn" type="button"><span class="acc__week">Week 1</span><span class="acc__title">What is a System?</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">A question that changes how you see everything. We start by looking at the world differently, tracing the hidden threads that connect problems you already care about.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" type="button"><span class="acc__week">Week 2</span><span class="acc__title">Thinking in Systems</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">Most solutions only treat the surface. This week students learn to see deeper, understanding why things work the way they do and what it really means to make something better.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" type="button"><span class="acc__week">Week 3</span><span class="acc__title">What Nature Already Knows</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">Nature has been solving hard problems for billions of years. Students step outside, observe, and start asking what it would look like to design things the way living systems do.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" type="button"><span class="acc__week">Week 4</span><span class="acc__title">Real Cities, Real Change</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">Three cities. Three broken systems. Three remarkable transformations. Students dig into what actually happened and ask whether something like this could happen where they live.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" type="button"><span class="acc__week">Week 5</span><span class="acc__title">Close to Home</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">From Alberta farmland to the Bow River, students discover that regenerative thinking isn't abstract. It's already happening in their own backyard, led by communities who've been doing it for generations.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" type="button"><span class="acc__week">Week 6</span><span class="acc__title">Your Question</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">Every great project starts with the right question. This week students find theirs, something they genuinely care about, rooted in what they've learned and pointed toward something real.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" type="button"><span class="acc__week">Week 7</span><span class="acc__title">Build Something</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">Ideas become tangible. Students prototype, pitch, and get honest feedback, experiencing what it actually feels like to move from thinking to making.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__btn" type="button"><span class="acc__week">Week 8</span><span class="acc__title">Show the World</span><svg class="icon acc__plus"><use href="#i-plus"/></svg></button>
+          <div class="acc__panel"><div class="acc__panel-inner"><p class="acc__body">A live showcase with a real audience. Students present the work they've built over 8 weeks and answer for it, confidently and on their own terms.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass cta-inline reveal">
+      <p>Course starts October 18. Registration closes October 16.</p>
+      <a class="btn btn--gold" href="register.html">Join ROOTS Quest</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== WHO IS THIS FOR ===== -->
+<section class="section" id="who" style="background-image:url('assets/home-03.png')">
+  <div class="wrap">
+    <div class="glass reveal">
+      <div class="who-head">
+        <div>
+          <span class="rule"></span>
+          <h2 class="h2">Who is this for?</h2>
+        </div>
+        <p class="panel panel--tan">We invite you to join us and learn to see the world the way a forest works — connected, resilient, and alive.</p>
+      </div>
+
+      <div class="grid grid--3 fits">
+        <article class="fit reveal" style="--d:0s">
+          <svg class="fit__deco" viewBox="0 0 300 200" fill="none" aria-hidden="true"><circle cx="230" cy="62" r="76" fill="#f2dfce" fill-opacity="0.14"/><circle cx="274" cy="152" r="53" fill="#5d3e2c" fill-opacity="0.08"/><path d="M145 0 300 0 300 138Z" fill="#fff" fill-opacity="0.055"/></svg>
+          <header class="fit__head"><span class="fit__label">Fit 01</span><span class="fit__icon"><svg class="icon"><use href="#i-telescope"/></svg></span></header>
+          <div class="fit__body"><h3 class="h3">Curious Minds</h3><p>You're in grades 6 to 8, ages 11 to 14, and curious about how the world actually works</p></div>
+        </article>
+        <article class="fit reveal" style="--d:.06s">
+          <svg class="fit__deco" viewBox="0 0 300 200" fill="none" aria-hidden="true"><circle cx="230" cy="62" r="76" fill="#f2dfce" fill-opacity="0.14"/><circle cx="274" cy="152" r="53" fill="#5d3e2c" fill-opacity="0.08"/><path d="M145 0 300 0 300 138Z" fill="#fff" fill-opacity="0.055"/></svg>
+          <header class="fit__head"><span class="fit__label">Fit 02</span><span class="fit__icon"><svg class="icon"><use href="#i-book"/></svg></span></header>
+          <div class="fit__body"><h3 class="h3">Beyond Textbooks</h3><p>You love science but feel like school only scratches the surface of what's possible</p></div>
+        </article>
+        <article class="fit reveal" style="--d:.12s">
+          <svg class="fit__deco" viewBox="0 0 300 200" fill="none" aria-hidden="true"><circle cx="230" cy="62" r="76" fill="#f2dfce" fill-opacity="0.14"/><circle cx="274" cy="152" r="53" fill="#5d3e2c" fill-opacity="0.08"/><path d="M145 0 300 0 300 138Z" fill="#fff" fill-opacity="0.055"/></svg>
+          <header class="fit__head"><span class="fit__label">Fit 03</span><span class="fit__icon"><svg class="icon"><use href="#i-help"/></svg></span></header>
+          <div class="fit__body"><h3 class="h3">Big Questioners</h3><p>You ask why and what if</p></div>
+        </article>
+        <article class="fit reveal" style="--d:.18s">
+          <svg class="fit__deco" viewBox="0 0 300 200" fill="none" aria-hidden="true"><circle cx="230" cy="62" r="76" fill="#f2dfce" fill-opacity="0.14"/><circle cx="274" cy="152" r="53" fill="#5d3e2c" fill-opacity="0.08"/><path d="M145 0 300 0 300 138Z" fill="#fff" fill-opacity="0.055"/></svg>
+          <header class="fit__head"><span class="fit__label">Fit 04</span><span class="fit__icon"><svg class="icon"><use href="#i-earth"/></svg></span></header>
+          <div class="fit__body"><h3 class="h3">World Changers</h3><p>You care about people and the planet and want to do something real about it</p></div>
+        </article>
+        <article class="fit reveal" style="--d:.24s">
+          <svg class="fit__deco" viewBox="0 0 300 200" fill="none" aria-hidden="true"><circle cx="230" cy="62" r="76" fill="#f2dfce" fill-opacity="0.14"/><circle cx="274" cy="152" r="53" fill="#5d3e2c" fill-opacity="0.08"/><path d="M145 0 300 0 300 138Z" fill="#fff" fill-opacity="0.055"/></svg>
+          <header class="fit__head"><span class="fit__label">Fit 05</span><span class="fit__icon"><svg class="icon"><use href="#i-compass"/></svg></span></header>
+          <div class="fit__body"><h3 class="h3">Self Directed</h3><p>You want to tackle a problem you actually chose, not one assigned from a textbook</p></div>
+        </article>
+        <article class="fit reveal" style="--d:.3s">
+          <svg class="fit__deco" viewBox="0 0 300 200" fill="none" aria-hidden="true"><circle cx="230" cy="62" r="76" fill="#f2dfce" fill-opacity="0.14"/><circle cx="274" cy="152" r="53" fill="#5d3e2c" fill-opacity="0.08"/><path d="M145 0 300 0 300 138Z" fill="#fff" fill-opacity="0.055"/></svg>
+          <header class="fit__head"><span class="fit__label">Fit 06</span><span class="fit__icon"><svg class="icon"><use href="#i-rocket"/></svg></span></header>
+          <div class="fit__body"><h3 class="h3">Ready for More</h3><p>You've done science fairs and school projects and you're ready for something that goes deeper</p></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSTRUCTOR ===== -->
+<section class="section" id="instructor" style="background-image:url('assets/home-02.png')">
+  <div class="wrap">
+    <div class="grid grid--instructor">
+      <div class="panel panel--green instructor-bio reveal" style="padding:clamp(20px,2.8vw,42px);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(3px)">
+        <span class="rule"></span>
+        <span class="eyebrow" style="display:block;margin-bottom:10px">Meet your teacher</span>
+        <h2 class="h2" style="font-size:clamp(28px,3.5vw,52px)">About the Instructor</h2>
+        <p class="instructor-name">Ryan Xia</p>
+        <p class="instructor-role">Founder and facilitator, ROOTS Quest</p>
+        <p class="copy">Ryan Xia is a student, youth creator and educator, and aspiring engineer based out of Calgary, Alberta, and the founder of ROOTS Quest. As a competitive robotics member in FIRST Tech Challenge with Cybertronic Penguinz and a youth creator and educator with experience running education programming in STEM and robotics subjects, Ryan brings a unique combination of technical curiosity and a passion for teaching everything he builds.</p>
+      </div>
+
+      <div class="photo instructor-photo reveal" style="--d:.1s" data-empty="Photo of Ryan Xia — drop ryan-xia.jpg into the assets folder">
+        <img src="assets/ryan-xia.jpg" alt="Ryan Xia, founder and facilitator of ROOTS Quest" loading="lazy" onerror="this.parentElement.classList.add('is-empty')" />
+      </div>
+
+      <blockquote class="panel panel--sage instructor-quote reveal" style="--d:.2s;border-radius:var(--radius);padding:clamp(20px,2.8vw,42px)">
+        <p>“ROOTS Quest didn’t stem from a classroom assignment or a school project. It came from the core philosophy that regenerative thinking is one of the most important ideas of the present and future—and that its seed should be planted in our future innovators, scientists, researchers, entrepreneurs, and engineers.”</p>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REAL WORLD ===== -->
+<section class="section" id="real-world" style="background-image:url('assets/home-04.png')">
+  <div class="wrap">
+    <div class="glass glass--light reveal">
+      <div class="section-head section-head--center">
+        <h2 class="h2">ROOTS Quest Thinking in the Real World</h2>
+        <p class="lede" style="max-width:62ch">These case studies show systems thinking, regenerative design, and nature-inspired problem solving already being applied by organizations around the world.</p>
+      </div>
+      <div class="grid grid--4 cases">
+        <a class="case reveal" style="--d:0s" href="https://www.patagonia.com/our-footprint/cotton-for-change.html" target="_blank" rel="noreferrer">
+          <div class="case__img case__img--zoom"><img src="assets/card-patagonia-image.jpg" alt="" loading="lazy" /><span class="case__icon"><svg class="icon"><use href="#i-sprout"/></svg></span></div>
+          <span class="case__title">Patagonia — Regenerative Organic Cotton</span>
+        </a>
+        <a class="case reveal" style="--d:.06s" href="https://www.greenplan.gov.sg/vision/" target="_blank" rel="noreferrer">
+          <div class="case__img"><img src="assets/card-singapore-image.jpg" alt="" loading="lazy" /><span class="case__icon"><svg class="icon"><use href="#i-droplets"/></svg></span></div>
+          <span class="case__title">Singapore — Four National Taps Water System</span>
+        </a>
+        <a class="case reveal" style="--d:.12s" href="https://blogs.microsoft.com/on-the-issues/2024/05/15/microsoft-environmental-sustainability-report-2024/" target="_blank" rel="noreferrer">
+          <div class="case__img"><img src="assets/card-microsoft-image.jpg" alt="" loading="lazy" /><span class="case__icon"><svg class="icon"><use href="#i-server"/></svg></span></div>
+          <span class="case__title">Microsoft — Regenerative Datacenter Design</span>
+        </a>
+        <a class="case reveal" style="--d:.18s" href="https://www.unsdsn.org/news/putting-education-for-sdgs-into-practice-in-higher-education/" target="_blank" rel="noreferrer">
+          <div class="case__img"><img src="assets/card-un-image.jpg" alt="" loading="lazy" /><span class="case__icon"><svg class="icon"><use href="#i-network"/></svg></span></div>
+          <span class="case__title">United Nations — Regenerative Education Framework</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="section signup" id="signup" style="background-image:url('assets/home-05.png')">
+  <div class="wrap">
+    <div class="signup__card reveal">
+      <p class="signup__kicker">Ready to Grow Your ROOTS?</p>
+      <h2 class="signup__title">The Next Cohort is Forming Now</h2>
+      <div class="signup__rule"></div>
+      <p class="signup__copy">Spots are limited.
+Sign up to reserve and register your place or to ask more about the course.</p>
+      <a class="btn btn--silver btn--lg" href="register.html">Join ROOTS Quest</a>
+      <p class="signup__fine">Free webinar October 11 · Registration closes October 16 · Course starts October 18</p>
+      <div class="btn-row" style="justify-content:center;margin-top:14px">
+        <a class="btn btn--ghost" href="register.html?for=webinar"><svg class="icon"><use href="#i-calendar"/></svg> Save my spot at the webinar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER / CONTACT ===== -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand"><img src="assets/roots-light-logo.png" alt="" /><b>ROOTS Quest</b></div>
+        <span class="eyebrow" style="display:block;margin-top:26px">Contact ROOTS Quest</span>
+        <h2 class="display">Let's start a conversation.</h2>
+        <p class="copy">Ask about the course, an upcoming cohort, accessibility, or anything else you would like to know.</p>
+        <a class="footer__mail" href="mailto:rootsquestorg@gmail.com?subject=ROOTS%20Quest%20website%20enquiry"><svg class="icon"><use href="#i-mail"/></svg> rootsquestorg@gmail.com</a>
+      </div>
+      <div class="footer__col">
+        <span class="eyebrow">On this page</span>
+        <a href="#about">About us</a>
+        <a href="#problem">The problem</a>
+        <a href="#courses">Courses</a>
+        <a href="#who">Who is this for?</a>
+        <a href="#instructor">Instructor</a>
+        <a href="#real-world">Real world</a>
+        <a href="register.html">Register</a>
+        <div class="footer__socials">
+          <a href="https://www.linkedin.com/company/roots-quest/about/" target="_blank" rel="noreferrer" aria-label="ROOTS Quest on LinkedIn"><img src="assets/linkedin.svg" alt="" /></a>
+          <a href="https://www.instagram.com/rootsquestorg/" target="_blank" rel="noreferrer" aria-label="ROOTS Quest on Instagram"><img src="assets/instagram.svg" alt="" /></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 ROOTS Quest · Calgary, Alberta</span>
+      <span>A youth-led course in systems thinking and regenerative design</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
