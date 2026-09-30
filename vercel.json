@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    { "source": "/about", "destination": "/#about", "permanent": true },
+    { "source": "/courses", "destination": "/#courses", "permanent": true },
+    { "source": "/curriculum", "destination": "/#courses", "permanent": true },
+    { "source": "/contact", "destination": "/#contact", "permanent": true },
+    { "source": "/register", "destination": "/register.html", "permanent": true }
+  ]
+}
