@@ -39,7 +39,9 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 12px); }
+/* Each section is a full-screen "subpage". Proximity snapping settles the scroll on a
+   subpage without trapping readers inside ones taller than the screen (e.g. Courses). */
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -72,9 +74,17 @@ h1, h2, h3, p { margin: 0; }
 .rule--center { margin-inline: auto; }
 
 /* ---------- Layout ---------- */
+.section,
+.footer {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: center;
+  scroll-snap-align: start;
+}
+.section > *, .footer > * { width: 100%; }
 .section {
   position: relative;
-  padding: var(--section-y) var(--gutter);
+  padding: max(var(--section-y), calc(var(--nav-height) + 36px)) var(--gutter) var(--section-y);
   background-color: #000;
   background-size: cover;
   background-position: center;
@@ -234,8 +244,7 @@ h1, h2, h3, p { margin: 0; }
 
 /* ---------- Hero ---------- */
 .hero {
-  min-height: 100svh;
-  display: grid; place-items: center;
+  align-items: center;
   padding: calc(var(--nav-height) + 24px) var(--gutter) 72px;
   text-align: center;
 }
@@ -442,7 +451,7 @@ h1, h2, h3, p { margin: 0; }
 .signup__fine { margin-top: 14px; font-size: 14px; opacity: .7; }
 
 /* ---------- Footer ---------- */
-.footer { background: #070907; border-top: 1px solid rgba(255,255,255,.08); padding: clamp(48px, 7vh, 80px) var(--gutter) 40px; }
+.footer { background: #070907; border-top: 1px solid rgba(255,255,255,.08); padding: calc(var(--nav-height) + 36px) var(--gutter) 40px; }
 .footer__grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(28px, 4vw, 60px); align-items: start; }
 .footer__brand { display: flex; align-items: center; gap: 14px; }
 .footer__brand img { width: 44px; height: 44px; border-radius: 50%; }

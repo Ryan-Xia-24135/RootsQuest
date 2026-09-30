@@ -48,21 +48,50 @@
     menuLinks.forEach((link) => link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`));
   }
 
-  function spy() {
+  // Every full-screen subpage, including ones not in the nav (e.g. #problem, #who).
+  const pages = Array.from(document.querySelectorAll("main > section[id], footer[id]"));
+
+  // Keep the address bar on the subpage in view so each one can be linked or bookmarked.
+  let pageId = null;
+  function setPage(id) {
+    if (id === pageId) return;
+    pageId = id;
+    const url = id === pages[0]?.id ? location.pathname + location.search : `#${id}`;
+    history.replaceState(null, "", url);
+  }
+
+  function spy(fromScroll) {
     const line = window.innerHeight * 0.38;
+    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
     let current = sections[0];
     for (const section of sections) {
       if (section.getBoundingClientRect().top <= line) current = section;
     }
+    let page = pages[0];
+    for (const p of pages) {
+      if (p.getBoundingClientRect().top <= line) page = p;
+    }
     // Footer / bottom of page → last tab
-    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+    if (atBottom) {
       current = sections[sections.length - 1];
+      page = pages[pages.length - 1];
     }
     if (current) setActive(current.id);
+    // Only on real scrolls: on load the browser may not have jumped to a shared #link yet.
+    if (page && fromScroll) setPage(page.id);
     nav.classList.toggle("is-scrolled", window.scrollY > 24);
   }
 
-  window.addEventListener("scroll", spy, { passive: true });
+  window.addEventListener("scroll", () => spy(true), { passive: true });
+
+  // Opening a shared link like /#courses: images above load mid-jump and push the subpage
+  // down, so snap to it again once everything has loaded.
+  const linked = location.hash && document.getElementById(location.hash.slice(1));
+  if (linked) {
+    window.addEventListener("load", () => {
+      (document.fonts?.ready || Promise.resolve()).then(() => linked.scrollIntoView({ behavior: "instant" }));
+    });
+  }
   window.addEventListener("resize", () => {
     const link = links.find((l) => l.hasAttribute("aria-current"));
     setIndicator(link);
