@@ -39,9 +39,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-/* Each section is a full-screen "subpage". Proximity snapping settles the scroll on a
-   subpage without trapping readers inside ones taller than the screen (e.g. Courses). */
-html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -79,7 +77,6 @@ h1, h2, h3, p { margin: 0; }
   min-height: 100vh;
   min-height: 100svh;
   display: flex; flex-direction: column; justify-content: center;
-  scroll-snap-align: start;
 }
 .section > *, .footer > * { width: 100%; }
 .section {
