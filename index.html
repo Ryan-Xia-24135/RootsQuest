@@ -45,7 +45,7 @@
         <span class="tabs__ghost">Home</span>
         <span class="tabs__ghost">About us</span>
         <span class="tabs__ghost">Courses</span>
-        <span class="tabs__ghost">Instructor</span>
+        <span class="tabs__ghost">Team</span>
         <span class="tabs__ghost">Real world</span>
         <span class="tabs__ghost">Contact</span>
       </div>
@@ -54,7 +54,7 @@
       <a class="tabs__link" href="#top" aria-current="true">Home</a>
       <a class="tabs__link" href="#about">About us</a>
       <a class="tabs__link" href="#courses">Courses</a>
-      <a class="tabs__link" href="#instructor">Instructor</a>
+      <a class="tabs__link" href="#team">Team</a>
       <a class="tabs__link" href="#real-world">Real world</a>
       <a class="tabs__link" href="#contact">Contact</a>
     </div>
@@ -74,7 +74,7 @@
   <a href="#top">Home</a>
   <a href="#about">About us</a>
   <a href="#courses">Courses</a>
-  <a href="#instructor">Instructor</a>
+  <a href="#team">Team</a>
   <a href="#real-world">Real world</a>
   <a href="#contact">Contact</a>
 </div>
@@ -230,7 +230,7 @@
           <h2 class="h2">Beyond a School Curriculum and Science Project</h2>
         </div>
         <p class="lede">Students won’t just learn about the problems they’re interested in, they’ll learn what the system is behind the problem, the connections that relate to that problem, and designing what is their next step with this new understanding.</p>
-        <p class="panel panel--tan copy">In the span of this 8 week course for students in grades 6-8 that teaches systems thinking, regenerative design, and nature-inspired problem solving in STEM.</p>
+        <p class="copy">In the span of this 8 week course for students in grades 6-8 that teaches systems thinking, regenerative design, and nature-inspired problem solving in STEM.</p>
         <div class="btn-row" style="margin-top:auto">
           <a class="btn btn--gold" href="register.html">Join ROOTS Quest</a>
           <span class="btn-note">Free · Registration closes October 16</span>
@@ -410,27 +410,41 @@
   </div>
 </section>
 
-<!-- ===== INSTRUCTOR ===== -->
-<section class="section" id="instructor" style="background-image:url('assets/home-02.png')">
-  <div class="wrap">
-    <div class="grid grid--instructor">
-      <div class="panel panel--green instructor-bio reveal" style="padding:clamp(20px,2.8vw,42px);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(3px)">
-        <span class="rule"></span>
-        <span class="eyebrow" style="display:block;margin-bottom:10px">Meet your teacher</span>
-        <h2 class="h2" style="font-size:clamp(28px,3.5vw,52px)">About the Instructor</h2>
-        <p class="instructor-name">Ryan Xia</p>
-        <p class="instructor-role">Founder and facilitator, ROOTS Quest</p>
-        <p class="copy">Ryan Xia is a student, youth creator and educator, and aspiring engineer based out of Calgary, Alberta, and the founder of ROOTS Quest. As a competitive robotics member in FIRST Tech Challenge with Cybertronic Penguinz and a youth creator and educator with experience running education programming in STEM and robotics subjects, Ryan brings a unique combination of technical curiosity and a passion for teaching everything he builds.</p>
-      </div>
-
-      <div class="photo instructor-photo reveal" style="--d:.1s" data-empty="Photo of Ryan Xia — drop ryan-xia.jpg into the assets folder">
-        <img src="assets/ryan-xia.jpg" alt="Ryan Xia, founder and facilitator of ROOTS Quest" loading="lazy" onerror="this.parentElement.classList.add('is-empty')" />
-      </div>
-
-      <blockquote class="panel panel--sage instructor-quote reveal" style="--d:.2s;border-radius:var(--radius);padding:clamp(20px,2.8vw,42px)">
-        <p>“ROOTS Quest didn’t stem from a classroom assignment or a school project. It came from the core philosophy that regenerative thinking is one of the most important ideas of the present and future—and that its seed should be planted in our future innovators, scientists, researchers, entrepreneurs, and engineers.”</p>
-      </blockquote>
+<!-- ===== TEAM ===== -->
+<section class="section" id="team" style="background-image:url('assets/home-02.png')">
+  <div class="wrap stack">
+    <div class="section-head">
+      <span class="rule"></span>
+      <span class="eyebrow">Meet the team</span>
+      <h2 class="h2">The people behind ROOTS Quest</h2>
     </div>
+
+    <div class="team">
+      <article class="panel panel--green member reveal">
+        <div class="photo member__photo" data-empty="Photo of Ryan Xia — drop ryan-xia.jpg into the assets folder">
+          <img src="assets/ryan-xia.jpg" alt="Ryan Xia, founder and facilitator of ROOTS Quest" loading="lazy" onerror="this.parentElement.classList.add('is-empty')" />
+        </div>
+        <div class="member__body">
+          <h3 class="instructor-name">Ryan Xia</h3>
+          <p class="instructor-role">Founder and facilitator, ROOTS Quest</p>
+          <p class="copy">Ryan Xia is a student, youth creator and educator, and aspiring engineer based out of Calgary, Alberta, and the founder of ROOTS Quest. As a competitive robotics member in FIRST Tech Challenge with Cybertronic Penguinz and a youth creator and educator with experience running education programming in STEM and robotics subjects, Ryan brings a unique combination of technical curiosity and a passion for teaching everything he builds.</p>
+        </div>
+      </article>
+
+      <article class="panel panel--green member reveal" style="--d:.1s">
+        <div class="photo member__photo" data-empty="Photo of Adam Wu — drop adam-wu.jpg into the assets folder">
+          <img src="assets/adam-wu.jpg" alt="Adam Wu, outreach and marketing at ROOTS Quest" loading="lazy" onerror="this.parentElement.classList.add('is-empty')" />
+        </div>
+        <div class="member__body">
+          <h3 class="instructor-name">Adam Wu</h3>
+          <p class="instructor-role">Outreach and marketing, ROOTS Quest</p>
+        </div>
+      </article>
+    </div>
+
+    <blockquote class="panel panel--sage instructor-quote reveal" style="--d:.2s;border-radius:var(--radius)">
+      <p>“ROOTS Quest didn’t stem from a classroom assignment or a school project. It came from the core philosophy that regenerative thinking is one of the most important ideas of the present and future—and that its seed should be planted in our future innovators, scientists, researchers, entrepreneurs, and engineers.”</p>
+    </blockquote>
   </div>
 </section>
 
@@ -501,7 +515,7 @@ Sign up to reserve and register your place or to ask more about the course.</p>
         <a href="#problem">The problem</a>
         <a href="#courses">Courses</a>
         <a href="#who">Who is this for?</a>
-        <a href="#instructor">Instructor</a>
+        <a href="#team">Team</a>
         <a href="#real-world">Real world</a>
         <a href="register.html">Register</a>
         <div class="footer__socials">
