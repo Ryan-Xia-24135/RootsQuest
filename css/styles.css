@@ -715,3 +715,12 @@ html.lenis, html.lenis body { height: auto; }
 .forest-band__stick::after { content: ""; position: absolute; z-index: 1; inset: 0 0 auto 0; height: 46%; pointer-events: none; background: linear-gradient(180deg, rgba(5, 8, 6, 0.9), rgba(5, 8, 6, 0.55) 55%, rgba(5, 8, 6, 0)); }
 .commit .btn { margin-top: auto; }
 .commit ul + .btn { margin-top: 12px; }
+
+/* ---------- Forest realism: light, grass, shimmer ---------- */
+.ray { animation: ray 9s ease-in-out infinite alternate; }
+@keyframes ray { from { opacity: 0.35; } to { opacity: 1; } }
+.sh { animation: shimmer 3.6s ease-in-out infinite alternate; }
+@keyframes shimmer { from { fill-opacity: 0.55; } to { fill-opacity: 1; } }
+.gr { transform-box: fill-box; transform-origin: 50% 100%; animation: sway 3.6s ease-in-out infinite alternate; }
+@keyframes sway { from { rotate: -3deg; } to { rotate: 3deg; } }
+@media (prefers-reduced-motion: reduce) { .ray, .sh, .gr { animation: none; } }
