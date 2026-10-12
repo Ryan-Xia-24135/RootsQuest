@@ -164,6 +164,27 @@
     revealEls.forEach((el) => io.observe(el));
   }
 
+  /* ---------- Session time in the visitor's time zone ---------- */
+  // Sessions run Sundays at 5:00 p.m. Mountain Time (Calgary). The first one is Oct 18, 2026,
+  // 23:00 UTC. Visitors elsewhere see the same moment in their own time zone.
+  const sessionEl = document.querySelector("#session-time span");
+  if (sessionEl) {
+    try {
+      const first = new Date(Date.UTC(2026, 9, 18, 23, 0));
+      const fmt = (zone, opts) => new Intl.DateTimeFormat("en-CA", { timeZone: zone, ...opts });
+      const clock = { hour: "numeric", minute: "2-digit", hour12: true };
+      const local = fmt(undefined, clock).format(first).replace(/\s?([ap])\.?m\.?/i, (_, x) => ` ${x.toLowerCase()}.m.`);
+      const sameAsCalgary = fmt(undefined, clock).format(first) === fmt("America/Edmonton", clock).format(first)
+        && fmt(undefined, { weekday: "long" }).format(first) === fmt("America/Edmonton", { weekday: "long" }).format(first);
+      if (!sameAsCalgary) {
+        const day = fmt(undefined, { weekday: "long" }).format(first);
+        const zone = fmt(undefined, { timeZoneName: "short" }).formatToParts(first).find((p) => p.type === "timeZoneName")?.value || "";
+        sessionEl.innerHTML = `Live on Zoom · <b>${day}s at ${local} ${zone}</b> <small>(5:00 p.m. MT)</small>`;
+        sessionEl.parentElement.title = "Shown in your time zone. Sessions run Sundays at 5:00 p.m. Mountain Time; if your region changes its clocks on different dates, the local time can shift by an hour.";
+      }
+    } catch (e) { /* keep the Mountain Time text */ }
+  }
+
   /* ---------- Video ---------- */
   const video = document.querySelector(".video");
   if (video && YOUTUBE_VIDEO_ID) {
