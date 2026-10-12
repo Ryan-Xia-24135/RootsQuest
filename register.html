@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Join ROOTS Quest — Register</title>
-  <meta name="description" content="Register for the free ROOTS Quest course (starts October 18, registration closes October 16) or save your spot at the October 11 webinar." />
-  <link rel="canonical" href="https://www.rootsquest.ca/register.html" />
+  <meta name="description" content="Register for the free ROOTS Quest pilot cohort: 5–6 students, live on Zoom, starting October 18. Registration closes October 16." />
+  <link rel="canonical" href="https://www.rootsquest.ca/register" />
   <link rel="icon" href="assets/icon.png" type="image/png" />
   <link rel="stylesheet" href="css/styles.css" />
   <style>
@@ -25,10 +25,6 @@
     .reg__dates span { padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(0,0,0,.14); font-size: 13px; color: rgba(0,0,0,.7); }
     .reg__dates span b { color: #111; font-weight: 600; }
 
-    .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 34px; padding: 5px; border-radius: 16px; background: #f2f2ef; }
-    .seg button { border: 0; border-radius: 12px; background: transparent; padding: 12px 14px; font-family: var(--display); font-weight: 600; font-size: 16px; letter-spacing: -0.01em; color: rgba(0,0,0,.55); cursor: pointer; transition: background .2s, color .2s, box-shadow .2s; }
-    .seg button[aria-pressed="true"] { background: #fff; color: #111; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
-    .seg button small { display: block; margin-top: 3px; font-family: var(--body); font-weight: 400; font-size: 12px; color: rgba(0,0,0,.5); }
 
     form { margin-top: 30px; }
     .field { margin-top: 22px; }
@@ -84,17 +80,12 @@
   <div id="intro">
     <span class="reg__eyebrow">Free · Grades 6–8 · Live on Zoom</span>
     <h1 id="title">Join ROOTS Quest</h1>
-    <p class="reg__lede" id="lede">Spots are limited to 15 students. Tell us a little about you and we’ll be in touch before the cohort begins.</p>
+    <p class="reg__lede" id="lede">We’re running a pilot cohort of just 5–6 students. Tell us a little about you and we’ll be in touch before the course begins.</p>
     <div class="reg__dates" aria-label="Key dates">
-      <span><b>Webinar</b> October 11</span>
       <span><b>Registration closes</b> October 16</span>
       <span><b>Course starts</b> October 18</span>
     </div>
 
-    <div class="seg" role="group" aria-label="What are you signing up for?">
-      <button type="button" data-mode="course" aria-pressed="true">Register for the course<small>8 weeks · starts October 18</small></button>
-      <button type="button" data-mode="webinar" aria-pressed="false">Save a webinar spot<small>Free intro session · October 11</small></button>
-    </div>
   </div>
 
   <form id="form" novalidate>
@@ -148,7 +139,7 @@
     <div class="alert" id="alert" role="alert">We couldn’t send your form. Please check your connection and try again.</div>
 
     <button class="btn btn--gold submit" type="submit" id="submit">Submit my registration</button>
-    <p class="fine" id="fine">Registration closes October 16. We’ll confirm your place by email before the course begins on October 18.</p>
+    <p class="fine" id="fine">Registration closes October 16. We’ll confirm your place by email before the course begins on October 18. By submitting, you agree to how we use this information in our <a href="privacy.html">privacy policy</a>.</p>
   </form>
 
   <section class="done" id="done" aria-live="polite">
@@ -164,59 +155,17 @@
   const FORMSPREE = "https://formspree.io/f/xkjnoorp";
 
   const form = document.getElementById("form");
-  const seg = document.querySelectorAll(".seg button");
-  const groups = document.querySelectorAll(".group");
   const signupType = document.getElementById("signupType");
-  const title = document.getElementById("title");
-  const lede = document.getElementById("lede");
-  const fine = document.getElementById("fine");
   const submit = document.getElementById("submit");
   const alertBox = document.getElementById("alert");
-  const doneTitle = document.getElementById("doneTitle");
-  const doneCopy = document.getElementById("doneCopy");
   const gradeInput = document.getElementById("grade");
 
   const copy = {
-    course: {
-      type: "Course registration",
-      title: "Join ROOTS Quest",
-      lede: "Spots are limited to 15 students. Tell us a little about you and we’ll be in touch before the cohort begins.",
-      submit: "Submit my registration",
-      fine: "Registration closes October 16. We’ll confirm your place by email before the course begins on October 18.",
-      doneTitle: "Thanks for joining ROOTS Quest.",
-      doneCopy: "We’ve received your registration and will be in touch by email before the cohort begins on October 18.",
-    },
-    webinar: {
-      type: "Webinar signup",
-      title: "Save your webinar spot",
-      lede: "Join a free online session on October 11 to hear what ROOTS Quest is, how the 8 weeks unfold, and ask Ryan anything before registration closes.",
-      submit: "Save my spot",
-      fine: "We’ll email the Zoom link before the webinar on October 11. Course registration stays open until October 16.",
-      doneTitle: "You’re on the list.",
-      doneCopy: "We’ll email the Zoom link for the October 11 webinar. Course registration is open until October 16.",
-    },
+    type: "Course registration",
+    submit: "Submit my registration",
   };
-
-  let mode = "course";
-  function setMode(next) {
-    mode = next;
-    const c = copy[mode];
-    seg.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === mode)));
-    groups.forEach((g) => { g.hidden = g.dataset.group !== mode && g.dataset.group !== "both"; });
-    signupType.value = c.type;
-    title.textContent = c.title;
-    lede.textContent = c.lede;
-    submit.textContent = c.submit;
-    fine.textContent = c.fine;
-    doneTitle.textContent = c.doneTitle;
-    doneCopy.textContent = c.doneCopy;
-    document.querySelectorAll(".field").forEach((f) => f.classList.remove("is-invalid"));
-    const url = new URL(location.href);
-    if (mode === "webinar") url.searchParams.set("for", "webinar"); else url.searchParams.delete("for");
-    history.replaceState(null, "", url);
-  }
-  seg.forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode)));
-  if (new URLSearchParams(location.search).get("for") === "webinar") setMode("webinar");
+  const mode = "course";
+  signupType.value = copy.type;
 
   // Grade pills
   document.querySelectorAll("#gradePills .pill").forEach((pill) => {
@@ -256,10 +205,8 @@
     if (!validate()) return;
 
     const data = new FormData(form);
-    // Drop hidden-group fields so webinar signups don't send empty course fields
-    groups.forEach((g) => { if (g.hidden) g.querySelectorAll("input, textarea").forEach((el) => data.delete(el.name)); });
     const payload = Object.fromEntries(data.entries());
-    payload._subject = mode === "course" ? "New ROOTS Quest course registration" : "New ROOTS Quest webinar signup";
+    payload._subject = "New ROOTS Quest course registration";
 
     submit.disabled = true;
     submit.innerHTML = '<svg class="icon spin"><use href="#i-loader"/></svg> Sending…';
@@ -273,7 +220,7 @@
     } catch {
       alertBox.classList.add("is-visible");
       submit.disabled = false;
-      submit.textContent = copy[mode].submit;
+      submit.textContent = copy.submit;
     }
   });
 })();

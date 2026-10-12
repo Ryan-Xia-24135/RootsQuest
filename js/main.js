@@ -1,6 +1,6 @@
-/* ROOTS Quest v2 — page behaviour
-   - sticky nav with animated white pill (scroll-spy)
-   - mobile menu
+/* ROOTS Quest — page behaviour
+   - nav: hover menus jump to sections, current-section highlight, mobile menu
+   - session time shown in the visitor's time zone
    - single-open accordions
    - reveal-on-scroll
    - optional YouTube embed */
@@ -14,99 +14,48 @@
 
   /* ---------- Nav ---------- */
   const nav = document.querySelector(".nav");
-  const tabs = document.querySelector(".tabs");
-  const links = Array.from(document.querySelectorAll(".tabs__link"));
-  const menuLinks = Array.from(document.querySelectorAll(".nav__menu a"));
-  const indicator = document.querySelector(".tabs__indicator");
   const burger = document.querySelector(".nav__burger");
+  const norm = (p) => p.replace(/index\.html$/, "").replace(/\.html$/, "").replace(/\/$/, "") || "/";
+  const here = norm(location.pathname);
 
-  const sections = links
-    .map((link) => document.querySelector(link.getAttribute("href")))
-    .filter(Boolean);
+  // Links in the hover menus / mobile menu that point at a section of THIS page
+  const sectionLinks = Array.from(document.querySelectorAll(".tabs__menu a, .nav__subs a")).filter((a) => {
+    const u = new URL(a.getAttribute("href"), location.href);
+    return u.hash && norm(u.pathname) === here;
+  });
 
-  function setIndicator(link) {
-    if (!indicator || !tabs || !link) return;
-    const list = link.parentElement;
-    const width = list.offsetWidth;
-    if (!width) return;
-    const left = link.offsetLeft;
-    const right = left + link.offsetWidth;
-    const leftInset = (left / width) * 100;
-    const rightInset = 100 - (right / width) * 100;
-    indicator.style.clipPath = `inset(0 ${rightInset.toFixed(3)}% 0 ${leftInset.toFixed(3)}% round 999px)`;
-  }
-
-  let activeId = null;
-  function setActive(id) {
-    if (id === activeId) return;
-    activeId = id;
-    links.forEach((link) => {
-      const on = link.getAttribute("href") === `#${id}`;
-      link.toggleAttribute("aria-current", on);
-      if (on) setIndicator(link);
-    });
-    menuLinks.forEach((link) => link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`));
-  }
-
-  // Every full-screen subpage, including ones not in the nav (e.g. #problem, #who).
-  const pages = Array.from(document.querySelectorAll("main > section[id], footer[id]"));
-
-  // Keep the address bar on the subpage in view so each one can be linked or bookmarked.
+  const pages = Array.from(document.querySelectorAll("main > section[id]"));
   let pageId = null;
-  function setPage(id) {
+
+  function setPage(id, fromScroll) {
     if (id === pageId) return;
     pageId = id;
-    const url = id === pages[0]?.id ? location.pathname + location.search : `#${id}`;
-    history.replaceState(null, "", url);
+    sectionLinks.forEach((a) => a.classList.toggle("is-active", new URL(a.href).hash === `#${id}`));
+    if (fromScroll) {
+      // Keep the address bar on the section in view so it can be linked or bookmarked
+      history.replaceState(null, "", id === pages[0]?.id ? location.pathname + location.search : `#${id}`);
+    }
   }
 
   function spy(fromScroll) {
     const line = window.innerHeight * 0.38;
-    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
-    let current = sections[0];
-    for (const section of sections) {
+    let current = pages[0];
+    for (const section of pages) {
       if (section.getBoundingClientRect().top <= line) current = section;
     }
-    let page = pages[0];
-    for (const p of pages) {
-      if (p.getBoundingClientRect().top <= line) page = p;
-    }
-    // Footer / bottom of page → last tab
-    if (atBottom) {
-      current = sections[sections.length - 1];
-      page = pages[pages.length - 1];
-    }
-    if (current) setActive(current.id);
-    // Only on real scrolls: on load the browser may not have jumped to a shared #link yet.
-    if (page && fromScroll) setPage(page.id);
+    if (current) setPage(current.id, fromScroll === true);
     nav.classList.toggle("is-scrolled", window.scrollY > 24);
   }
 
   window.addEventListener("scroll", () => spy(true), { passive: true });
-
-  // Opening a shared link like /#courses: images above load mid-jump and push the subpage
-  // down, so snap to it again once everything has loaded.
-  const linked = location.hash && document.getElementById(location.hash.slice(1));
-  if (linked) {
-    window.addEventListener("load", () => {
-      (document.fonts?.ready || Promise.resolve()).then(() => linked.scrollIntoView({ behavior: "instant" }));
-    });
-  }
-  window.addEventListener("resize", () => {
-    const link = links.find((l) => l.hasAttribute("aria-current"));
-    setIndicator(link);
-  });
-  document.fonts?.ready.then(() => setIndicator(links.find((l) => l.hasAttribute("aria-current"))));
   spy();
-
-  links.forEach((link) => link.addEventListener("click", () => setActive(link.getAttribute("href").slice(1))));
 
   if (burger) {
     burger.addEventListener("click", () => {
       const open = nav.classList.toggle("is-open");
       burger.setAttribute("aria-expanded", String(open));
     });
-    menuLinks.forEach((link) =>
+    document.querySelectorAll(".nav__menu a").forEach((link) =>
       link.addEventListener("click", () => {
         nav.classList.remove("is-open");
         burger.setAttribute("aria-expanded", "false");
@@ -119,6 +68,51 @@
         burger.focus();
       }
     });
+  }
+
+  // Opening a shared link like /curriculum#faq: images above load mid-jump and push the
+  // section down, so snap to it again once everything has loaded.
+  const linked = location.hash && document.getElementById(location.hash.slice(1));
+  if (linked) {
+    // Web fonts arrive in waves and each one can reflow the page, so re-align after every
+    // wave, until the visitor takes over by scrolling themselves.
+    let userMoved = false;
+    ["wheel", "touchstart", "keydown", "mousedown"].forEach((ev) =>
+      window.addEventListener(ev, () => (userMoved = true), { once: true, passive: true })
+    );
+    const realign = () => { if (!userMoved) linked.scrollIntoView({ behavior: "instant" }); };
+    window.addEventListener("load", () => {
+      realign();
+      document.fonts?.addEventListener?.("loadingdone", realign);
+      setTimeout(realign, 1200);
+      setTimeout(() => document.fonts?.removeEventListener?.("loadingdone", realign), 4000);
+    });
+  }
+
+  /* ---------- Session time in the visitor's time zone ---------- */
+  // Sessions run Sundays at 5:00 p.m. Mountain Time (Calgary). The first one is Oct 18, 2026,
+  // 23:00 UTC. Visitors elsewhere see the same moment in their own time zone.
+  const sessionEls = document.querySelectorAll("[data-session-time]");
+  if (sessionEls.length) {
+    try {
+      const first = new Date(Date.UTC(2026, 9, 18, 23, 0));
+      const fmt = (zone, opts) => new Intl.DateTimeFormat("en-CA", { timeZone: zone, ...opts });
+      const clock = { hour: "numeric", minute: "2-digit", hour12: true };
+      const day = { weekday: "long" };
+      const tidy = (s) => s.replace(/\s?([ap])\.?m\.?/i, (_, x) => ` ${x.toLowerCase()}.m.`);
+      const localClock = fmt(undefined, clock).format(first);
+      const sameAsCalgary =
+        localClock === fmt("America/Edmonton", clock).format(first) &&
+        fmt(undefined, day).format(first) === fmt("America/Edmonton", day).format(first);
+      if (!sameAsCalgary) {
+        const weekday = fmt(undefined, day).format(first);
+        const zone = fmt(undefined, { timeZoneName: "short" }).formatToParts(first).find((p) => p.type === "timeZoneName")?.value || "";
+        sessionEls.forEach((el) => {
+          el.innerHTML = `${el.dataset.lead ?? ""}<span class="st">${weekday}s at ${tidy(localClock)} ${zone} <small>(5:00 p.m. MT)</small></span>`;
+          el.title = "Shown in your time zone. Sessions run Sundays at 5:00 p.m. Mountain Time; if your region changes its clocks on different dates, the local time can shift by an hour.";
+        });
+      }
+    } catch (e) { /* keep the Mountain Time text */ }
   }
 
   /* ---------- Accordions (single open per group) ---------- */
@@ -162,27 +156,6 @@
       { threshold: 0.18, rootMargin: "0px 0px -6% 0px" }
     );
     revealEls.forEach((el) => io.observe(el));
-  }
-
-  /* ---------- Session time in the visitor's time zone ---------- */
-  // Sessions run Sundays at 5:00 p.m. Mountain Time (Calgary). The first one is Oct 18, 2026,
-  // 23:00 UTC. Visitors elsewhere see the same moment in their own time zone.
-  const sessionEl = document.querySelector("#session-time span");
-  if (sessionEl) {
-    try {
-      const first = new Date(Date.UTC(2026, 9, 18, 23, 0));
-      const fmt = (zone, opts) => new Intl.DateTimeFormat("en-CA", { timeZone: zone, ...opts });
-      const clock = { hour: "numeric", minute: "2-digit", hour12: true };
-      const local = fmt(undefined, clock).format(first).replace(/\s?([ap])\.?m\.?/i, (_, x) => ` ${x.toLowerCase()}.m.`);
-      const sameAsCalgary = fmt(undefined, clock).format(first) === fmt("America/Edmonton", clock).format(first)
-        && fmt(undefined, { weekday: "long" }).format(first) === fmt("America/Edmonton", { weekday: "long" }).format(first);
-      if (!sameAsCalgary) {
-        const day = fmt(undefined, { weekday: "long" }).format(first);
-        const zone = fmt(undefined, { timeZoneName: "short" }).formatToParts(first).find((p) => p.type === "timeZoneName")?.value || "";
-        sessionEl.innerHTML = `Live on Zoom · <b>${day}s at ${local} ${zone}</b> <small>(5:00 p.m. MT)</small>`;
-        sessionEl.parentElement.title = "Shown in your time zone. Sessions run Sundays at 5:00 p.m. Mountain Time; if your region changes its clocks on different dates, the local time can shift by an hour.";
-      }
-    } catch (e) { /* keep the Mountain Time text */ }
   }
 
   /* ---------- Video ---------- */
