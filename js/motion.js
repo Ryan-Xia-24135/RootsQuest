@@ -57,7 +57,7 @@
 
   const PRESETS = {
     scroll: {
-      sky: true, aspect: "xMidYMid slice", treeDepth: 6, rootDepth: 5, farDepth: 5, grass: true,
+      sky: true, aspect: "xMidYMid slice", treeDepth: 5, rootDepth: 5, farDepth: 4, grass: true,
       wide: {
         W: 1200, H: 770, ground: 505,
         trees: [{ x: 230, h: 166 }, { x: 600, h: 190 }, { x: 970, h: 158 }],
@@ -76,12 +76,11 @@
     },
   };
 
-  const TRUNK = [112, 88, 64], TWIG = [196, 184, 156];
-  const ROOT_A = [186, 142, 98], ROOT_B = [104, 78, 54];
-  const FAR_A = [34, 58, 46], FAR_B = [58, 92, 76];
-  const LEAVES = ["#7fb98a", "#9fcf9a", "#b4d98a", "#6fa97a", "#8cc3a0", "#a8d08d", "#5f9a6e"];
-  const LEAVES_FAR = ["#2c5240", "#35634a", "#2a4a39", "#3d6e55"];
-  const FLUSH = "#d8e8a0"; // new growth is paler
+  // Green-on-green dotted palette: every visible part belongs to one living system.
+  const TRUNK = [74, 124, 78], TWIG = [126, 174, 116];
+  const ROOT_A = [116, 163, 102], ROOT_B = [57, 105, 67];
+  const FAR_A = [50, 94, 61], FAR_B = [82, 130, 85];
+  const FLUSH = "#cfdda9";
 
   // Point and sub-curve of a quadratic Bezier, so one limb can be drawn as several tapering pieces
   const qpt = (p0, p1, p2, t) => [
@@ -147,12 +146,14 @@
     const svg = node("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: P.aspect, "aria-hidden": "true", focusable: "false" });
     const defs = node("defs", {});
     defs.innerHTML = `
-      <linearGradient id="sky-${key}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#040806"/><stop offset=".62" stop-color="#0f2419"/><stop offset="1" stop-color="#1d4231"/></linearGradient>
-      <linearGradient id="soil-${key}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1b10"/><stop offset=".5" stop-color="#17100a"/><stop offset="1" stop-color="#070403"/></linearGradient>
-      <radialGradient id="sun-${key}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe9a8" stop-opacity=".5"/><stop offset=".35" stop-color="#e5c055" stop-opacity=".16"/><stop offset="1" stop-color="#e5c055" stop-opacity="0"/></radialGradient>
-      <linearGradient id="ray-${key}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe9a8" stop-opacity=".22"/><stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/></linearGradient>
-      <radialGradient id="canopy-${key}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#8cc98f" stop-opacity=".34"/><stop offset="1" stop-color="#8cc98f" stop-opacity="0"/></radialGradient>
-      <radialGradient id="canopyfar-${key}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#2f5a43" stop-opacity=".5"/><stop offset="1" stop-color="#2f5a43" stop-opacity="0"/></radialGradient>`;
+      <linearGradient id="sky-${key}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#08120d"/><stop offset=".62" stop-color="#132a1f"/><stop offset="1" stop-color="#244735"/></linearGradient>
+      <linearGradient id="soil-${key}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#33251a"/><stop offset=".5" stop-color="#1e160f"/><stop offset="1" stop-color="#090604"/></linearGradient>
+      <radialGradient id="sun-${key}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#dff0d6" stop-opacity=".46"/><stop offset=".35" stop-color="#8fc286" stop-opacity=".15"/><stop offset="1" stop-color="#8fc286" stop-opacity="0"/></radialGradient>
+      <linearGradient id="ray-${key}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dff0d6" stop-opacity=".2"/><stop offset="1" stop-color="#dff0d6" stop-opacity="0"/></linearGradient>
+      <radialGradient id="canopy-${key}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#a9c99b" stop-opacity=".18"/><stop offset="1" stop-color="#a9c99b" stop-opacity="0"/></radialGradient>
+      <radialGradient id="canopyfar-${key}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#54785d" stop-opacity=".18"/><stop offset="1" stop-color="#54785d" stop-opacity="0"/></radialGradient>
+      <pattern id="dots-sparse-${key}" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.65" fill="#73b873"/></pattern>
+      <pattern id="dots-dense-${key}" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="1.8" cy="1.8" r="1.35" fill="#a0d58f"/></pattern>`;
     svg.appendChild(defs);
 
     if (P.sky) {
@@ -185,28 +186,30 @@
     gMain.appendChild(gRoots);
     gMain.appendChild(gLinks);
 
-    const out = { W, H, ground, key, sets: [], links: [], nodes: [], grass: [], winds: [], layers: { cam: gCam, far: gFar, main: gMain, front: gFront } };
+    const out = { W, H, ground, key, sets: [], links: [], nodes: [], grass: [], winds: [], denseCanopy: [], treeStrokes: [], rootStrokes: [], layers: { cam: gCam, far: gFar, main: gMain, front: gFront } };
 
     function leafy(set, tips, o) {
+      const every = o.far ? 5 : 3;
       tips.forEach((t, i) => {
-        // a soft mass of foliage behind the individual leaves gives the crown volume
-        if (i % 4 === 0) {
-          const r = (o.far ? 12 : 17) + rand() * (o.far ? 8 : 14);
-          const c = node("circle", { cx: t.x.toFixed(1), cy: (t.y - r * 0.25).toFixed(1), r: r.toFixed(1), fill: `url(#${o.far ? "canopyfar" : "canopy"}-${key})` });
-          set.g.querySelector(".gc").appendChild(c);
-          set.canopy.push({ el: c, rec: t.rec });
-        }
-        const k = o.far ? 2 : 2 + Math.floor(rand() * 2);
-        for (let n = 0; n < k; n++) {
-          const bx = t.x + (rand() - 0.5) * 6, by = t.y + (rand() - 0.5) * 6;
-          const a = (rand() - 0.5) * 2.8 + (rand() < 0.3 ? (rand() - 0.5) * 2 : 0);
-          const s = (o.far ? 5 : 8) + rand() * (o.far ? 4 : 7);
-          const color = pick(o.far ? LEAVES_FAR : LEAVES, rand);
-          const el = node("path", { d: leafPath(bx, by, a, s, 0.36 + rand() * 0.14), fill: color, "fill-opacity": o.far ? 0.8 : (0.82 + rand() * 0.16).toFixed(2) });
-          if (live && !o.far && rand() < 0.22) { el.setAttribute("class", "sh"); el.style.animationDelay = `${-rand() * 4}s`; }
-          set.g.querySelector(".gl").appendChild(el);
-          set.leaves.push({ el, rec: t.rec, color, bx, by });
-        }
+        if (i % every !== 0) return;
+        const r = (o.far ? 12 : 19) + rand() * (o.far ? 8 : 13);
+        const x = t.x + (rand() - 0.5) * 8;
+        const y = t.y - r * (0.22 + rand() * 0.18);
+        // One chunky, asymmetrical cloud per branch cluster. Overlap makes a broad,
+        // crown. Two clipped dot fields let the canopy become denser with scroll.
+        const d = [
+          `M${(x-r).toFixed(1)} ${y.toFixed(1)}`,
+          `C${(x-r*.98).toFixed(1)} ${(y-r*.55).toFixed(1)} ${(x-r*.48).toFixed(1)} ${(y-r*.88).toFixed(1)} ${(x-r*.12).toFixed(1)} ${(y-r*.72).toFixed(1)}`,
+          `C${(x+r*.2).toFixed(1)} ${(y-r*1.05).toFixed(1)} ${(x+r*.82).toFixed(1)} ${(y-r*.7).toFixed(1)} ${(x+r*.72).toFixed(1)} ${(y-r*.28).toFixed(1)}`,
+          `C${(x+r*1.08).toFixed(1)} ${(y+r*.02).toFixed(1)} ${(x+r*.62).toFixed(1)} ${(y+r*.58).toFixed(1)} ${(x+r*.18).toFixed(1)} ${(y+r*.46).toFixed(1)}`,
+          `C${(x-r*.18).toFixed(1)} ${(y+r*.7).toFixed(1)} ${(x-r*.78).toFixed(1)} ${(y+r*.48).toFixed(1)} ${(x-r).toFixed(1)} ${y.toFixed(1)}Z`,
+        ].join("");
+        const sparse = node("path", { d, fill: `url(#dots-sparse-${key})`, stroke: "none", opacity: o.far ? 0.58 : 0.9 });
+        const dense = node("path", { d, fill: `url(#dots-dense-${key})`, stroke: "none", opacity: 0 });
+        set.g.querySelector(".gc").appendChild(sparse);
+        set.g.querySelector(".gc").appendChild(dense);
+        set.canopy.push({ el: sparse, rec: t.rec }, { el: dense, rec: t.rec });
+        out.denseCanopy.push(dense);
       });
     }
 
@@ -214,10 +217,12 @@
       const g = node("g", {});
       const gLimbs = node("g", { fill: "none", "stroke-linecap": "round", "stroke-linejoin": "round", class: "gb" });
       const gc = node("g", { class: "gc" }), gl = node("g", { class: "gl" });
-      [gLimbs, gc, gl].forEach((n) => g.appendChild(n));
+      // Canopy first, then dark branchwork on top, matching the flat reference style.
+      [gc, gLimbs, gl].forEach((n) => g.appendChild(n));
       parentG.appendChild(g);
       const ctx = { rand, dir: 1, maxD: o.maxD, colorFn: o.colorFn, group: gLimbs, limbs: [], tips: [] };
       grow(ctx, x, ground, (rand() - 0.5) * 0.14, h * 0.34, 0, null, h * o.trunk);
+      ctx.limbs.forEach((limb) => limb.els.forEach((el) => out.treeStrokes.push(el)));
       const set = { g, limbs: ctx.limbs, leaves: [], canopy: [], kind: o.far ? "far" : "tree" };
       leafy(set, ctx.tips, o);
       out.sets.push(set);
@@ -246,11 +251,12 @@
           const a = tip.ang + (rand() - 0.5) * 1.6;
           const len = 5 + rand() * 7;
           const ex = tip.x + Math.sin(a) * len, ey = tip.y + Math.cos(a) * len;
-          const el = node("path", { d: `M${tip.x.toFixed(1)} ${tip.y.toFixed(1)}L${ex.toFixed(1)} ${ey.toFixed(1)}`, stroke: "#8a6c4a", "stroke-width": 0.7 });
+          const el = node("path", { d: `M${tip.x.toFixed(1)} ${tip.y.toFixed(1)}L${ex.toFixed(1)} ${ey.toFixed(1)}`, stroke: "#6fa467", "stroke-width": 0.9, "stroke-linecap": "round" });
           gRoots.appendChild(el);
           rctx.limbs.push({ d: 99, len, els: [el], parent: tip.rec, end: [ex, ey], dur: 0.06, t0: tip.rec.t0 + tip.rec.dur * 0.9 });
         }
       });
+      rctx.limbs.forEach((limb) => limb.els.forEach((el) => out.rootStrokes.push(el)));
       out.sets.push({ limbs: rctx.limbs, leaves: [], canopy: [], kind: "root", start: 0.3 + i * 0.025, span: 0.4 });
       rootTips[i] = rctx.tips.map((t2) => [t2.x, t2.y]);
     });
@@ -270,25 +276,26 @@
         usedA.add(a); usedB.add(best);
         const mx = (a[0] + best[0]) / 2, my = (a[1] + best[1]) / 2 + 10 + rand() * 14;
         const d = `M${a[0].toFixed(1)} ${a[1].toFixed(1)}Q${mx.toFixed(1)} ${my.toFixed(1)} ${best[0].toFixed(1)} ${best[1].toFixed(1)}`;
-        const glow = node("path", { d, stroke: "#e5c055", "stroke-width": 5, "stroke-opacity": 0.13 });
-        const l = node("path", { d, stroke: "#e5c055", "stroke-width": 1.5, "stroke-opacity": 0.9, class: "mlink" });
+        const glow = node("path", { d, stroke: "#83c27b", "stroke-width": 5, "stroke-opacity": 0.12 });
+        const l = node("path", { d, stroke: "#9bd58e", "stroke-width": 1.8, "stroke-opacity": 0.92, class: "mlink" });
         gLinks.appendChild(glow); gLinks.appendChild(l);
         out.links.push(glow, l);
         [a, best].forEach(([x, y]) => {
-          const c = node("circle", { cx: x.toFixed(1), cy: y.toFixed(1), r: 3.2, fill: "#f3d376" });
+          const c = node("circle", { cx: x.toFixed(1), cy: y.toFixed(1), r: 4, fill: "none", stroke: "#9bd58e", "stroke-width": 2, "stroke-linecap": "round", "stroke-dasharray": "0.1 3" });
           gLinks.appendChild(c);
           out.nodes.push(c);
         });
       }
     }
 
-    // Grass blades in the foreground
+    // Dotted grass strokes keep the foreground in the same visual language.
     if (P.grass) {
-      for (let x = 6; x < W; x += 9 + rand() * 9) {
-        const h2 = 9 + rand() * 20, bend = (rand() - 0.5) * 12;
+      for (let x = 6; x < W; x += 15 + rand() * 12) {
+        const h2 = 10 + rand() * 22, bend = (rand() - 0.5) * 12;
+        const color = mix([72, 132, 75], [133, 188, 111], rand());
         const el = node("path", {
-          d: `M${x.toFixed(1)} ${ground}Q${(x + bend * 0.4).toFixed(1)} ${(ground - h2 * 0.55).toFixed(1)} ${(x + bend).toFixed(1)} ${(ground - h2).toFixed(1)}`,
-          stroke: mix([40, 86, 58], [96, 150, 88], rand()), "stroke-width": (1 + rand() * 1.2).toFixed(1), fill: "none", "stroke-linecap": "round", class: "gr",
+          d: `M${x.toFixed(1)} ${ground}Q${(x + bend * 0.25).toFixed(1)} ${(ground - h2 * 0.58).toFixed(1)} ${(x + bend).toFixed(1)} ${(ground - h2).toFixed(1)}`,
+          fill: "none", stroke: color, "stroke-width": 3, "stroke-linecap": "round", "stroke-dasharray": "0.1 7", class: "gr",
         });
         if (live) { el.style.animationDuration = `${2.6 + rand() * 2.4}s`; el.style.animationDelay = `${-rand() * 4}s`; }
         gFront.appendChild(el);
@@ -309,9 +316,19 @@
     list.appendChild(line);
     return { list, line, items: $$("li", list) };
   });
-  if (!animated) processes.forEach(({ line, items }) => { line.style.transform = "none"; items.forEach((li) => li.classList.add("is-on")); });
-
-  if (!animated) return;
+  if (!animated) {
+    processes.forEach(({ line, items }) => { line.style.transform = "none"; items.forEach((li) => li.classList.add("is-on")); });
+    forests.forEach(({ parts: F }) => {
+      [...F.treeStrokes, ...F.rootStrokes, ...F.links].forEach((el) => {
+        const gap = Math.max(3.2, Number(el.getAttribute("stroke-width") || 1) * 1.35);
+        el.style.strokeDasharray = `0.1 ${gap.toFixed(1)}`;
+        el.style.strokeDashoffset = "0";
+      });
+      F.grass.forEach(({ el }) => { el.style.strokeDasharray = "0.1 4.2"; });
+      F.denseCanopy.forEach((el) => { el.style.opacity = "0.78"; });
+    });
+    return;
+  }
 
   /* ===================== Animated enhancements below ===================== */
   const { gsap, ScrollTrigger } = window;
@@ -382,43 +399,6 @@
     });
     return words;
   }
-
-  /* ---------- Falling leaves over the hero / page headers ---------- */
-  // Each leaf swings like a pendulum, tilts with the swing, and flips edge-on as it tumbles.
-  // Smaller leaves read as farther away: slower, fainter.
-  const LEAF = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C12 2 4.5 8 4.5 14a7.5 7.5 0 0 0 15 0C19.5 8 12 2 12 2z"/><path d="M12 6v15" stroke="rgba(0,0,0,.25)" stroke-width="1" fill="none"/></svg>';
-  const driftColors = ["#9fcf9a", "#7fb98a", "#ccdecd", "#e5c055", "#b9d98f", "#d9a441"];
-  $$(".drift").forEach((host) => {
-    const area = host.parentElement;
-    const count = area.classList.contains("hero") ? 11 : 7;
-    const timelines = [];
-    for (let k = 0; k < count; k++) {
-      const depth = Math.random(); // 0 = far, 1 = near
-      const size = 10 + depth * 20;
-      const leaf = document.createElement("i");
-      leaf.innerHTML = LEAF;
-      leaf.style.setProperty("--s", `${size.toFixed(1)}px`);
-      leaf.style.setProperty("--c", driftColors[k % driftColors.length]);
-      leaf.style.left = `${4 + Math.random() * 92}%`;
-      host.appendChild(leaf);
-      const fall = 20 - depth * 7 + Math.random() * 9; // far leaves fall slower
-      const swing = 26 + depth * 46;
-      const period = 2.2 + Math.random() * 2.2;
-      const tl = gsap.timeline({ repeat: -1 });
-      tl.fromTo(leaf, { y: -40 }, { y: () => area.clientHeight + 40, duration: fall, ease: "none" }, 0)
-        .fromTo(leaf, { opacity: 0 }, { opacity: 0.18 + depth * 0.42, duration: fall * 0.1, ease: "none" }, 0)
-        .to(leaf, { opacity: 0, duration: fall * 0.1, ease: "none" }, fall * 0.9);
-      const inner = leaf.firstChild;
-      timelines.push(
-        tl,
-        gsap.fromTo(leaf, { x: -swing }, { x: swing, duration: period, ease: "sine.inOut", yoyo: true, repeat: -1 }),
-        gsap.fromTo(leaf, { rotation: -42 }, { rotation: 42, duration: period, ease: "sine.inOut", yoyo: true, repeat: -1 }),
-        gsap.fromTo(inner, { scaleX: 1 }, { scaleX: 0.28, duration: period * 0.62, ease: "sine.inOut", yoyo: true, repeat: -1, delay: Math.random() })
-      );
-      tl.progress(Math.random());
-    }
-    ScrollTrigger.create({ trigger: area, start: "top bottom", end: "bottom top", onToggle: (s) => timelines.forEach((t) => (s.isActive ? t.resume() : t.pause())) });
-  });
 
   /* ---------- Home hero intro + scroll-away ---------- */
   const heroCard = document.querySelector(".hero__card");
@@ -576,11 +556,20 @@
       });
     });
 
+    // The illustration starts airy, then resolves into a densely dotted tree system.
+    // Rounded zero-length dashes turn every branch and trunk into a field of dots.
+    tl.to(F.treeStrokes, { strokeDasharray: (i, el) => `0.1 ${Math.max(10, Number(el.getAttribute("stroke-width") || 1) * 2.25).toFixed(1)}`, duration: 0.12, ease: "power1.inOut" }, 0.48)
+      .to(F.treeStrokes, { strokeDasharray: (i, el) => `0.1 ${Math.max(3.2, Number(el.getAttribute("stroke-width") || 1) * 1.35).toFixed(1)}`, duration: 0.34, ease: "power1.inOut" }, 0.6)
+      .to(F.rootStrokes, { strokeDasharray: (i, el) => `0.1 ${Math.max(9, Number(el.getAttribute("stroke-width") || 1) * 2.2).toFixed(1)}`, duration: 0.12, ease: "power1.inOut" }, 0.69)
+      .to(F.rootStrokes, { strokeDasharray: (i, el) => `0.1 ${Math.max(3.2, Number(el.getAttribute("stroke-width") || 1) * 1.35).toFixed(1)}`, duration: 0.28, ease: "power1.inOut" }, 0.78)
+      .to(F.denseCanopy, { opacity: 0.78, duration: 0.36, stagger: { amount: 0.14, from: "random" }, ease: "power1.inOut" }, 0.52);
+
     // ---- grass springs up across the ground ----
     F.grass.forEach(({ el, x }) => {
       gsap.set(el, { scaleY: 0, svgOrigin: `${x} ${F.ground}` });
       tl.to(el, { scaleY: 1, duration: 0.12, ease: "back.out(1.4)" }, 0.06 + (x / F.W) * 0.4);
     });
+    tl.to(F.grass.map(({ el }) => el), { strokeDasharray: "0.1 4.2", duration: 0.36, stagger: { amount: 0.18, from: "random" }, ease: "power1.inOut" }, 0.5);
 
     // ---- underground network lights up, then nutrients start to flow along it ----
     F.links.forEach((el) => {
@@ -588,7 +577,8 @@
       el.style.strokeDasharray = len;
       el.style.strokeDashoffset = len;
     });
-    tl.to(F.links, { strokeDashoffset: 0, duration: 0.2, ease: "power2.out", stagger: { amount: 0.1 } }, 0.68);
+    tl.to(F.links, { strokeDashoffset: 0, duration: 0.2, ease: "power2.out", stagger: { amount: 0.1 } }, 0.68)
+      .to(F.links, { strokeDasharray: (i, el) => `0.1 ${Math.max(3.2, Number(el.getAttribute("stroke-width") || 1) * 1.35).toFixed(1)}`, strokeDashoffset: 0, duration: 0.18, ease: "power1.inOut" }, 0.88);
     gsap.set(F.nodes, { scale: 0, transformOrigin: "50% 50%" });
     tl.to(F.nodes, { scale: 1, duration: 0.12, ease: "back.out(3)", stagger: { amount: 0.12, from: "random" } }, 0.8);
 
@@ -596,13 +586,12 @@
     const pulseTl = gsap.timeline({ paused: true });
     F.links.filter((l) => l.classList.contains("mlink")).forEach((l) => {
       const len = l.getTotalLength();
-      const seg = Math.min(18, len * 0.3);
-      const p = node("path", { d: l.getAttribute("d"), stroke: "#fff4c4", "stroke-width": 2.6, "stroke-linecap": "round", fill: "none", opacity: 0 });
-      p.style.strokeDasharray = `${seg} ${len + seg}`;
+      const p = node("path", { d: l.getAttribute("d"), stroke: "#d2f0c5", "stroke-width": 2.6, "stroke-linecap": "round", fill: "none", opacity: 0 });
+      p.style.strokeDasharray = "0.1 7";
       l.parentNode.appendChild(p);
       pulses.push(p);
       const forward = Math.random() < 0.5; // nutrients flow both ways
-      pulseTl.fromTo(p, { strokeDashoffset: forward ? seg : -len }, { strokeDashoffset: forward ? -len : seg, duration: len / 55, ease: "sine.inOut", repeat: -1, repeatDelay: 0.8 + Math.random() * 2.2 }, Math.random() * 2.5);
+      pulseTl.fromTo(p, { strokeDashoffset: forward ? 0 : -len }, { strokeDashoffset: forward ? -len : 0, duration: len / 55, ease: "sine.inOut", repeat: -1, repeatDelay: 0.8 + Math.random() * 2.2 }, Math.random() * 2.5);
     });
     tl.set(pulses, { opacity: 1 }, 0.93);
 
