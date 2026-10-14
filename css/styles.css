@@ -53,6 +53,20 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Page-specific reading order. Kept here so each section remains independently editable. */
+.curriculum-page main,
+.about-page main { display: flex; flex-direction: column; }
+.curriculum-page #top, .about-page #top { order: 0; }
+.curriculum-page #skills { order: 1; }
+.curriculum-page #faq { order: 2; }
+.curriculum-page #weeks { order: 3; }
+.curriculum-page #projects { order: 4; }
+.curriculum-page #join-curriculum { order: 5; }
+.about-page #story { order: 1; }
+.about-page #team { order: 2; }
+.about-page #roots { order: 3; }
+.about-page #contact { order: 4; }
+
 img { display: block; max-width: 100%; }
 a { color: inherit; }
 button { font: inherit; color: inherit; }
