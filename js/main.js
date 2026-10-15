@@ -12,6 +12,24 @@
   // Paste the YouTube video ID (the part after "v=" in the URL) once Ryan's intro video is ready.
   const YOUTUBE_VIDEO_ID = "";
 
+  /* ---------- Page story order ---------- */
+  // Keep the editable HTML sections independent, then place them in the same order visitors
+  // see and assistive technology reads them.
+  const main = document.querySelector("main");
+  const storyOrders = {
+    "home-page": ["top", "what", "founder", "who", "why", "learn", "commitment", "join"],
+    "curriculum-page": ["top", "weeks", "projects", "faq", "join-curriculum", "skills"],
+    "about-page": ["top", "team", "roots", "contact", "story"],
+    "evidence-page": ["top", "beyond-ecology", "industry", "problem", "beyond-skills"]
+  };
+  const pageClass = Object.keys(storyOrders).find((name) => document.body.classList.contains(name));
+  if (main && pageClass) {
+    storyOrders[pageClass].forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) main.appendChild(section);
+    });
+  }
+
   /* ---------- Nav ---------- */
   const nav = document.querySelector(".nav");
   const burger = document.querySelector(".nav__burger");
