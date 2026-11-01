@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Join ROOTS Quest — Register</title>
-  <meta name="description" content="Register for the free ROOTS Quest pilot: a small group of 5 to 6 students, four weeks, 60 minutes a week on Zoom. No engineering or science experience needed." />
+  <title>{{register.head.title1}}</title>
+  <meta name="description" content="{{register.head.description}}" />
   <link rel="canonical" href="https://www.rootsquest.ca/register" />
   <link rel="icon" href="assets/icon.png" type="image/png" />
   <link rel="stylesheet" href="css/styles.css" />
@@ -73,20 +73,20 @@
 </svg>
 
 <nav class="reg-nav" aria-label="Registration">
-  <a class="reg-nav__brand" href="index.html"><img src="assets/roots-light-logo.png" alt="" /> ROOTS Quest</a>
-  <a class="reg-nav__back" href="index.html">← Back to the site</a>
+  <a class="reg-nav__brand" href="index.html"><img src="assets/roots-light-logo.png" alt="" /> {{register.nav.t1}}</a>
+  <a class="reg-nav__back" href="index.html">{{register.nav.a1}}</a>
 </nav>
 
 <main class="reg">
   <div id="intro" class="reg__hero">
-    <span class="reg__eyebrow">Free · Grades 6⁠–⁠8 · Live on Zoom</span>
-    <h1 id="title">Join ROOTS Quest</h1>
-    <p class="reg__lede" id="lede">Four weeks of engineering for an impact, live on Zoom. Tell us a little about you and we’ll be in touch before the course begins.</p>
+    <span class="reg__eyebrow">{{register.main.span1}}</span>
+    <h1 id="title">{{register.main.h11}}</h1>
+    <p class="reg__lede" id="lede">{{register.main.p1}}</p>
     <div class="reg__dates" aria-label="Key dates">
-      <span>A small pilot for 5 to 6 students</span>
-      <span>Four weeks, 60 minutes a week</span>
-      <span>No engineering or science experience needed</span>
-      <span><b>Course starts</b> November 15</span>
+      <span>{{register.main.span2}}</span>
+      <span>{{register.main.span3}}</span>
+      <span>{{register.main.span4}}</span>
+      <span>{{register.main.span5}}</span>
     </div>
 
   </div>
@@ -96,77 +96,77 @@
     <input type="hidden" name="Sign-up type" id="signupType" value="Course registration" />
 
     <div class="field">
-      <label>Student name<span class="req" aria-hidden="true">*</span></label>
+      <label>{{register.main.t1}}<span class="req" aria-hidden="true">*</span></label>
       <div class="two">
-        <div><label class="sr-only" for="studentFirst">Student first name</label><input class="input" id="studentFirst" name="Student first name" placeholder="First" autocomplete="given-name" required /></div>
-        <div><label class="sr-only" for="studentLast">Student last name</label><input class="input" id="studentLast" name="Student last name" placeholder="Last" autocomplete="family-name" required /></div>
+        <div><label class="sr-only" for="studentFirst">{{register.main.label1}}</label><input class="input" id="studentFirst" name="Student first name" placeholder="{{register.main.placeholder1}}" autocomplete="given-name" required /></div>
+        <div><label class="sr-only" for="studentLast">{{register.main.label2}}</label><input class="input" id="studentLast" name="Student last name" placeholder="{{register.main.placeholder2}}" autocomplete="family-name" required /></div>
       </div>
-      <p class="error">Please enter the student’s first and last name.</p>
+      <p class="error">{{register.main.p2}}</p>
     </div>
 
     <div class="field group" data-group="course">
-      <label>Parent or guardian name<span class="req" aria-hidden="true">*</span></label>
+      <label>{{register.main.t2}}<span class="req" aria-hidden="true">*</span></label>
       <div class="two">
-        <div><label class="sr-only" for="guardianFirst">Guardian first name</label><input class="input" id="guardianFirst" name="Guardian first name" placeholder="First" /></div>
-        <div><label class="sr-only" for="guardianLast">Guardian last name</label><input class="input" id="guardianLast" name="Guardian last name" placeholder="Last" /></div>
+        <div><label class="sr-only" for="guardianFirst">{{register.main.label3}}</label><input class="input" id="guardianFirst" name="Guardian first name" placeholder="{{register.main.placeholder3}}" /></div>
+        <div><label class="sr-only" for="guardianLast">{{register.main.label4}}</label><input class="input" id="guardianLast" name="Guardian last name" placeholder="{{register.main.placeholder4}}" /></div>
       </div>
-      <p class="error">Please enter the guardian’s first and last name.</p>
+      <p class="error">{{register.main.p3}}</p>
     </div>
 
     <div class="field">
-      <label for="email">Email<span class="req" aria-hidden="true">*</span></label>
-      <span class="hint">The student’s or the guardian’s — whichever is best to reach you.</span>
-      <input class="input" id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
-      <p class="error">Please enter a valid email address.</p>
+      <label for="email">{{register.main.t3}}<span class="req" aria-hidden="true">*</span></label>
+      <span class="hint">{{register.main.span6}}</span>
+      <input class="input" id="email" name="email" type="email" placeholder="{{register.main.placeholder5}}" autocomplete="email" required />
+      <p class="error">{{register.main.p4}}</p>
     </div>
 
     <div class="field">
       <fieldset>
-        <legend>Grade<span class="req" aria-hidden="true">*</span></legend>
+        <legend>{{register.main.t4}}<span class="req" aria-hidden="true">*</span></legend>
         <div class="pills" id="gradePills">
-          <button class="pill" type="button" data-value="Grade 6" aria-pressed="false">Grade 6</button>
-          <button class="pill" type="button" data-value="Grade 7" aria-pressed="false">Grade 7</button>
-          <button class="pill" type="button" data-value="Grade 8" aria-pressed="false">Grade 8</button>
+          <button class="pill" type="button" data-value="Grade 6" aria-pressed="false">{{register.main.button1}}</button>
+          <button class="pill" type="button" data-value="Grade 7" aria-pressed="false">{{register.main.button2}}</button>
+          <button class="pill" type="button" data-value="Grade 8" aria-pressed="false">{{register.main.button3}}</button>
         </div>
         <input type="hidden" name="Grade" id="grade" />
       </fieldset>
-      <p class="error">Please choose a grade.</p>
+      <p class="error">{{register.main.p5}}</p>
     </div>
 
     <div class="field">
       <fieldset class="avail" id="availField">
-        <legend>When can you attend?<span class="req" aria-hidden="true">*</span></legend>
-        <span class="hint">Tap, or click and drag across a block, to mark <b>every</b> time that works. Choose as many as you like. We’ll pick the slot that suits the most students. All times are Mountain Time (Calgary).</span>
+        <legend>{{register.main.t5}}<span class="req" aria-hidden="true">*</span></legend>
+        <span class="hint">{{register.main.span7}}</span>
         <div class="avail__tools">
-          <button class="chip" type="button" data-preset="weekday">Weekdays 4–8 pm</button>
-          <button class="chip" type="button" data-preset="weekend">Weekends, all day</button>
-          <button class="chip chip--quiet" type="button" data-preset="clear">Clear</button>
+          <button class="chip" type="button" data-preset="weekday">{{register.main.button4}}</button>
+          <button class="chip" type="button" data-preset="weekend">{{register.main.button5}}</button>
+          <button class="chip chip--quiet" type="button" data-preset="clear">{{register.main.button6}}</button>
         </div>
         <div class="cal" id="cal" role="grid" aria-label="Weekly availability, Mountain Time"></div>
-        <p class="avail__summary" id="availSummary" aria-live="polite">No times selected yet.</p>
+        <p class="avail__summary" id="availSummary" aria-live="polite">{{register.main.p6}}</p>
         <input type="hidden" name="Available times (Mountain Time)" id="availability" />
       </fieldset>
-      <p class="error">Please choose at least one time that works for you.</p>
+      <p class="error">{{register.main.p7}}</p>
     </div>
 
     <div class="field group" data-group="course">
-      <label for="why">Why are you interested in engineering or inventing?<span class="req" aria-hidden="true">*</span></label>
-      <span class="hint">What excites you most about taking this course? A few sentences is plenty — there are no wrong answers.</span>
+      <label for="why">{{register.main.t6}}<span class="req" aria-hidden="true">*</span></label>
+      <span class="hint">{{register.main.span8}}</span>
       <textarea class="input" id="why" name="Why are you interested" placeholder="I’m interested because…"></textarea>
-      <p class="error">Tell us a little about why you’re interested.</p>
+      <p class="error">{{register.main.p8}}</p>
     </div>
 
-    <div class="alert" id="alert" role="alert">We couldn’t send your form. Please check your connection and try again.</div>
+    <div class="alert" id="alert" role="alert">{{register.main.div1}}</div>
 
-    <button class="btn btn--gold submit" type="submit" id="submit">Submit my registration</button>
-    <p class="fine" id="fine">We’ll confirm your place by email before the course begins on November 15. By submitting, you agree to how we use this information in our <a href="privacy.html">privacy policy</a>.</p>
+    <button class="btn btn--gold submit" type="submit" id="submit">{{register.main.button7}}</button>
+    <p class="fine" id="fine">{{register.main.t7}} <a href="privacy.html">{{register.main.a1}}</a>.</p>
   </form>
 
   <section class="done" id="done" aria-live="polite">
     <span class="done__check"><svg class="icon"><use href="#i-check"/></svg></span>
-    <h2 id="doneTitle">Thanks for joining ROOTS Quest.</h2>
-    <p id="doneCopy">We’ve received your registration and will be in touch by email before the course begins on November 15.</p>
-    <a class="btn btn--gold" href="index.html">Back to the site</a>
+    <h2 id="doneTitle">{{register.done.h21}}</h2>
+    <p id="doneCopy">{{register.done.p1}}</p>
+    <a class="btn btn--gold" href="index.html">{{register.done.a1}}</a>
   </section>
   </div>
 </main>

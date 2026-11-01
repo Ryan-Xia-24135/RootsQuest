@@ -1,45 +1,42 @@
-# ROOTS Quest — v3 (multi-page)
+# ROOTS Quest website
 
-A static multi-page site. No build step: open `index.html` or serve the folder with any static server.
+A static site. **All the wording lives in one file: [`content.txt`](content.txt).**
+
+## Changing the wording (no code involved)
+
+1. Open `content.txt` (on GitHub: click the file, then the pencil icon).
+2. Press Cmd+F, find the sentence, and change only the words **after the colon**.
+3. Commit the change. The site rebuilds and updates in about a minute.
+
+Dates and the contact email are set once at the top (`start_date`, `end_date`, `homework_minutes`, `email`)
+and update everywhere. The file explains the few formatting rules at the top.
+
+If a line is broken (a deleted line, a missing colon, a typo before the colon), the build **stops with a
+message naming the line** and the live site stays exactly as it was.
+
+## How it fits together
+
+| Folder / file | What it is | Touch it? |
+|---|---|---|
+| `content.txt` | all the text | **yes, this is the one** |
+| `src/pages/*.html` | page layouts (no wording) | only to change layout |
+| `src/partials/` | shared menu and footer | only to change layout |
+| `css/`, `js/`, `assets/` | styling, scripts, images | only to change design |
+| `tools/build.js` | stitches text into the layouts, writes `dist/` | no |
+| `tools/make-*.py` | regenerate the background textures and dithered photos | rarely |
+| `dist/` | the built site (generated, not stored in git) | never |
+
+Vercel runs `node tools/build.js` on every push (see `vercel.json`) and serves `dist/`.
+
+## Preview on your computer
 
 ```sh
-python3 -m http.server 4195
+node tools/build.js && python3 -m http.server 4195 --directory dist
+# then open http://localhost:4195
+node tools/build.js --check     # just check content.txt, write nothing
 ```
 
-Animation libraries (GSAP, ScrollTrigger, Lenis) load from the jsDelivr CDN. If they fail to load, or the visitor
-prefers reduced motion, the site still works and the illustrations appear fully grown.
+## Not in content.txt
 
-## Pages
-
-- `index.html` — Home: what it is, how it runs, what students learn, time commitment and pilot cohort, why it matters, who it's for
-- `why-it-matters.html` — the problem, regeneration beyond ecology, beyond skills, case studies in industry
-- `curriculum.html` — 8-week plan, knowledge and skills, the four projects, beyond a school curriculum, FAQ
-- `about.html` — what ROOTS Quest is, what ROOTS means, the team, contact
-- `privacy.html` — privacy policy
-- `register.html` — pure-white registration page for the pilot cohort
-
-The nav, footer and head tags are repeated in each page (there is no template system), so a change to the nav or
-footer means editing all five pages that share them.
-
-## Files
-
-- `css/styles.css` — all styling
-- `js/main.js` — nav (hover menus, section highlight, mobile menu), local-time session line, accordions, reveal-on-scroll, YouTube embed
-- `js/motion.js` — smooth scrolling (Lenis), scroll animation (GSAP), the procedurally grown forest, diagrams
-- `vercel.json` — clean URLs (`/curriculum` instead of `/curriculum.html`) and redirects for old addresses
-- `sitemap.xml`, `robots.txt` — for search engines
-- `assets/` — background art and photos
-
-## Things to fill in
-
-1. **Ryan's intro video** — in `js/main.js`, set `YOUTUBE_VIDEO_ID` to the ID from the YouTube URL. The placeholder tile on the About page is replaced automatically.
-2. **Team photos** — drop `ryan-xia.jpg` and `adam-wu.jpg` into `assets/`. The dashed placeholders on the About page pick them up automatically.
-3. **Form destination** — `register.html` posts to a Formspree endpoint (`https://formspree.io/f/xkjnoorp`). Submissions arrive labelled "Course registration".
-4. **Privacy policy** — read `privacy.html` and confirm every statement matches how you actually handle information.
-
-## Key dates (search for these in the pages to change them)
-
-- Registration closes — October 16
-- Course starts — October 18
-- Sessions — Sundays, 5:00 p.m. Mountain Time (`js/main.js` converts this to the visitor's time zone)
-- Pilot cohort — 5–6 students
+Text inside the registration form's script (such as "Sending…") and the `<!-- VERIFY -->` notes in
+`src/pages/curriculum.html` are part of the code. Ask for those to be changed.

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{about.head.title1}}</title>
+  <meta name="description" content="{{about.head.description}}" />
+  <link rel="canonical" href="https://www.rootsquest.ca/about" />
+  <link rel="icon" href="assets/icon.png" type="image/png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ROOTS Quest" />
+  <meta property="og:title" content="{{about.head.social-title}}" />
+  <meta property="og:description" content="{{about.head.description}}" />
+  <meta property="og:url" content="https://www.rootsquest.ca/about" />
+  <meta property="og:image" content="https://www.rootsquest.ca/assets/home-01.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/bento.css" />
+</head>
+<body class="about-page">
+
+<div class="progress" aria-hidden="true"><i></i></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-telescope" viewBox="0 0 24 24"><path d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44"/><path d="m13.56 11.747 4.332-.924"/><path d="m16 21-3.105-6.21"/><path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z"/><path d="m6.158 8.633 1.114 4.456"/><path d="m8 21 3.105-6.21"/><circle cx="12" cy="13" r="2"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5v16"/><path d="M16 13h2"/><path d="M16 9h2"/><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"/><path d="M6 13h2"/><path d="M6 9h2"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+  <symbol id="i-earth" viewBox="0 0 24 24"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/><path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/><path d="M5 21h14"/></symbol>
+  <symbol id="i-droplets" viewBox="0 0 24 24"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><path d="m10.852 14.772-.383.923"/><path d="M13.148 14.772a3 3 0 1 0-2.296-5.544l-.383-.923"/><path d="m13.148 9.228.383-.923"/><path d="m13.53 15.696-.382-.924a3 3 0 1 1-2.296-5.544"/><path d="m14.772 10.852.923-.383"/><path d="m14.772 13.148.923.383"/><path d="M4.5 10H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.5"/><path d="M4.5 14H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-.5"/><path d="M6 18h.01"/><path d="M6 6h.01"/><path d="m9.228 10.852-.923-.383"/><path d="m9.228 13.148-.923.383"/></symbol>
+  <symbol id="i-network" viewBox="0 0 24 24"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.5 0 4 1.8 4 4"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1.1 0-2-.4-2.5-1.2M12 6.5V8m0 8v1.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+{{>nav}}
+<div class="nav__menu" id="mobile-menu">
+  <div class="nav__group"><a class="nav__page" href="index.html">{{about.page.a1}}</a><div class="nav__subs"><a href="index.html#what">{{about.page.a2}}</a><a href="index.html#learn">{{about.page.a3}}</a><a href="index.html#commitment">{{about.page.a4}}</a><a href="index.html#why">{{about.page.a5}}</a><a href="index.html#who">{{about.page.a6}}</a><a href="index.html#join">{{about.page.a7}}</a></div></div>
+  <div class="nav__group"><a class="nav__page" href="why-it-matters.html">{{about.page.a8}}</a><div class="nav__subs"><a href="why-it-matters.html#problem">{{about.page.a9}}</a><a href="why-it-matters.html#beyond-ecology">{{about.page.a10}}</a><a href="why-it-matters.html#beyond-skills">{{about.page.a11}}</a><a href="why-it-matters.html#industry">{{about.page.a12}}</a></div></div>
+  <div class="nav__group"><a class="nav__page" href="curriculum.html">{{about.page.a13}}</a><div class="nav__subs"><a href="curriculum.html#skills">{{about.page.a14}}</a><a href="curriculum.html#faq">{{about.page.a15}}</a><a href="curriculum.html#weeks">{{about.page.a16}}</a><a href="curriculum.html#projects">{{about.page.a17}}</a><a href="curriculum.html#join-curriculum">{{about.page.a18}}</a></div></div>
+  <div class="nav__group"><a class="nav__page is-active" href="about.html">{{about.page.a19}}</a><div class="nav__subs"><a href="about.html#story">{{about.page.a20}}</a><a href="about.html#team">{{about.page.a21}}</a><a href="about.html#roots">{{about.page.a22}}</a><a href="about.html#contact">{{about.page.a23}}</a></div></div>
+</div>
+
+<main>
+<section class="section page-hero t-bark" id="top">
+  <div class="wrap page-hero__inner">
+    <span class="rule"></span>
+    <span class="eyebrow">{{about.top.span1}}</span>
+    <h1 class="display page-hero__title">{{about.top.h11}}</h1>
+    <p class="lede">{{about.top.p1}}</p>
+  </div>
+</section>
+<section class="section t-bark" id="story">
+  <div class="wrap stack">
+    <div class="section-head"><span class="rule"></span><span class="eyebrow">{{about.story.span1}}</span><h2 class="h2">{{about.story.h21}}</h2></div>
+    <div class="grid grid--about">
+      <div class="glass about-intro reveal">
+        <p class="lede">{{about.story.p1}}</p>
+        <p class="copy">{{about.story.p2}}</p>
+        <div class="btn-row"><a class="btn btn--gold btn--deep" href="curriculum.html">{{about.story.a1}}</a></div>
+      </div>
+
+      <div class="about-video reveal" style="--d:.1s">
+        <div class="video">
+          <div class="video__placeholder">
+            <span class="play"><svg class="icon"><use href="#i-play"/></svg></span>
+            <strong>{{about.story.strong1}}</strong>
+            <span>{{about.story.span2}}</span>
+          </div>
+        </div>
+        <p class="video__caption">{{about.story.p3}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section t-bark" id="roots">
+  <div class="wrap stack">
+    <div class="section-head"><span class="rule"></span><span class="eyebrow">{{about.roots.span1}}</span><h2 class="h2">{{about.roots.h21}}</h2></div>
+    <div class="forest-card">
+      <div class="photo photo--fill reveal"><img src="assets/forest-roots.jpg" alt="{{about.roots.alt1}}" loading="lazy" /></div>
+      <div class="glass reveal" style="--d:.1s">
+        <div class="meaning">
+          <div class="meaning__row reveal" style="--d:.05s"><div class="meaning__bar">{{about.roots.div1}}</div><div class="meaning__letter">{{about.roots.div2}}</div></div>
+          <div class="meaning__row reveal" style="--d:.1s"><div class="meaning__bar">{{about.roots.div3}}</div><div class="meaning__letter">{{about.roots.div4}}</div></div>
+          <div class="meaning__row reveal" style="--d:.15s"><div class="meaning__bar">{{about.roots.div5}}</div><div class="meaning__letter">{{about.roots.div6}}</div></div>
+          <div class="meaning__row reveal" style="--d:.2s"><div class="meaning__bar">{{about.roots.div7}}</div><div class="meaning__letter">{{about.roots.div8}}</div></div>
+          <div class="meaning__row reveal" style="--d:.25s"><div class="meaning__bar">{{about.roots.div9}}</div><div class="meaning__letter">{{about.roots.div10}}</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section t-bark" id="team">
+  <div class="wrap stack">
+    <div class="section-head">
+      <span class="rule"></span>
+      <span class="eyebrow">{{about.team.span1}}</span>
+      <h2 class="h2">{{about.team.h21}}</h2>
+    </div>
+
+    <div class="team">
+      <article class="panel panel--green member reveal">
+        <div class="photo member__photo" data-empty="Photo of Ryan Xia — drop ryan-xia.jpg into the assets folder">
+          <img src="assets/ryan-xia.jpg" alt="{{about.team.alt1}}" loading="lazy" onerror="this.parentElement.classList.add('is-empty')" />
+        </div>
+        <div class="member__body">
+          <h3 class="instructor-name">{{about.team.h31}}</h3>
+          <p class="instructor-role">{{about.team.p1}}</p>
+          <p class="copy">{{about.team.p2}}</p>
+        </div>
+      </article>
+
+      <article class="panel panel--green member reveal" style="--d:.1s">
+        <div class="photo member__photo" data-empty="Photo of Adam Wu — drop adam-wu.jpg into the assets folder">
+          <img src="assets/adam-wu.jpg" alt="{{about.team.alt2}}" loading="lazy" onerror="this.parentElement.classList.add('is-empty')" />
+        </div>
+        <div class="member__body">
+          <h3 class="instructor-name">{{about.team.h32}}</h3>
+          <p class="instructor-role">{{about.team.p3}}</p>
+        </div>
+      </article>
+    </div>
+
+    <blockquote class="panel panel--sage instructor-quote reveal" style="--d:.2s;border-radius:var(--radius)">
+      <p>{{about.team.p4}}</p>
+    </blockquote>
+  </div>
+</section>
+<section class="section t-rose" id="contact">
+  <div class="wrap stack">
+    <div class="glass contact reveal">
+      <span class="rule"></span>
+      <span class="eyebrow" style="display:block;margin-bottom:10px">{{about.contact.span1}}</span>
+      <h2 class="h2">{{about.contact.h21}}</h2>
+      <p class="lede">{{about.contact.p1}}</p>
+      <a class="footer__mail" href="mailto:{{email}}?subject=ROOTS%20Quest%20website%20enquiry"><svg class="icon"><use href="#i-mail"/></svg> {{about.contact.t1}}</a>
+      <div class="btn-row" style="margin-top:clamp(20px,3vh,30px)"><a class="btn btn--gold btn--deep" href="register.html">{{about.contact.a1}}</a><span class="btn-note">{{about.contact.span2}}</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+{{>footer}}
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/motion.js" defer></script>
+</body>
+</html>

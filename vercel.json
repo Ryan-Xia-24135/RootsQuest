@@ -1,4 +1,6 @@
 {
+  "buildCommand": "node tools/build.js",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "redirects": [
     { "source": "/courses", "destination": "/curriculum", "permanent": true },

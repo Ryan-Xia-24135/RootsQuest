@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{home.head.title1}}</title>
+  <meta name="description" content="{{home.head.description}}" />
+  <link rel="canonical" href="https://www.rootsquest.ca/" />
+  <link rel="icon" href="assets/icon.png" type="image/png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ROOTS Quest" />
+  <meta property="og:title" content="{{home.head.social-title}}" />
+  <meta property="og:description" content="{{home.head.description}}" />
+  <meta property="og:url" content="https://www.rootsquest.ca/" />
+  <meta property="og:image" content="https://www.rootsquest.ca/assets/home-01.png" />
+  <link rel="preload" as="image" href="assets/home-01.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/bento.css" />
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><i></i></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-telescope" viewBox="0 0 24 24"><path d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44"/><path d="m13.56 11.747 4.332-.924"/><path d="m16 21-3.105-6.21"/><path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z"/><path d="m6.158 8.633 1.114 4.456"/><path d="m8 21 3.105-6.21"/><circle cx="12" cy="13" r="2"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5v16"/><path d="M16 13h2"/><path d="M16 9h2"/><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"/><path d="M6 13h2"/><path d="M6 9h2"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+  <symbol id="i-earth" viewBox="0 0 24 24"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/><path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/><path d="M5 21h14"/></symbol>
+  <symbol id="i-droplets" viewBox="0 0 24 24"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><path d="m10.852 14.772-.383.923"/><path d="M13.148 14.772a3 3 0 1 0-2.296-5.544l-.383-.923"/><path d="m13.148 9.228.383-.923"/><path d="m13.53 15.696-.382-.924a3 3 0 1 1-2.296-5.544"/><path d="m14.772 10.852.923-.383"/><path d="m14.772 13.148.923.383"/><path d="M4.5 10H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.5"/><path d="M4.5 14H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-.5"/><path d="M6 18h.01"/><path d="M6 6h.01"/><path d="m9.228 10.852-.923-.383"/><path d="m9.228 13.148-.923.383"/></symbol>
+  <symbol id="i-network" viewBox="0 0 24 24"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.5 0 4 1.8 4 4"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1.1 0-2-.4-2.5-1.2M12 6.5V8m0 8v1.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+{{>nav}}
+<div class="nav__menu" id="mobile-menu">
+  <div class="nav__group"><a class="nav__page is-active" href="index.html">{{home.page.a1}}</a><div class="nav__subs"><a href="index.html#what">{{home.page.a2}}</a><a href="index.html#learn">{{home.page.a3}}</a><a href="index.html#commitment">{{home.page.a4}}</a><a href="index.html#why">{{home.page.a5}}</a><a href="index.html#who">{{home.page.a6}}</a><a href="index.html#join">{{home.page.a7}}</a></div></div>
+  <div class="nav__group"><a class="nav__page" href="why-it-matters.html">{{home.page.a8}}</a><div class="nav__subs"><a href="why-it-matters.html#problem">{{home.page.a9}}</a><a href="why-it-matters.html#beyond-ecology">{{home.page.a10}}</a><a href="why-it-matters.html#beyond-skills">{{home.page.a11}}</a><a href="why-it-matters.html#industry">{{home.page.a12}}</a></div></div>
+  <div class="nav__group"><a class="nav__page" href="curriculum.html">{{home.page.a13}}</a><div class="nav__subs"><a href="curriculum.html#skills">{{home.page.a14}}</a><a href="curriculum.html#faq">{{home.page.a15}}</a><a href="curriculum.html#weeks">{{home.page.a16}}</a><a href="curriculum.html#projects">{{home.page.a17}}</a><a href="curriculum.html#join-curriculum">{{home.page.a18}}</a></div></div>
+  <div class="nav__group"><a class="nav__page" href="about.html">{{home.page.a19}}</a><div class="nav__subs"><a href="about.html#story">{{home.page.a20}}</a><a href="about.html#team">{{home.page.a21}}</a><a href="about.html#roots">{{home.page.a22}}</a><a href="about.html#contact">{{home.page.a23}}</a></div></div>
+</div>
+
+<main>
+<section class="section hero t-dusk" id="top">
+  <div class="hero__card reveal in">
+    <span class="hero__badge">{{home.top.span1}}</span>
+    <span class="rule rule--white rule--center"></span>
+    <h1 class="display hero__title">{{home.top.h11}}</h1>
+    <p class="hero__tagline">{{home.top.p1}}</p>
+
+    <div class="btn-row" style="margin-top:clamp(22px,4vh,38px)">
+      <a class="btn btn--gold btn--deep hero__cta" style="margin-top:0" href="register.html">{{home.top.a1}}</a>
+      <a class="btn btn--ghost hero__cta" style="margin-top:0" href="#learn">{{home.top.a2}}</a>
+    </div>
+
+    <ul class="hero__facts" aria-label="About the pilot" style="list-style:none;padding:0">
+      <li><span>{{home.top.span2}}</span></li>
+      <li><span>{{home.top.span3}}</span></li>
+      <li><span>{{home.top.span4}}</span></li>
+    </ul>
+    <p class="hero__time" id="session-time">
+      <svg class="icon"><use href="#i-calendar"/></svg>
+      <span>{{home.top.span5}}</span>
+    </p>
+  </div>
+  <a class="hero__scroll" href="#what" aria-label="Continue to the next section"><svg class="icon"><use href="#i-chevron"/></svg></a>
+</section>
+<section class="section t-dusk" id="what">
+  <div class="wrap stack">
+    <div class="section-head section-head--center">
+      <span class="rule rule--center"></span>
+      <span class="eyebrow">{{home.what.span1}}</span>
+      <h2 class="h2">{{home.what.h21}}</h2>
+      <p class="lede">{{home.what.p1}}</p>
+    </div>
+    <div class="keyfacts"><article class="keyfact spot reveal" style="--d:0.00s"><span class="keyfact__icon"><svg class="icon"><use href="#i-sprout"/></svg></span><span class="keyfact__k">{{home.what.span2}}</span><h3 class="keyfact__v">{{home.what.h31}}</h3><p>{{home.what.p2}}</p></article><article class="keyfact spot reveal" style="--d:0.06s"><span class="keyfact__icon"><svg class="icon"><use href="#i-earth"/></svg></span><span class="keyfact__k">{{home.what.span3}}</span><h3 class="keyfact__v">{{home.what.h32}}</h3><p>{{home.what.p3}}</p></article><article class="keyfact spot reveal" style="--d:0.12s"><span class="keyfact__icon"><svg class="icon"><use href="#i-clock"/></svg></span><span class="keyfact__k">{{home.what.span4}}</span><h3 class="keyfact__v">{{home.what.h33}}</h3><p>{{home.what.p4}}</p></article><article class="keyfact spot reveal" style="--d:0.18s"><span class="keyfact__icon"><svg class="icon"><use href="#i-network"/></svg></span><span class="keyfact__k">{{home.what.span5}}</span><h3 class="keyfact__v">{{home.what.h34}}</h3><p>{{home.what.p5}}</p></article><article class="keyfact spot reveal" style="--d:0.24s"><span class="keyfact__icon"><svg class="icon"><use href="#i-users"/></svg></span><span class="keyfact__k">{{home.what.span6}}</span><h3 class="keyfact__v">{{home.what.h35}}</h3><p>{{home.what.p6}}</p></article><article class="keyfact spot reveal" style="--d:0.30s"><span class="keyfact__icon"><svg class="icon"><use href="#i-tag"/></svg></span><span class="keyfact__k">{{home.what.span7}}</span><h3 class="keyfact__v">{{home.what.h36}}</h3><p>{{home.what.p7}}</p></article></div>
+    <div class="btn-row" style="justify-content:center"><a class="btn btn--ghost" href="about.html#story">{{home.what.t1}} <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+<section class="section t-lake" id="learn">
+  <div class="wrap stack">
+    <div class="section-head section-head--center">
+      <span class="rule rule--center"></span>
+      <span class="eyebrow">{{home.learn.span1}}</span>
+      <h2 class="h2">{{home.learn.h21}}</h2>
+      <p class="lede">{{home.learn.p1}}</p>
+    </div>
+
+    <div class="pillars">
+      <article class="pillar spot reveal" data-viz>
+        <div class="viz"><svg class="viz__svg" viewBox="0 0 320 220" role="img" aria-label="A network of connected parts: nature, energy, people, cities, food and technology, all linked to one problem">
+  <g stroke="var(--gold-edge)" stroke-width="1.4" fill="none" stroke-linecap="round"><line class="js-draw" x1="160" y1="110" x2="160.0" y2="36.0"/><line class="js-draw" x1="160" y1="110" x2="244.9" y2="73.0"/><line class="js-draw" x1="160" y1="110" x2="244.9" y2="147.0"/><line class="js-draw" x1="160" y1="110" x2="160.0" y2="184.0"/><line class="js-draw" x1="160" y1="110" x2="75.1" y2="147.0"/><line class="js-draw" x1="160" y1="110" x2="75.1" y2="73.0"/><line class="js-draw" x1="160.0" y1="36.0" x2="244.9" y2="73.0"/><line class="js-draw" x1="244.9" y1="73.0" x2="244.9" y2="147.0"/><line class="js-draw" x1="244.9" y1="147.0" x2="160.0" y2="184.0"/><line class="js-draw" x1="160.0" y1="184.0" x2="75.1" y2="147.0"/><line class="js-draw" x1="75.1" y1="147.0" x2="75.1" y2="73.0"/><line class="js-draw" x1="75.1" y1="73.0" x2="160.0" y2="36.0"/></g>
+  <g class="js-pop"><circle cx="160" cy="110" r="21" fill="var(--gold-bright)"/><text x="160" y="113" text-anchor="middle" font-size="9.5" font-weight="600" fill="#fff" font-family="Inter, sans-serif">Problem</text></g>
+  <g class="js-pop"><circle cx="160.0" cy="36.0" r="8" fill="#0d1a14" stroke="var(--gold-bright)" stroke-width="1.6"/><text x="160.0" y="21.0" text-anchor="middle" font-size="11" fill="#e8e4d6" font-family="Inter, sans-serif">Nature</text></g><g class="js-pop"><circle cx="244.9" cy="73.0" r="8" fill="#0d1a14" stroke="var(--gold-bright)" stroke-width="1.6"/><text x="258.9" y="77.0" text-anchor="start" font-size="11" fill="#e8e4d6" font-family="Inter, sans-serif">Energy</text></g><g class="js-pop"><circle cx="244.9" cy="147.0" r="8" fill="#0d1a14" stroke="var(--gold-bright)" stroke-width="1.6"/><text x="258.9" y="151.0" text-anchor="start" font-size="11" fill="#e8e4d6" font-family="Inter, sans-serif">People</text></g><g class="js-pop"><circle cx="160.0" cy="184.0" r="8" fill="#0d1a14" stroke="var(--gold-bright)" stroke-width="1.6"/><text x="160.0" y="209.0" text-anchor="middle" font-size="11" fill="#e8e4d6" font-family="Inter, sans-serif">Cities</text></g><g class="js-pop"><circle cx="75.1" cy="147.0" r="8" fill="#0d1a14" stroke="var(--gold-bright)" stroke-width="1.6"/><text x="61.1" y="151.0" text-anchor="end" font-size="11" fill="#e8e4d6" font-family="Inter, sans-serif">Food</text></g><g class="js-pop"><circle cx="75.1" cy="73.0" r="8" fill="#0d1a14" stroke="var(--gold-bright)" stroke-width="1.6"/><text x="61.1" y="77.0" text-anchor="end" font-size="11" fill="#e8e4d6" font-family="Inter, sans-serif">Technology</text></g>
+  <circle class="ping" cx="160" cy="110" r="21" fill="none" stroke="var(--gold-bright)" stroke-width="1.6" opacity="0"/><circle class="ping" cx="160.0" cy="36.0" r="8" fill="none" stroke="var(--gold-bright)" stroke-width="1.4" opacity="0"/><circle class="ping" cx="244.9" cy="73.0" r="8" fill="none" stroke="var(--gold-bright)" stroke-width="1.4" opacity="0"/><circle class="ping" cx="244.9" cy="147.0" r="8" fill="none" stroke="var(--gold-bright)" stroke-width="1.4" opacity="0"/><circle class="ping" cx="160.0" cy="184.0" r="8" fill="none" stroke="var(--gold-bright)" stroke-width="1.4" opacity="0"/><circle class="ping" cx="75.1" cy="147.0" r="8" fill="none" stroke="var(--gold-bright)" stroke-width="1.4" opacity="0"/><circle class="ping" cx="75.1" cy="73.0" r="8" fill="none" stroke="var(--gold-bright)" stroke-width="1.4" opacity="0"/>
+  <circle r="3.4" fill="#fff" opacity=".9"><animateMotion dur="9s" repeatCount="indefinite" path="M160.0,36.0 L244.9,73.0 L244.9,147.0 L160.0,184.0 L75.1,147.0 L75.1,73.0 Z"/></circle>
+</svg></div>
+        <span class="pillar__k">{{home.learn.span2}}</span>
+        <h3 class="h3">{{home.learn.h31}}</h3>
+        <p>{{home.learn.p2}}</p>
+        <ul class="ticks"><li>{{home.learn.li1}}</li><li>{{home.learn.li2}}</li><li>{{home.learn.li3}}</li></ul>
+      </article>
+      <article class="pillar spot reveal" style="--d:.08s" data-viz>
+        <div class="viz"><svg class="viz__svg" viewBox="0 0 320 220" role="img" aria-label="A seedling growing, with rings spreading outward to show benefit reaching ecosystems, communities and people">
+  <g fill="none" stroke="var(--gold-edge)" stroke-width="1.4">
+    <path class="js-draw" d="M116,186 A44,44 0 0 1 204,186"/><path class="js-draw" d="M82,186 A78,78 0 0 1 238,186" opacity=".7"/><path class="js-draw" d="M48,186 A112,112 0 0 1 272,186" opacity=".45"/>
+  </g>
+  <g fill="none" stroke="var(--gold-bright)" stroke-width="1.3">
+    <path class="ripple" d="M116,186 A44,44 0 0 1 204,186" opacity="0"/><path class="ripple" d="M116,186 A44,44 0 0 1 204,186" opacity="0"/><path class="ripple" d="M116,186 A44,44 0 0 1 204,186" opacity="0"/>
+  </g>
+  <path class="js-draw" d="M24 186H296" stroke="rgba(255,255,255,.28)" stroke-width="1.4" fill="none"/>
+  <g class="sway">
+    <path class="js-draw" d="M160 186C157 164 165 136 160 100" stroke="#9fcf9a" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+    <path class="js-pop" data-origin="160 140" d="M160 140C140 140 126 128 124 110 142 110 158 120 160 140Z" fill="#7fb98a"/>
+    <path class="js-pop" data-origin="161 126" d="M161 126C180 126 194 114 196 96 178 96 163 106 161 126Z" fill="#9fcf9a"/>
+    <circle class="js-pop" data-origin="160 100" cx="160" cy="96" r="6.5" fill="var(--gold-bright)"/>
+  </g>
+</svg></div>
+        <span class="pillar__k">{{home.learn.span3}}</span>
+        <h3 class="h3">{{home.learn.h32}}</h3>
+        <p>{{home.learn.p3}}</p>
+        <ul class="ticks"><li>{{home.learn.li4}}</li><li>{{home.learn.li5}}</li><li>{{home.learn.li6}}</li></ul>
+      </article>
+      <article class="pillar spot reveal" style="--d:.16s" data-viz>
+        <div class="viz"><svg class="viz__svg" viewBox="0 0 320 220" role="img" aria-label="A winding trail with four stops leading to a flag">
+  <path class="js-draw" d="M34 168C70 168 80 124 112 124S160 140 190 132 236 70 268 62" stroke="var(--gold-edge)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-dasharray="1"/>
+  <circle class="js-pop" cx="34" cy="168" r="7" fill="#0d1a14" stroke="var(--gold-bright)" stroke-width="2"/><circle class="js-pop" cx="112" cy="124" r="7" fill="#0d1a14" stroke="var(--gold-bright)" stroke-width="2"/><circle class="js-pop" cx="190" cy="132" r="7" fill="#0d1a14" stroke="var(--gold-bright)" stroke-width="2"/><circle class="js-pop" cx="268" cy="62" r="7" fill="#0d1a14" stroke="var(--gold-bright)" stroke-width="2"/>
+  <circle r="9" fill="var(--gold-bright)" opacity=".25"><animateMotion dur="7s" repeatCount="indefinite" path="M34 168C70 168 80 124 112 124S160 140 190 132 236 70 268 62"/></circle>
+  <circle r="4.2" fill="#fff6d6"><animateMotion dur="7s" repeatCount="indefinite" path="M34 168C70 168 80 124 112 124S160 140 190 132 236 70 268 62"/></circle>
+  <g class="js-pop"><path d="M268 62V28" stroke="#e8e4d6" stroke-width="2" stroke-linecap="round"/><path d="M268 28l28 9-28 9Z" fill="var(--gold-bright)"/></g>
+</svg></div>
+        <span class="pillar__k">{{home.learn.span4}}</span>
+        <h3 class="h3">{{home.learn.h33}}</h3>
+        <p>{{home.learn.p4}}</p>
+        <ul class="ticks"><li>{{home.learn.li7}}</li><li>{{home.learn.li8}}</li><li>{{home.learn.li9}}</li></ul>
+      </article>
+    </div>
+
+    <div class="glass process-wrap reveal">
+      <h3 class="h3 process-wrap__title">{{home.learn.h34}}</h3>
+      <ol class="process">
+        <li><span class="process__dot"></span><span class="process__wk">{{home.learn.span5}}</span><h4>{{home.learn.h41}}</h4><p>{{home.learn.p5}}</p></li>
+        <li><span class="process__dot"></span><span class="process__wk">{{home.learn.span6}}</span><h4>{{home.learn.h42}}</h4><p>{{home.learn.p6}}</p></li>
+        <li><span class="process__dot"></span><span class="process__wk">{{home.learn.span7}}</span><h4>{{home.learn.h43}}</h4><p>{{home.learn.p7}}</p></li>
+        <li><span class="process__dot"></span><span class="process__wk">{{home.learn.span8}}</span><h4>{{home.learn.h44}}</h4><p>{{home.learn.p8}}</p></li>
+      </ol>
+    </div>
+
+    <div class="made reveal">
+      <p class="made__lead">{{home.learn.p9}}</p>
+      <ul class="made__list"><li>{{home.learn.li10}}</li><li>{{home.learn.li11}}</li><li>{{home.learn.li12}}</li><li>{{home.learn.li13}}</li></ul>
+      <a class="made__link" href="curriculum.html#projects">{{home.learn.t1}} <svg class="icon"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+<section class="section t-lake" id="commitment">
+  <div class="wrap stack">
+    <div class="section-head section-head--center">
+      <span class="rule rule--center"></span>
+      <span class="eyebrow">{{home.commitment.span1}}</span>
+      <h2 class="h2">{{home.commitment.h21}}</h2>
+    </div>
+    <div class="commit-grid">
+      <article class="commit spot reveal">
+        <span class="commit__big"><span>{{home.commitment.span2}}</span><small>{{home.commitment.small1}}</small></span>
+        <h3 class="h3">{{home.commitment.h31}}</h3>
+        <p>{{home.commitment.p1}}</p>
+        <ul class="ticks"><li>{{home.commitment.li1}}</li><li>{{home.commitment.li2}}</li><li>{{home.commitment.li3}}</li></ul>
+        <a class="btn btn--ghost" href="curriculum.html#weeks">{{home.commitment.t1}} <svg class="icon"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="commit commit--pilot spot reveal" style="--d:.1s">
+        <span class="pilot-tag">{{home.commitment.span3}}</span>
+        <span class="commit__big"><span>{{home.commitment.span4}}</span><small>{{home.commitment.small2}}</small></span>
+        <h3 class="h3">{{home.commitment.h32}}</h3>
+        <p>{{home.commitment.p2}}</p>
+        <ul class="ticks"><li>{{home.commitment.li4}}</li><li>{{home.commitment.li5}}</li><li>{{home.commitment.li6}}</li></ul>
+        <a class="btn btn--gold btn--deep" href="register.html">{{home.commitment.a1}}</a>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section t-bark" id="why">
+  <div class="wrap stack">
+    <div class="section-head section-head--center">
+      <span class="rule rule--center"></span>
+      <span class="eyebrow">{{home.why.span1}}</span>
+      <h2 class="h2">{{home.why.h21}}</h2>
+    </div>
+    <div class="grid grid--3 why-cards">
+      <article class="why-card spot reveal"><span class="why-card__n">01</span><h3 class="h3">{{home.why.h31}}</h3><p>{{home.why.p1}}</p></article>
+      <article class="why-card spot reveal" style="--d:.08s"><span class="why-card__n">02</span><h3 class="h3">{{home.why.h32}}</h3><p>{{home.why.p2}}</p></article>
+      <article class="why-card spot reveal" style="--d:.16s"><span class="why-card__n">03</span><h3 class="h3">{{home.why.h33}}</h3><p>{{home.why.p3}}</p></article>
+    </div>
+    <div class="btn-row" style="justify-content:center"><a class="btn btn--ghost" href="why-it-matters.html">{{home.why.t1}} <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+<section class="section t-bark" id="who">
+  <div class="wrap stack">
+    <div class="section-head section-head--center">
+      <span class="rule rule--center"></span>
+      <span class="eyebrow">{{home.who.span1}}</span>
+      <h2 class="h2">{{home.who.h21}}</h2>
+      <p class="lede">{{home.who.p1}}</p>
+    </div>
+    <div class="grid grid--3 personas">
+      <article class="persona spot reveal">
+        <span class="persona__icon"><svg class="icon"><use href="#i-telescope"/></svg></span>
+        <h3 class="h3">{{home.who.h31}}</h3>
+        <p>{{home.who.p2}}</p>
+      </article>
+      <article class="persona spot reveal" style="--d:.08s">
+        <span class="persona__icon"><svg class="icon"><use href="#i-compass"/></svg></span>
+        <h3 class="h3">{{home.who.h32}}</h3>
+        <p>{{home.who.p3}}</p>
+      </article>
+      <article class="persona spot reveal" style="--d:.16s">
+        <span class="persona__icon"><svg class="icon"><use href="#i-rocket"/></svg></span>
+        <h3 class="h3">{{home.who.h33}}</h3>
+        <p>{{home.who.p4}}</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section signup t-rose" id="join">
+  <div class="wrap">
+    <div class="signup__card reveal">
+      <p class="signup__kicker">{{home.join.p1}}</p>
+      <h2 class="signup__title">{{home.join.h21}}</h2>
+      <div class="signup__rule"></div>
+      <p class="signup__copy">{{home.join.p2}}</p>
+      <a class="btn btn--silver btn--lg" href="register.html">{{home.join.a1}}</a>
+      <p class="signup__fine">{{home.join.p3}}</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+{{>footer}}
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/motion.js" defer></script>
+</body>
+</html>
