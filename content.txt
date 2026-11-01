@@ -92,37 +92,37 @@ home.page.a21: Meet the team
 home.page.a22: What ROOTS means
 home.page.a23: Contact
 # --- home / top ---
-home.top.span1: Free pilot · Grades 6⁠–⁠8 · Live on Zoom
+home.top.span1: Free pilot · Grades 5–⁠8 · Live on Zoom
 home.top.h11: ROOTS Quest
-home.top.p1: Engineering for an impact. Discover how engineers design things that leave people and places better off, then design ideas of your own.
-home.top.a1: Join the pilot cohort
-home.top.a2: See what students learn
-home.top.span2: A small pilot for 5 to 6 students
+home.top.p1: Teaching young students engineering for an impact and discovering how engineers design things that leave people and places better.
+home.top.a1: Join our pilot cohort
+home.top.a2: See what our students learn
+home.top.span2: 5 to 6 students
 home.top.span3: Four weeks, 60 minutes a week
 home.top.span4: No engineering or science experience needed
-home.top.span5: Live on Zoom · Time chosen to suit the group · Starts {start_date}
+home.top.span5: Live on Zoom · Starts {start_date}
 # --- home / what ---
 home.what.span1: What is ROOTS Quest?
-home.what.h21: A 4-week course in engineering for an impact
-home.what.p1: ROOTS Quest is a free, youth-led course for students in Grades 6⁠–⁠8. Each week covers one branch of engineering, three real inventions and one short design prompt.
+home.what.h21: A 4-week course in engineering for an impact for students Grades 5-8
+home.what.p1: ROOTS Quest is a free, youth-led course for students in Grades 5⁠–⁠8. Each week will cover a branch of engineering with three real inventions and one short design prompt for the students.
 home.what.span2: What
 home.what.h31: Engineering for an impact
-home.what.p2: Four branches of engineering, explored through real inventions and ideas of your own.
+home.what.p2: Exploring four branches of engineering through real inventions and ideas from the students
 home.what.span3: Where
 home.what.h32: Live on Zoom
-home.what.p3: Join from home with a computer, a browser, a pencil and paper. Based in the Calgary area, Alberta.
+home.what.p3: Join from home with a computer with class activities being done digitally. Based in the Calgary area, Alberta.
 home.what.span4: When
 home.what.h33: Time chosen with you
 home.what.p4: One live class each week, set around students’ availability, from {start_date} to {end_date}.
 home.what.span5: Structure
 home.what.h34: 4 weeks, 60 minutes a week
-home.what.p5: One branch of engineering each week, with a family showcase built into Week 4.
+home.what.p5: Exploring one branch of engineering each week, with a studentg showcase in Week 4.
 home.what.span6: Who
-home.what.h35: Grades 6⁠–⁠8
-home.what.p6: Ages 11 to 14. No engineering or science experience needed.
+home.what.h35: Grades 5–⁠8
+home.what.p6: Ages 10 to 14. No engineering or science experience needed. Only curiosity.
 home.what.span7: Cost
 home.what.h36: Completely free
-home.what.p7: No tuition and no fees. As a pilot, we ask for honest feedback in return.
+home.what.p7: No tuition and no fees. As a pilot program, we ask for honest feedback in return.
 home.what.t1: More about ROOTS Quest
 # --- home / learn ---
 home.learn.span1: What students learn
@@ -130,8 +130,8 @@ home.learn.h21: Four weeks, four branches of engineering
 home.learn.p1: Some designs only make a problem a little less bad. Others help a place heal. Each week, students use this idea, called regenerative design, to look at one branch of engineering.
 home.learn.span2: Knowledge · 01
 home.learn.h31: Systems thinking
-home.learn.p2: **What is it?** Every invention sits inside a bigger system of people, places and nature. Students draw simple maps of flows and loops, and find the one place where a small change could matter most.
-home.learn.li1: Flows and loops: “waste is food”
+home.learn.p2: **What is it?** Every invention sits inside a bigger system of people, places and nature. Our students will learn to draw simple maps of flows and loops, and find the one place where a small change could matter most.
+home.learn.li1: Flows and Connections
 home.learn.li2: Feedback loops that help a place recover
 home.learn.li3: Leverage points and trade-offs
 home.learn.span3: Knowledge · 02
