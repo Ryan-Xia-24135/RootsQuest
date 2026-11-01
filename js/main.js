@@ -89,32 +89,6 @@
     });
   }
 
-  /* ---------- Session time in the visitor's time zone ---------- */
-  // Sessions run Sundays at 5:00 p.m. Mountain Time (Calgary). The first one is Oct 18, 2026,
-  // 23:00 UTC. Visitors elsewhere see the same moment in their own time zone.
-  const sessionEls = document.querySelectorAll("[data-session-time]");
-  if (sessionEls.length) {
-    try {
-      const first = new Date(Date.UTC(2026, 9, 18, 23, 0));
-      const fmt = (zone, opts) => new Intl.DateTimeFormat("en-CA", { timeZone: zone, ...opts });
-      const clock = { hour: "numeric", minute: "2-digit", hour12: true };
-      const day = { weekday: "long" };
-      const tidy = (s) => s.replace(/\s?([ap])\.?m\.?/i, (_, x) => ` ${x.toLowerCase()}.m.`);
-      const localClock = fmt(undefined, clock).format(first);
-      const sameAsCalgary =
-        localClock === fmt("America/Edmonton", clock).format(first) &&
-        fmt(undefined, day).format(first) === fmt("America/Edmonton", day).format(first);
-      if (!sameAsCalgary) {
-        const weekday = fmt(undefined, day).format(first);
-        const zone = fmt(undefined, { timeZoneName: "short" }).formatToParts(first).find((p) => p.type === "timeZoneName")?.value || "";
-        sessionEls.forEach((el) => {
-          el.innerHTML = `${el.dataset.lead ?? ""}<span class="st">${weekday}s at ${tidy(localClock)} ${zone} <small>(5:00 p.m. MT)</small></span>`;
-          el.title = "Shown in your time zone. Sessions run Sundays at 5:00 p.m. Mountain Time; if your region changes its clocks on different dates, the local time can shift by an hour.";
-        });
-      }
-    } catch (e) { /* keep the Mountain Time text */ }
-  }
-
   /* ---------- Accordions (single open per group) ---------- */
   document.querySelectorAll(".acc").forEach((group) => {
     const items = Array.from(group.querySelectorAll(".acc__item"));
