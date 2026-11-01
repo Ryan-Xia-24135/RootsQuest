@@ -414,7 +414,6 @@
       .from(heroCard.querySelectorAll(".btn-row .btn"), { y: 20, opacity: 0, duration: 0.7, stagger: 0.1 }, "-=0.5")
       .from(heroCard.querySelectorAll(".hero__facts span"), { y: 14, opacity: 0, duration: 0.6, stagger: 0.08 }, "-=0.5")
       .from(heroCard.querySelector(".hero__time"), { y: 10, opacity: 0, duration: 0.6 }, "-=0.3");
-    gsap.to(heroCard, { yPercent: -9, opacity: 0.25, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
   }
 
   /* ---------- Subpage header intro ---------- */

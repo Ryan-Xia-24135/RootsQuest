@@ -1,0 +1,569 @@
+/* ==========================================================================
+   ROOTS Quest — bento + dither layer
+   Loaded after styles.css. Photo = section heading. Solid dithered background.
+   Each section has two matching colours (--c1 page, --c2 cards) and one yellow accent.
+   ========================================================================== */
+
+:root {
+  --accent: #f5c518;
+  --accent-ink: #1b1503;
+
+  /* repoint the old gold tokens at the yellow accent (also recolours the SVG diagrams) */
+  --gold: #e0b010;
+  --gold-bright: #f5c518;
+  --gold-hover: #ffd633;
+  --gold-edge: rgba(245, 197, 24, 0.55);
+  --gold-shadow: #7a5f00;
+
+  /* palettes sampled from each photo */
+  --dusk-1: #0f2219;  --dusk-2: #1f4733;
+  --fern-1: #0c2620;  --fern-2: #1a5240;
+  --lake-1: #0b1d2e;  --lake-2: #1b4263;
+  --bark-1: #24160c;  --bark-2: #583720;
+  --ember-1: #26101a; --ember-2: #55213a;
+  --moss-1: #0e2018;  --moss-2: #26503a;
+  --amber-1: #261a08; --amber-2: #5b3d10;
+  --rose-1: #2a1520;  --rose-2: #5c3045;   /* muted, dark dusty pink */
+
+  --radius: clamp(18px, 1.8vw, 28px);
+  --radius-sm: clamp(14px, 1.3vw, 20px);
+}
+
+.t-dusk  { --c1: var(--dusk-1);  --c2: var(--dusk-2); }
+.t-fern  { --c1: var(--fern-1);  --c2: var(--fern-2); }
+.t-lake  { --c1: var(--lake-1);  --c2: var(--lake-2); }
+.t-bark  { --c1: var(--bark-1);  --c2: var(--bark-2); }
+.t-ember { --c1: var(--ember-1); --c2: var(--ember-2); }
+.t-moss  { --c1: var(--moss-1);  --c2: var(--moss-2); }
+.t-amber { --c1: var(--amber-1); --c2: var(--amber-2); }
+.t-rose  { --c1: var(--rose-1);  --c2: var(--rose-2); }
+
+/* the colour each section dithers in from (= the previous section's page colour) */
+
+/* photo for each section heading (paths are relative to this file) */
+
+body { background: #08110d; }
+
+/* ---------- Section canvas: solid colour + dither ---------- */
+.section {
+  min-height: 0;
+  display: block;
+  isolation: isolate;
+  background: var(--c1, #0c1812);
+  padding: clamp(40px, 6vh, 72px) var(--gutter) clamp(56px, 8vh, 96px);
+}
+/* dithered blend from the previous section's colour */
+.section::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; z-index: -1; pointer-events: none;
+  height: min(100%, 900px);
+  background: var(--prev, var(--c1));
+  -webkit-mask: url("../assets/dither-fade.png") 0 0 / 480px 900px repeat-x;
+          mask: url("../assets/dither-fade.png") 0 0 / 480px 900px repeat-x;
+  image-rendering: pixelated;
+}
+/* fine uniform dither grain over the whole section */
+.section::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: #fff; opacity: 0.045;
+  -webkit-mask: url("../assets/dither-tile.png") 0 0 / 16px 16px repeat;
+          mask: url("../assets/dither-tile.png") 0 0 / 16px 16px repeat;
+  image-rendering: pixelated;
+}
+
+/* ---------- Photo = heading ---------- */
+.section-head,
+.hero__card,
+.signup__card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(to top, rgba(6, 12, 9, 0.86) 0%, rgba(6, 12, 9, 0.32) 48%, rgba(6, 12, 9, 0.04) 100%),
+    var(--photo) center / cover no-repeat,
+    var(--c2);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+/* dither grain over the photo so every image shares one texture */
+.section-head::after,
+.hero__card::after,
+.signup__card::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: #000; opacity: 0.3;
+  -webkit-mask: url("../assets/dither-tile.png") 0 0 / 12px 12px repeat;
+          mask: url("../assets/dither-tile.png") 0 0 / 12px 12px repeat;
+  image-rendering: pixelated;
+}
+.section-head > *, .hero__card > *, .signup__card > * { position: relative; z-index: 1; }
+
+.section-head {
+  max-width: none; width: 100%;
+  min-height: clamp(300px, 46vh, 500px);
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+  padding: clamp(24px, 4vw, 56px);
+  text-align: left;
+  margin-inline: 0;
+}
+.section-head--center { text-align: left; margin-inline: 0; }
+.section-head .h2 { max-width: 20ch; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45); }
+.section-head .lede { max-width: 62ch; opacity: 0.94; }
+.section-head .rule, .section-head .rule--center { margin-inline: 0; }
+
+.rule { background: var(--accent); height: 3px; width: 56px; border-radius: 2px; }
+.eyebrow { color: var(--accent); opacity: 1; letter-spacing: 0.18em; }
+
+/* ---------- Hero ---------- */
+.hero { display: block; min-height: 0; padding: calc(var(--nav-height) + 16px) var(--gutter) 28px; text-align: left; }
+.hero__card {
+  max-width: none; width: 100%;
+  min-height: calc(100svh - var(--nav-height) - 44px);
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end;
+  padding: clamp(24px, 5vw, 72px);
+}
+.hero__title { font-size: clamp(56px, 10vw, 150px); text-shadow: 0 4px 28px rgba(0, 0, 0, 0.4); }
+.hero__tagline { max-width: 40ch; font-size: clamp(18px, 2.2vw, 32px); }
+.hero .btn-row { justify-content: flex-start !important; }
+.hero__badge { background: var(--accent); color: var(--accent-ink); border-color: transparent; font-weight: 700; }
+.hero__badge::before { background: var(--accent-ink); }
+.hero__facts { justify-content: flex-start; }
+.hero__facts span { background: rgba(6, 12, 9, 0.7); border-color: rgba(255, 255, 255, 0.2); }
+.hero__time { text-shadow: none; }
+.hero__time .icon { color: var(--accent); }
+.hero__scroll { display: none; }
+.hero .rule { display: none; }
+
+/* ---------- Bento cards ---------- */
+.keyfact, .pillar, .commit, .why-card, .persona, .glass, .panel, .problem__card, .outcome, .process-wrap {
+  background: var(--c2);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  color: #fff;
+}
+.commit--pilot { background: color-mix(in srgb, var(--c2), #fff 9%); border-color: rgba(255, 255, 255, 0.16); }
+.keyfact:hover, .pillar:hover, .why-card:hover, .persona:hover { border-color: var(--accent); }
+
+.keyfact__k, .pillar__k, .why-card__n { color: var(--accent); opacity: 1; }
+.keyfact__icon, .persona__icon {
+  background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 12px;
+}
+.pilot-tag { background: var(--accent); color: var(--accent-ink); border-color: transparent; font-weight: 700; }
+.ticks li::before { border-color: var(--accent); }
+.viz { background: rgba(0, 0, 0, 0.26); border-color: rgba(255, 255, 255, 0.08); }
+.viz g.js-pop circle[fill="var(--gold-bright)"] + text { fill: var(--accent-ink); }
+
+/* Home "what is it" bento: 4-column mosaic instead of a uniform 3x2 grid */
+#what .keyfacts { grid-template-columns: repeat(4, 1fr); grid-auto-flow: dense; }
+#what .keyfact:nth-child(1) { grid-column: span 2; grid-row: span 2; padding: clamp(24px, 3vw, 44px); justify-content: flex-end; background: color-mix(in srgb, var(--c2), #000 18%); }
+#what .keyfact:nth-child(1) .keyfact__v { font-size: clamp(28px, 3.4vw, 50px); line-height: 1.05; }
+#what .keyfact:nth-child(1) p { font-size: clamp(15px, 1.3vw, 19px); max-width: 34ch; }
+#what .keyfact:nth-child(4) { grid-column: span 2; }
+#what .keyfact:nth-child(5) { grid-column: span 2; background: color-mix(in srgb, var(--c2), #fff 9%); }
+#what .keyfact:nth-child(6) { grid-column: span 2; background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+#what .keyfact:nth-child(6) .keyfact__k { color: var(--accent-ink); opacity: 0.7; }
+#what .keyfact:nth-child(6) .keyfact__icon { background: var(--accent-ink); color: var(--accent); }
+#what .keyfact:nth-child(6) p { opacity: 0.85; }
+@media (max-width: 900px) {
+  #what .keyfacts { grid-template-columns: repeat(2, 1fr); }
+  #what .keyfact:nth-child(n) { grid-column: span 1; grid-row: auto; }
+  #what .keyfact:nth-child(1) { grid-column: span 2; }
+}
+@media (max-width: 560px) {
+  #what .keyfacts { grid-template-columns: 1fr; }
+  #what .keyfact:nth-child(n) { grid-column: auto; }
+}
+
+/* ---------- Buttons ---------- */
+.btn--gold, .btn--gold.btn--deep, .btn--silver {
+  background: var(--accent); color: var(--accent-ink); border-color: transparent;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.35);
+}
+.btn--gold:hover, .btn--silver:hover { filter: brightness(1.06); box-shadow: 0 6px 0 rgba(0, 0, 0, 0.35); }
+.btn--ghost { border-color: rgba(255, 255, 255, 0.4); }
+.btn-row[style] { justify-content: flex-start !important; }
+
+/* ---------- Final call to action: photo card ---------- */
+.signup { text-align: left; }
+.signup__card {
+  max-width: none; width: 100%;
+  min-height: clamp(360px, 54vh, 560px);
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end;
+  padding: clamp(24px, 5vw, 72px);
+}
+.signup__copy { margin-inline: 0; max-width: 40ch; }
+.signup__rule { margin-left: 0; background: var(--accent); height: 3px; width: 56px; }
+.signup__kicker { color: var(--accent); }
+.signup .btn--lg { margin-left: 0; width: auto; padding-inline: clamp(28px, 4vw, 56px); }
+
+/* ---------- Nav, progress, footer ---------- */
+.nav, .nav.is-scrolled { background: rgba(8, 17, 13, 0.86); border-bottom-color: rgba(255, 255, 255, 0.08); }
+.tabs { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1); }
+.tabs__link[aria-current="page"], .tabs__item:hover > .tabs__link[aria-current="page"] { background: var(--accent); color: var(--accent-ink); }
+.nav__register { background: var(--accent); color: var(--accent-ink); border-color: transparent; font-weight: 700; }
+.nav__register:hover { background: #ffd633; }
+.progress i { background: var(--accent); }
+.footer { background: #08110d; }
+
+/* ---------- Refinements ---------- */
+.section-head .lede, .section-head--center .lede, .learn .section-head .lede { margin-inline: 0; }
+.hero__card { background:
+  linear-gradient(to right, rgba(6,12,9,.72) 0%, rgba(6,12,9,.25) 55%, rgba(6,12,9,0) 80%),
+  linear-gradient(to top, rgba(6,12,9,.86) 0%, rgba(6,12,9,.3) 45%, rgba(6,12,9,.04) 100%),
+  var(--photo) center / cover no-repeat, var(--c2); }
+.hero__card::after { opacity: 0.12; }
+
+/* ==========================================================================
+   Inner pages
+   ========================================================================== */
+
+/* page heroes: the photo card is the heading */
+.page-hero { display: block; min-height: 0; padding: calc(var(--nav-height) + 16px) var(--gutter) 28px; }
+.page-hero::before { filter: none; }
+.page-hero__inner {
+  position: relative; overflow: hidden; isolation: isolate; max-width: none;
+  min-height: clamp(380px, 62vh, 640px);
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+  padding: clamp(24px, 5vw, 72px);
+  border-radius: var(--radius); border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(to right, rgba(6,12,9,.7) 0%, rgba(6,12,9,.2) 60%, rgba(6,12,9,0) 85%),
+    linear-gradient(to top, rgba(6,12,9,.86) 0%, rgba(6,12,9,.3) 50%, rgba(6,12,9,.04) 100%),
+    var(--photo) center / cover no-repeat, var(--c2);
+}
+.page-hero__inner::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: #000; opacity: 0.14;
+  -webkit-mask: url("../assets/dither-tile.png") 0 0 / 12px 12px repeat; mask: url("../assets/dither-tile.png") 0 0 / 12px 12px repeat; image-rendering: pixelated;
+}
+.page-hero__inner > * { position: relative; z-index: 1; }
+.page-hero__title { max-width: 18ch; }
+.page-hero .rule { margin-left: 0; }
+
+/* rose = the "join" colour; contact + final CTAs become photo cards */
+.contact {
+  position: relative; overflow: hidden; isolation: isolate;
+  min-height: clamp(340px, 50vh, 520px);
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+  padding: clamp(24px, 5vw, 72px);
+  background: linear-gradient(to top, rgba(6,12,9,.86), rgba(6,12,9,.3) 55%, rgba(6,12,9,.05)), var(--photo) center / cover no-repeat, var(--c2);
+}
+.contact > * { position: relative; z-index: 1; }
+.contact::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: #000; opacity: .22;
+  -webkit-mask: url("../assets/dither-tile.png") 0 0 / 12px 12px repeat; mask: url("../assets/dither-tile.png") 0 0 / 12px 12px repeat; image-rendering: pixelated; }
+
+/* accordions, meaning bars, misc inner components */
+.acc--faq .acc__item.is-open .acc__btn,
+.acc--faq .acc__item.is-open .acc__panel { background: color-mix(in srgb, var(--c2), #fff 10%); color: #fff; }
+.acc--faq .acc__item.is-open .acc__panel { color: rgba(255,255,255,.9); }
+.acc--weeks .acc__item.is-open .acc__btn, .acc--weeks .acc__item.is-open .acc__panel { box-shadow: inset 3px 0 0 var(--accent); }
+.acc__num { color: var(--accent); }
+.meaning__bar { background: color-mix(in srgb, var(--c2), #fff 8%); color: #fff; }
+.meaning__letter { background: var(--accent); color: var(--accent-ink); }
+.photo { border-radius: var(--radius-sm); border-color: rgba(255,255,255,.1); box-shadow: none; }
+
+/* ==========================================================================
+   Register page: dusty rose, same dither system
+   ========================================================================== */
+body.register { background: var(--rose-1); color: #fff; position: relative; }
+body.register::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; background: #fff; opacity: .045;
+  -webkit-mask: url("../assets/dither-tile.png") 0 0 / 16px 16px repeat; mask: url("../assets/dither-tile.png") 0 0 / 16px 16px repeat; image-rendering: pixelated;
+}
+body.register .reg-nav { background: rgba(42, 21, 32, .88); border-bottom-color: rgba(255,255,255,.08); }
+body.register .reg-nav__brand { color: #fff; }
+body.register .reg-nav__back { color: rgba(255,255,255,.7); }
+body.register .reg-nav__back:hover { color: #fff; }
+body.register .reg { position: relative; z-index: 1; max-width: 720px; }
+body.register #intro, body.register .done { }
+body.register .reg::before {
+  content: ""; display: block; height: clamp(190px, 30vh, 280px); margin-bottom: clamp(18px, 3vh, 30px);
+  border-radius: var(--radius); border: 1px solid rgba(255,255,255,.1);
+  background: linear-gradient(to top, rgba(6,12,9,.55), rgba(6,12,9,0) 60%), url("../assets/home-05.png") center / cover no-repeat;
+}
+body.register #form, body.register .done {
+  background: var(--rose-2); border: 1px solid rgba(255,255,255,.09); border-radius: var(--radius);
+  padding: clamp(20px, 3.4vw, 40px);
+}
+body.register #form { margin-top: 24px; }
+body.register .reg__eyebrow { color: var(--accent); }
+body.register .reg__lede, body.register .done p { color: rgba(255,255,255,.78); }
+body.register .reg__dates span { border-color: rgba(255,255,255,.22); color: rgba(255,255,255,.85); }
+body.register .reg__dates span b { color: #fff; }
+body.register .field label, body.register .field legend { color: #fff; }
+body.register .field .hint, body.register .fine { color: rgba(255,255,255,.62); }
+body.register .req { color: var(--accent); }
+body.register .input { background: #fff; color: #1b1015; border-color: transparent; }
+body.register .input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(245,197,24,.28); }
+body.register .pill { background: transparent; color: #fff; border-color: rgba(255,255,255,.35); }
+body.register .pill:hover { background: rgba(255,255,255,.1); }
+body.register .pill[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+body.register .error { color: #ffb4b4; }
+body.register .alert { background: rgba(255,255,255,.08); border-color: rgba(255,180,180,.5); color: #ffd6d6; }
+body.register .done__check { background: var(--accent); color: var(--accent-ink); box-shadow: none; }
+body.register a { color: var(--accent); }
+body.register a.btn { color: var(--accent-ink); }
+
+/* ---------- Inner-page fixes ---------- */
+.learn .section-head, .contact { max-width: none; width: 100%; margin-inline: 0; }
+.learn .section-head .lede { margin-inline: 0; }
+.glass:has(> .section-head) { background: none; border: 0; padding: 0; }
+.glass > .section-head { margin-bottom: clamp(14px, 2vw, 26px); }
+.section-head { background:
+  linear-gradient(to top, rgba(6,12,9,.92) 0%, rgba(6,12,9,.55) 50%, rgba(6,12,9,.1) 100%),
+  var(--photo) center / cover no-repeat, var(--c2); }
+.section-head .lede, .section-head .eyebrow { text-shadow: 0 1px 10px rgba(0,0,0,.6); }
+.section-head .h2 { text-shadow: 0 2px 20px rgba(0,0,0,.7); }
+
+/* rose-tinted overlay on the join cards so the type stays readable on bright photos */
+.t-rose .signup__card, .t-rose .contact {
+  background:
+    linear-gradient(to top, rgba(42,21,32,.94) 0%, rgba(42,21,32,.7) 50%, rgba(42,21,32,.42) 100%),
+    var(--photo) center / cover no-repeat, var(--c2);
+}
+.t-rose .signup__kicker { text-shadow: 0 1px 12px rgba(0,0,0,.6); }
+
+/* ==========================================================================
+   Photos + colour flow. One colour per page; rose is reserved for "join".
+   Each colour appears in one unbroken run (no A-B-A).
+   ========================================================================== */
+.section { --prev: transparent; }
+#learn { --prev: var(--dusk-1); }          /* home: dusk > lake > bark > rose */
+#why   { --prev: var(--lake-1); }
+#join  { --prev: var(--bark-1); }
+#join-curriculum { --prev: var(--fern-1); }
+#contact { --prev: var(--bark-1); }
+
+
+/* ==========================================================================
+   Textured backgrounds. One continuous pattern per page (js/main.js sets --sy so
+   every section continues the pattern from where the one above stopped).
+     blue  = water      green = leaves      brown = roots      rose = mountains
+   The tiles are white/black pixels at low alpha, so they read as a lighter and a
+   darker shade of whatever page colour sits underneath.
+   ========================================================================== */
+:root { --tile: 1152px; }
+@media (max-width: 1099px) { :root { --tile: 768px; } }
+.t-lake { --tex: url("../assets/water.png"); }
+.t-dusk, .t-fern, .t-moss { --tex: url("../assets/leaves.png"); }
+.t-bark, .t-amber { --tex: url("../assets/roots.png"); }
+.t-rose, .t-ember { --tex: url("../assets/mountains.png"); }
+
+.section {
+  background:
+    var(--tex) 0 calc(var(--sy, 0px) * -1) / var(--tile) var(--tile) repeat,
+    var(--c1, #0c1812);
+  image-rendering: pixelated;
+}
+.section > * { image-rendering: auto; }
+
+body.register {
+  --tex: url("../assets/mountains.png");
+  background: var(--tex) 0 0 / var(--tile) var(--tile) repeat fixed, var(--rose-1);
+  image-rendering: pixelated;
+}
+body.register > * { image-rendering: auto; }
+
+/* remaining legacy cards -> solid bento */
+.learn__col, .member, .topic__head, .fit__head, .stat, .made, .case, .weeks, .legal, .about-intro, .eco__text, .beyond__text, .forest-card > .glass {
+  background: var(--c2); border: 1px solid rgba(255,255,255,.09); border-radius: var(--radius-sm);
+  box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; color: #fff;
+}
+.learn__tag, .learn__tag--alt { background: var(--accent); color: var(--accent-ink); border-color: transparent; font-weight: 700; }
+.fit__icon, .case__icon { background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 12px; }
+.learn__col:hover, .member:hover { border-color: var(--accent); }
+
+/* ---------- Responsive refinements ---------- */
+.hero__facts span { display: inline-block; white-space: normal; line-height: 1.35; }
+@media (max-width: 600px) {
+  .hero__title { font-size: clamp(48px, 15vw, 72px); }
+  .hero__card, .page-hero__inner { padding: 22px; }
+  .hero .btn-row .btn { width: 100%; }
+  .section-head { min-height: clamp(260px, 42vh, 360px); }
+}
+html:has(body.register) { background: var(--rose-1); }
+@media (max-width: 900px) and (min-width: 561px) {
+  #what .keyfact:nth-child(6) { grid-column: span 2; }
+}
+
+/* ==========================================================================
+   One big page: adjacent sections of the same colour merge into one surface
+   (no fade layer, tighter joins, grain and texture aligned to the page).
+   ========================================================================== */
+.section::after { -webkit-mask-position: 0 calc(var(--sy, 0px) * -1); mask-position: 0 calc(var(--sy, 0px) * -1); }
+.t-dusk + .t-dusk { padding-top: clamp(20px, 3.5vh, 44px); }
+.t-dusk:has(+ .t-dusk) { padding-bottom: clamp(28px, 4.5vh, 56px); }
+.t-fern + .t-fern { padding-top: clamp(20px, 3.5vh, 44px); }
+.t-fern:has(+ .t-fern) { padding-bottom: clamp(28px, 4.5vh, 56px); }
+.t-moss + .t-moss { padding-top: clamp(20px, 3.5vh, 44px); }
+.t-moss:has(+ .t-moss) { padding-bottom: clamp(28px, 4.5vh, 56px); }
+.t-lake + .t-lake { padding-top: clamp(20px, 3.5vh, 44px); }
+.t-lake:has(+ .t-lake) { padding-bottom: clamp(28px, 4.5vh, 56px); }
+.t-bark + .t-bark { padding-top: clamp(20px, 3.5vh, 44px); }
+.t-bark:has(+ .t-bark) { padding-bottom: clamp(28px, 4.5vh, 56px); }
+.t-ember + .t-ember { padding-top: clamp(20px, 3.5vh, 44px); }
+.t-ember:has(+ .t-ember) { padding-bottom: clamp(28px, 4.5vh, 56px); }
+.t-amber + .t-amber { padding-top: clamp(20px, 3.5vh, 44px); }
+.t-amber:has(+ .t-amber) { padding-bottom: clamp(28px, 4.5vh, 56px); }
+.t-rose + .t-rose { padding-top: clamp(20px, 3.5vh, 44px); }
+.t-rose:has(+ .t-rose) { padding-bottom: clamp(28px, 4.5vh, 56px); }
+
+/* ==========================================================================
+   Full-page headers on every page
+   ========================================================================== */
+.page-hero__inner { min-height: max(440px, calc(100svh - var(--nav-height) - 44px)); }
+.page-hero__title { font-size: clamp(44px, 7.5vw, 112px); max-width: 16ch; }
+.page-hero .lede { font-size: clamp(17px, 1.8vw, 26px); max-width: 48ch; }
+.signup__card, .contact { min-height: max(440px, calc(100svh - var(--nav-height) - 44px)); }
+.signup__title { font-size: clamp(40px, 6.5vw, 100px); }
+.contact .h2 { font-size: clamp(36px, 5.5vw, 84px); }
+
+/* ==========================================================================
+   Join / register page: a full-screen split — photo header | form
+   ========================================================================== */
+body.register .reg::before { content: none; display: none; }
+body.register .reg {
+  max-width: none; margin: 0; width: 100%;
+  padding: 16px clamp(14px, 2vw, 28px) 28px;
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(14px, 1.6vw, 22px);
+  min-height: calc(100svh - var(--nav-height)); align-items: start;
+}
+body.register .reg__hero {
+  position: sticky; top: calc(var(--nav-height) + 16px);
+  height: calc(100svh - var(--nav-height) - 44px); min-height: 460px;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+  padding: clamp(24px, 4vw, 64px);
+  border-radius: var(--radius); border: 1px solid rgba(255,255,255,.1); overflow: hidden; isolation: isolate;
+  background:
+    linear-gradient(to top, rgba(42,21,32,.92) 0%, rgba(42,21,32,.5) 45%, rgba(42,21,32,.08) 100%),
+    url("../assets/home-05.png") center / cover no-repeat, var(--rose-2);
+}
+body.register .reg__hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: #000; opacity: .16;
+  -webkit-mask: url("../assets/dither-tile.png") 0 0 / 12px 12px repeat; mask: url("../assets/dither-tile.png") 0 0 / 12px 12px repeat; image-rendering: pixelated;
+}
+body.register .reg__hero > * { position: relative; z-index: 1; }
+body.register .reg h1 { font-size: clamp(48px, 6.4vw, 104px); margin-top: 14px; }
+body.register .reg__lede { font-size: clamp(17px, 1.7vw, 24px); max-width: 34ch; color: rgba(255,255,255,.88); }
+body.register .reg__dates span { background: rgba(42,21,32,.65); }
+body.register .reg__panel { min-width: 0; display: flex; flex-direction: column; }
+body.register #form, body.register .done { margin-top: 0; padding: clamp(22px, 3vw, 48px); min-height: calc(100svh - var(--nav-height) - 44px); }
+body.register .done.is-visible { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+body.register .input { font-size: 17px; padding: 15px 16px; }
+body.register .field label, body.register .field legend { font-size: 16px; }
+@media (max-width: 999px) {
+  body.register .reg { grid-template-columns: 1fr; }
+  body.register .reg__hero { position: relative; top: 0; height: auto; min-height: max(420px, 62svh); }
+  body.register #form, body.register .done { min-height: 0; }
+}
+
+/* ==========================================================================
+   Curriculum: week cards (replaces the accordion) + normal document order
+   ========================================================================== */
+.curriculum-page main { display: block; }
+.weeks-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(12px, 1.8vw, 24px); }
+.week-card {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: clamp(20px, 2.4vw, 36px);
+  background: var(--c2); border: 1px solid rgba(255,255,255,.09); border-radius: var(--radius-sm);
+  transition: transform .35s var(--ease), border-color .35s;
+}
+.week-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.week-card__n {
+  align-self: flex-start; padding: 5px 12px; border-radius: 999px;
+  background: var(--accent); color: var(--accent-ink);
+  font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+}
+.week-card .h3 { font-size: clamp(22px, 2.3vw, 34px); line-height: 1.12; }
+.week-card__lede { font-size: clamp(15px, 1.2vw, 18px); line-height: 1.55; opacity: .92; }
+.week-card__rows { margin: 4px 0 0; display: grid; gap: 0; }
+.week-card__rows > div { padding: 12px 0; border-top: 1px solid rgba(255,255,255,.12); display: grid; grid-template-columns: 7.5ch 1fr; gap: 6px 16px; }
+.week-card__rows dt { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); padding-top: 3px; }
+.week-card__rows dd { margin: 0; font-size: clamp(14px, 1.1vw, 16px); line-height: 1.5; opacity: .9; }
+@media (max-width: 900px) { .weeks-grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .week-card__rows > div { grid-template-columns: 1fr; } }
+
+/* ---------- Heading photos: mono + dither everywhere (see tools/make-headings.py) ---------- */
+#top { --photo: url("../assets/home-01.png"); }
+#what { --photo: url("../assets/home-02.png"); }
+#learn { --photo: url("../assets/home-04.png"); }
+#commitment { --photo: url("../assets/dz-about-project-photo-lake.png"); }
+#why { --photo: url("../assets/home-03.png"); }
+#who { --photo: url("../assets/dz-student-writing-bark.png"); }
+#join { --photo: url("../assets/home-05.png"); }
+.why-page #top { --photo: url("../assets/home-04.png"); }
+.why-page #problem { --photo: url("../assets/dz-card-singapore-image-lake.png"); }
+.why-page #beyond-ecology { --photo: url("../assets/dz-card-microsoft-image-lake.png"); }
+.why-page #beyond-skills { --photo: url("../assets/dz-course-systems-map-lake.png"); }
+.why-page #industry { --photo: url("../assets/dz-about-project-photo-lake.png"); }
+.curriculum-page #top { --photo: url("../assets/dz-course-lofi-prototype-green.png"); }
+.curriculum-page #weeks { --photo: url("../assets/home-02.png"); }
+.curriculum-page #skills { --photo: url("../assets/dz-about-forest-photo-green.png"); }
+.curriculum-page #projects { --photo: url("../assets/dz-pinecones-green.png"); }
+.curriculum-page #faq { --photo: url("../assets/dz-student-writing-green.png"); }
+.curriculum-page #join-curriculum { --photo: url("../assets/home-05.png"); }
+.about-page #top { --photo: url("../assets/dz-spider-web-bark.png"); }
+.about-page #story { --photo: url("../assets/dz-about-project-photo-bark.png"); }
+.about-page #roots { --photo: url("../assets/dz-about-forest-photo-bark.png"); }
+.about-page #team { --photo: url("../assets/dz-pinecones-bark.png"); }
+.about-page #contact { --photo: url("../assets/home-05.png"); }
+.privacy-page #top { --photo: url("../assets/home-01.png"); }
+.privacy-page #policy { --photo: url("../assets/home-01.png"); }
+
+/* ==========================================================================
+   Availability calendar (register page)
+   ========================================================================== */
+body.register .avail { min-width: 0; }
+.avail__tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.chip {
+  padding: 8px 14px; border-radius: 999px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+  background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.28); transition: background .15s, border-color .15s;
+}
+.chip:hover { background: rgba(255,255,255,.18); border-color: #fff; }
+.chip--quiet { background: transparent; border-color: rgba(255,255,255,.2); color: rgba(255,255,255,.75); }
+.cal {
+  margin-top: 14px; display: grid; grid-template-columns: auto repeat(7, minmax(0, 1fr)); gap: 4px;
+  padding: clamp(8px, 1.4vw, 14px); border-radius: var(--radius-sm); background: rgba(0,0,0,.22); border: 1px solid rgba(255,255,255,.08);
+  user-select: none; -webkit-user-select: none; touch-action: manipulation;
+}
+.cal__head, .cal__time {
+  font: inherit; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+  background: transparent; border: 0; cursor: pointer; border-radius: 8px; padding: 6px 2px;
+}
+.cal__head:hover, .cal__time:hover { background: rgba(255,255,255,.08); }
+.cal__time { text-align: right; padding-right: 8px; letter-spacing: 0; text-transform: none; color: rgba(255,255,255,.78); font-weight: 600; white-space: nowrap; }
+.cal__cell {
+  min-height: 34px; border-radius: 8px; cursor: pointer; padding: 0;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16);
+  transition: background .08s, transform .08s;
+}
+.cal__cell.is-school { background: rgba(255,255,255,.03); border-style: dashed; border-color: rgba(255,255,255,.12); }
+.cal__cell:hover { background: rgba(255,255,255,.2); }
+.cal__cell[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); box-shadow: inset 0 0 0 2px rgba(27,21,3,.18); }
+.cal__cell:focus-visible, .cal__head:focus-visible, .cal__time:focus-visible, .chip:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.avail__summary { margin-top: 12px; font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.82); }
+.avail__summary:not(:empty) { min-height: 1.5em; }
+.field.is-invalid .cal { border-color: #ff8a8a; }
+@media (max-width: 480px) {
+  .cal { gap: 3px; padding: 6px; }
+  .cal__cell { min-height: 32px; border-radius: 6px; }
+  .cal__time { font-size: 11px; padding-right: 4px; }
+  .cal__head { font-size: 11px; letter-spacing: .02em; }
+}
+
+/* week-card rows: label above text so long labels never wrap into the copy */
+.week-card__rows > div { grid-template-columns: 1fr; gap: 2px; }
+.week-card__rows dt { padding-top: 0; }
+/* FAQ: calmer sizes */
+.acc--faq .acc__title { font-size: clamp(16px, 1.45vw, 21px); }
+.acc--faq .acc__btn { color: rgba(255,255,255,.9); }
+
+/* ---------- Curriculum: align with home + other subpages ---------- */
+.curriculum-page .page-hero__title { font-size: clamp(40px, 6.6vw, 100px); max-width: 17ch; }
+.page-hero .hero__facts { margin-top: clamp(16px, 2.6vh, 26px); }
+.curriculum-page .learn__cols { align-items: stretch; }
+.curriculum-page .learn__col { height: 100%; }
+.curriculum-page .outcomes { align-items: stretch; }
+.curriculum-page .outcome { height: 100%; background: var(--c2); }
+.curriculum-page .section-head .h2 { max-width: 22ch; }

@@ -642,9 +642,9 @@ html.lenis, html.lenis body { height: auto; }
 
 .process-wrap { padding: clamp(20px, 2.6vw, 38px); }
 .process-wrap__title { text-align: center; }
-.process { position: relative; list-style: none; margin: clamp(24px, 3.6vh, 40px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(10px, 1.6vw, 22px); }
-.process::before { content: ""; position: absolute; left: 10%; right: 10%; top: 11px; height: 2px; background: rgba(255, 255, 255, 0.14); }
-.process__line { position: absolute; left: 10%; right: 10%; top: 11px; height: 2px; background: linear-gradient(90deg, var(--gold), var(--gold-bright)); transform-origin: 0 50%; transform: scaleX(0); }
+.process { position: relative; list-style: none; margin: clamp(24px, 3.6vh, 40px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(10px, 1.6vw, 22px); }
+.process::before { content: ""; position: absolute; left: 12.5%; right: 12.5%; top: 11px; height: 2px; background: rgba(255, 255, 255, 0.14); }
+.process__line { position: absolute; left: 12.5%; right: 12.5%; top: 11px; height: 2px; background: linear-gradient(90deg, var(--gold), var(--gold-bright)); transform-origin: 0 50%; transform: scaleX(0); }
 .process li { position: relative; padding: 0 4px; text-align: center; }
 .process__dot { position: relative; z-index: 1; display: block; width: 24px; height: 24px; margin: 0 auto; border-radius: 50%; background: #0d1a14; border: 2px solid rgba(255, 255, 255, 0.28); transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s, transform 0.5s var(--ease); }
 .process li.is-on .process__dot { background: var(--gold-bright); border-color: var(--gold-bright); box-shadow: 0 0 0 7px var(--gold-edge); transform: scale(1.15); }
@@ -726,3 +726,6 @@ html.lenis, html.lenis body { height: auto; }
 .gr { transform-box: fill-box; transform-origin: 50% 100%; animation: sway 3.6s ease-in-out infinite alternate; }
 @keyframes sway { from { rotate: -3deg; } to { rotate: 3deg; } }
 @media (prefers-reduced-motion: reduce) { .ray, .sh, .gr { animation: none; } }
+
+/* Placeholder for a fact that is not confirmed yet, e.g. [start date] */
+.ph { border-bottom: 1px dashed currentColor; white-space: nowrap; }

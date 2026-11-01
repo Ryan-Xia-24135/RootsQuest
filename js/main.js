@@ -171,3 +171,24 @@
     video.appendChild(iframe);
   }
 })();
+
+/* Continuous background texture: tell each section how far down the page it starts, so the
+   tiled pattern carries on across section boundaries instead of restarting. */
+(function () {
+  var sections = document.querySelectorAll(".section");
+  if (!sections.length) return;
+  var raf = 0;
+  function sync() {
+    raf = 0;
+    var y = window.pageYOffset || 0;
+    for (var i = 0; i < sections.length; i++) {
+      sections[i].style.setProperty("--sy", Math.round(sections[i].getBoundingClientRect().top + y) + "px");
+    }
+  }
+  function queue() { if (!raf) raf = requestAnimationFrame(sync); }
+  sync();
+  window.addEventListener("load", sync);
+  window.addEventListener("resize", queue);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
+  if (window.ResizeObserver) new ResizeObserver(queue).observe(document.body);
+})();
