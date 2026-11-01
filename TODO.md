@@ -4,7 +4,6 @@
 Anything shown in `[square brackets]` (with a dashed underline) is not confirmed yet. Replace the brackets and the `<span class="ph">` around them.
 
 - ~~`[start date]`~~ — done, November 15.
-- `[end date]`: index.html, curriculum.html
 - `[20 to 30]` minutes of homework: index.html, curriculum.html
 
 ## Inventions to verify
