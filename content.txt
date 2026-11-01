@@ -22,12 +22,12 @@ shared.nav.label_here: Jump to
 shared.nav.label_elsewhere: On this page
 # --- shared / nav ---
 shared.nav.a1: Home
-shared.nav.a2: What it is
-shared.nav.a3: What students learn
-shared.nav.a4: Time and pilot cohort
-shared.nav.a5: Why it matters
-shared.nav.a6: Who it’s for
-shared.nav.a7: Join
+shared.nav.a2: What is ROOTS Quest?
+shared.nav.a3: What do students learn?
+shared.nav.a4: Our Pilot Cohort
+shared.nav.a5: Why ROOTS matters
+shared.nav.a6: Who ROOTS is for
+shared.nav.a7: Join Us
 shared.nav.a8: Why it matters
 shared.nav.a9: The problem
 shared.nav.a10: Beyond ecology
