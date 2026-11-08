@@ -13,6 +13,7 @@
 # ================================ SETTINGS ================================
 start_date: November 15
 end_date: December 6
+class_time: 7 pm Mountain Time
 homework_minutes: [20 to 30]
 email: rootsquestorg@gmail.com
 
@@ -64,7 +65,7 @@ shared.footer.span4: Pilot cohort · Four weeks · Starts {start_date}
 
 # ================================ PAGE: home ================================
 # --- home / head ---
-home.head.title1: ROOTS Quest — Engineering for an impact, a free 4-week course for Grades 6–8
+home.head.title1: ROOTS Quest — Engineering for an impact, a free 4-week course for Grades 5–8
 home.head.description: A free, youth-led 4-week pilot for Grades 6⁠–⁠8 in the Calgary area. Students discover how engineers design things that leave people and places better off. Live on Zoom, 60 minutes a week. No experience needed.
 home.head.social-title: ROOTS Quest
 # --- home / page ---
@@ -112,8 +113,8 @@ home.what.span3: Where
 home.what.h32: Live on Zoom
 home.what.p3: Join from home with a computer with class activities being done digitally. Based in the Calgary area, Alberta.
 home.what.span4: When
-home.what.h33: Time chosen with you
-home.what.p4: One live class each week, set around students’ availability, from {start_date} to {end_date}.
+home.what.h33: Sundays at 7 pm
+home.what.p4: One live class every Sunday at {class_time}, from {start_date} to {end_date}.
 home.what.span5: Structure
 home.what.h34: 4 weeks, 60 minutes a week
 home.what.p5: Exploring one branch of engineering each week, with a studentg showcase in Week 4.
@@ -172,7 +173,7 @@ home.commitment.span2: 1
 home.commitment.small1: hour a week
 home.commitment.h31: A light weekly commitment
 home.commitment.p1: The learning happens live, in one 60-minute class a week. Between classes there is one short design prompt, about {homework_minutes} minutes, so ROOTS Quest fits around school and family life.
-home.commitment.li1: One live class a week, at a time that suits the group
+home.commitment.li1: One live class every Sunday at {class_time}
 home.commitment.li2: One short design prompt a week
 home.commitment.li3: Free for every student
 home.commitment.t1: See the 4-week plan
@@ -198,7 +199,7 @@ home.why.t1: Read why it matters
 # --- home / who ---
 home.who.span1: Who it’s for
 home.who.h21: Students who want more than a science fair
-home.who.p1: ROOTS Quest is for students in Grades 6⁠–⁠8 (ages 11 to 14) who are curious about how things are made and how they work. No engineering or science experience needed.
+home.who.p1: ROOTS Quest is for students in Grades 6⁠–⁠8 (ages 10 to 14) who are curious about how things are made and how they work. No engineering or science experience needed.
 home.who.h31: Science-fair students
 home.who.p2: You’ve done science fairs and loved them, and you’re ready to see how engineers turn ideas into things that help real people and places.
 home.who.h32: Curious explorers
@@ -404,11 +405,11 @@ curriculum.faq.span1: Questions
 curriculum.faq.h21: Everything you need to know
 curriculum.faq.p1: Short answers for families, from cost and time to safety.
 curriculum.faq.span2: Who is this course designed for?
-curriculum.faq.p2: Students in Grades 6⁠–⁠8 (ages 11 to 14) in the Calgary area who are curious about how things are made and how they work. No engineering or science experience is needed.
+curriculum.faq.p2: Students in Grades 6⁠–⁠8 (ages 10 to 14) in the Calgary area who are curious about how things are made and how they work. No engineering or science experience is needed.
 curriculum.faq.span3: How much does it cost?
 curriculum.faq.p3: ROOTS Quest is free. No tuition and no fees. As a pilot, we ask families for honest feedback in return.
 curriculum.faq.span4: How long does the course run?
-curriculum.faq.p4: Four weeks, with one live 60-minute class each week on Zoom, at a time chosen to suit the group, from {start_date} to {end_date}. The family showcase is part of Week 4.
+curriculum.faq.p4: Four weeks, with one live 60-minute class each week on Zoom, every Sunday at {class_time}, from {start_date} to {end_date}. The family showcase is part of Week 4.
 curriculum.faq.span5: How much homework is there?
 curriculum.faq.p5: One short design prompt a week, about {homework_minutes} minutes. Students answer it on a one-page Idea Card and share it at the start of the next class.
 curriculum.faq.span6: What does my student need?
@@ -433,7 +434,7 @@ curriculum.join-curriculum.p3: Free · Four weeks, 60 minutes a week · Starts {
 # ================================ PAGE: about ================================
 # --- about / head ---
 about.head.title1: About — ROOTS Quest
-about.head.description: What ROOTS Quest is, what ROOTS stands for, and the people behind this youth-led, four-week course in engineering for an impact for Grades 6–8.
+about.head.description: What ROOTS Quest is, what ROOTS stands for, and the people behind this youth-led, four-week course in engineering for an impact for Grades 5–8.
 about.head.social-title: About
 # --- about / page ---
 about.page.a1: Home
@@ -547,13 +548,13 @@ privacy.policy.p1: When you register, you give us:
 privacy.policy.li1: the student’s first and last name,
 privacy.policy.li2: a parent or guardian’s first and last name,
 privacy.policy.li3: an email address (the student’s or the guardian’s),
-privacy.policy.li4: the student’s grade (6, 7 or 8), and
+privacy.policy.li4: the student’s grade (5, 6, 7 or 8), and
 privacy.policy.li5: a short answer about why the student is interested in sustainability or regenerative design.
 privacy.policy.p2: If you email us, we also keep your message and email address so we can reply.
 privacy.policy.h23: Why we collect it
 privacy.policy.p3: We use this information only to run the course: to confirm a place, to send the Zoom link and course updates, to answer your questions, and to understand who the course is reaching so we can improve it.
 privacy.policy.h24: Children’s information
-privacy.policy.p4: ROOTS Quest is designed for students aged 11 to 14. We ask that a parent or guardian completes or approves every registration. If you believe a child has given us information without a guardian’s knowledge, email us and we will delete it.
+privacy.policy.p4: ROOTS Quest is designed for students aged 10 to 14. We ask that a parent or guardian completes or approves every registration. If you believe a child has given us information without a guardian’s knowledge, email us and we will delete it.
 privacy.policy.h25: Who handles your information
 privacy.policy.t2: Registration forms are received through
 privacy.policy.a2: Formspree
@@ -601,17 +602,13 @@ register.main.span6: The student’s or the guardian’s — whichever is best t
 register.main.placeholder5: you@example.com
 register.main.p4: Please enter a valid email address.
 register.main.t4: Grade
+register.main.button0: Grade 5
 register.main.button1: Grade 6
 register.main.button2: Grade 7
 register.main.button3: Grade 8
 register.main.p5: Please choose a grade.
-register.main.t5: When can you attend?
-register.main.span7: Tap, or click and drag across a block, to mark **every** time that works. Choose as many as you like. We’ll pick the slot that suits the most students. All times are Mountain Time (Calgary).
-register.main.button4: Weekdays 4–8 pm
-register.main.button5: Weekends, all day
-register.main.button6: Clear
-register.main.p6: No times selected yet.
-register.main.p7: Please choose at least one time that works for you.
+register.main.t5: Class time
+register.main.span7: Class is every Sunday at {class_time} (Calgary time), for four weeks. Please only register if you can join on Sundays.
 register.main.t6: Why are you interested in engineering or inventing?
 register.main.span8: What excites you most about taking this course? A few sentences is plenty — there are no wrong answers.
 register.main.p8: Tell us a little about why you’re interested.

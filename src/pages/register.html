@@ -124,6 +124,7 @@
       <fieldset>
         <legend>{{register.main.t4}}<span class="req" aria-hidden="true">*</span></legend>
         <div class="pills" id="gradePills">
+          <button class="pill" type="button" data-value="Grade 5" aria-pressed="false">{{register.main.button0}}</button>
           <button class="pill" type="button" data-value="Grade 6" aria-pressed="false">{{register.main.button1}}</button>
           <button class="pill" type="button" data-value="Grade 7" aria-pressed="false">{{register.main.button2}}</button>
           <button class="pill" type="button" data-value="Grade 8" aria-pressed="false">{{register.main.button3}}</button>
@@ -134,19 +135,9 @@
     </div>
 
     <div class="field">
-      <fieldset class="avail" id="availField">
-        <legend>{{register.main.t5}}<span class="req" aria-hidden="true">*</span></legend>
-        <span class="hint">{{register.main.span7}}</span>
-        <div class="avail__tools">
-          <button class="chip" type="button" data-preset="weekday">{{register.main.button4}}</button>
-          <button class="chip" type="button" data-preset="weekend">{{register.main.button5}}</button>
-          <button class="chip chip--quiet" type="button" data-preset="clear">{{register.main.button6}}</button>
-        </div>
-        <div class="cal" id="cal" role="grid" aria-label="Weekly availability, Mountain Time"></div>
-        <p class="avail__summary" id="availSummary" aria-live="polite">{{register.main.p6}}</p>
-        <input type="hidden" name="Available times (Mountain Time)" id="availability" />
-      </fieldset>
-      <p class="error">{{register.main.p7}}</p>
+      <label>{{register.main.t5}}</label>
+      <span class="hint">{{register.main.span7}}</span>
+      <input type="hidden" name="Class time" value="Sundays 7 pm Mountain Time" />
     </div>
 
     <div class="field group" data-group="course">
@@ -202,132 +193,6 @@
   );
 
 
-  // ---- Weekly availability calendar ----
-  const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const DAY_LONG = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const HOURS = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];          // class start times
-  const h12 = (h) => (h % 12 === 0 ? 12 : h % 12);
-  const ap = (h) => (h >= 12 ? "pm" : "am");
-  const label = (h) => h12(h) + " " + ap(h);
-  const cal = document.getElementById("cal");
-  const availInput = document.getElementById("availability");
-  const availSummary = document.getElementById("availSummary");
-  const sel = Array.from({ length: 7 }, () => new Set());               // sel[day] = Set(start hours)
-  const cells = [];                                                      // cells[day][rowIndex]
-
-  function el(tag, cls, text) { const n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; }
-
-  function build() {
-    cal.appendChild(el("span", "cal__corner"));
-    DAYS.forEach((d, di) => {
-      const b = el("button", "cal__head", d); b.type = "button"; b.dataset.day = di;
-      b.setAttribute("aria-label", "Select or clear all of " + DAY_LONG[di]);
-      cal.appendChild(b);
-    });
-    HOURS.forEach((h, ri) => {
-      const r = el("button", "cal__time", label(h)); r.type = "button"; r.dataset.row = ri;
-      r.setAttribute("aria-label", "Select or clear " + label(h) + " on every day");
-      cal.appendChild(r);
-      DAYS.forEach((d, di) => {
-        const c = el("button", "cal__cell"); c.type = "button";
-        c.dataset.day = di; c.dataset.row = ri; c.setAttribute("aria-pressed", "false");
-        c.setAttribute("aria-label", DAY_LONG[di] + " " + label(h) + " to " + label(h + 1));
-        if (di >= 1 && di <= 5 && h < 15) c.classList.add("is-school");   // weekday school hours, still selectable
-        c.tabIndex = (di === 0 && ri === 0) ? 0 : -1;
-        (cells[di] = cells[di] || [])[ri] = c;
-        cal.appendChild(c);
-      });
-    });
-  }
-
-  function paint(di, ri, on) {
-    const h = HOURS[ri];
-    if (on) sel[di].add(h); else sel[di].delete(h);
-    cells[di][ri].setAttribute("aria-pressed", on ? "true" : "false");
-  }
-
-  function range(a, b) { // a..b hours (b exclusive end)
-    const e = b;
-    return ap(a) === ap(e) ? h12(a) + "–" + h12(e) + " " + ap(e) : h12(a) + " " + ap(a) + "–" + h12(e) + " " + ap(e);
-  }
-  function summarize() {
-    const parts = []; let total = 0;
-    sel.forEach((set, di) => {
-      const hrs = Array.from(set).sort((x, y) => x - y); if (!hrs.length) return;
-      total += hrs.length;
-      const runs = []; let start = hrs[0], prev = hrs[0];
-      for (let i = 1; i <= hrs.length; i++) {
-        if (hrs[i] !== prev + 1) { runs.push(range(start, prev + 1)); start = hrs[i]; }
-        prev = hrs[i];
-      }
-      parts.push(DAYS[di] + " " + runs.join(", "));
-    });
-    availInput.value = parts.join("; ");
-    availSummary.textContent = total
-      ? total + (total === 1 ? " hour" : " hours") + " selected: " + parts.join(" · ")
-      : "No times selected yet.";
-    if (total) document.getElementById("availField").closest(".field").classList.remove("is-invalid");
-  }
-
-  function setMany(list, on) { list.forEach(([di, ri]) => paint(di, ri, on)); summarize(); }
-  const allOn = (list) => list.every(([di, ri]) => sel[di].has(HOURS[ri]));
-
-  build();
-  let dragMode = null, dragStart = null, snapshot = null;
-  function applyRect(c) {
-    const d0 = Math.min(dragStart[0], +c.dataset.day), d1 = Math.max(dragStart[0], +c.dataset.day);
-    const r0 = Math.min(dragStart[1], +c.dataset.row), r1 = Math.max(dragStart[1], +c.dataset.row);
-    for (let di = 0; di < 7; di++) HOURS.forEach((h, ri) => {
-      const inRect = di >= d0 && di <= d1 && ri >= r0 && ri <= r1;
-      paint(di, ri, inRect ? dragMode : snapshot[di].has(h));
-    });
-    summarize();
-  }
-  cal.addEventListener("pointerdown", (e) => {
-    const c = e.target.closest(".cal__cell"); if (!c) return;
-    dragMode = c.getAttribute("aria-pressed") !== "true";
-    dragStart = [+c.dataset.day, +c.dataset.row];
-    snapshot = sel.map((set) => new Set(set));
-    applyRect(c);
-    if (e.pointerType !== "touch") e.preventDefault();
-  });
-  cal.addEventListener("pointerover", (e) => {
-    if (dragMode === null || e.pointerType === "touch") return;
-    const c = e.target.closest(".cal__cell"); if (c) applyRect(c);
-  });
-  window.addEventListener("pointerup", () => { dragMode = null; dragStart = null; snapshot = null; });
-  cal.addEventListener("click", (e) => {
-    const c = e.target.closest(".cal__cell");
-    if (c && e.detail === 0) { paint(+c.dataset.day, +c.dataset.row, c.getAttribute("aria-pressed") !== "true"); summarize(); return; } // keyboard
-    const hd = e.target.closest(".cal__head");
-    if (hd) { const di = +hd.dataset.day; const list = HOURS.map((_, ri) => [di, ri]); setMany(list, !allOn(list)); return; }
-    const tm = e.target.closest(".cal__time");
-    if (tm) { const ri = +tm.dataset.row; const list = DAYS.map((_, di) => [di, ri]); setMany(list, !allOn(list)); }
-  });
-  // arrow-key movement between cells (roving tabindex)
-  cal.addEventListener("keydown", (e) => {
-    const c = e.target.closest(".cal__cell"); if (!c) return;
-    let di = +c.dataset.day, ri = +c.dataset.row;
-    if (e.key === "ArrowRight") di = Math.min(6, di + 1);
-    else if (e.key === "ArrowLeft") di = Math.max(0, di - 1);
-    else if (e.key === "ArrowDown") ri = Math.min(HOURS.length - 1, ri + 1);
-    else if (e.key === "ArrowUp") ri = Math.max(0, ri - 1);
-    else return;
-    e.preventDefault();
-    c.tabIndex = -1; const n = cells[di][ri]; n.tabIndex = 0; n.focus();
-  });
-  document.querySelectorAll(".avail__tools .chip").forEach((b) => b.addEventListener("click", () => {
-    const p = b.dataset.preset;
-    if (p === "clear") { setMany(DAYS.flatMap((_, di) => HOURS.map((_, ri) => [di, ri])), false); return; }
-    const list = [];
-    DAYS.forEach((_, di) => HOURS.forEach((h, ri) => {
-      const weekday = di >= 1 && di <= 5;
-      if (p === "weekday" && weekday && h >= 16 && h <= 19) list.push([di, ri]);
-      if (p === "weekend" && !weekday) list.push([di, ri]);
-    }));
-    setMany(list, !allOn(list));
-  }));
-
   function fieldOf(id) { return document.getElementById(id).closest(".field"); }
   function invalid(field) { field.classList.add("is-invalid"); return field; }
 
@@ -338,7 +203,6 @@
     if (mode === "course" && (!val("guardianFirst") || !val("guardianLast"))) bad.push(invalid(fieldOf("guardianFirst")));
     if (!/^\S+@\S+\.\S+$/.test(val("email"))) bad.push(invalid(fieldOf("email")));
     if (!gradeInput.value) bad.push(invalid(fieldOf("grade")));
-    if (!availInput.value) bad.push(invalid(document.getElementById("availField").closest(".field")));
     if (mode === "course" && !val("why")) bad.push(invalid(fieldOf("why")));
     if (bad.length) {
       bad[0].scrollIntoView({ behavior: "smooth", block: "center" });
