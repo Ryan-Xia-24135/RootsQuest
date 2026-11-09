@@ -13,7 +13,7 @@
 # ================================ SETTINGS ================================
 start_date: November 15
 end_date: December 6
-class_time: 7 pm Mountain Time
+class_time: 7–8 pm Alberta time
 homework_minutes: [20 to 30]
 email: rootsquestorg@gmail.com
 
@@ -113,7 +113,7 @@ home.what.span3: Where
 home.what.h32: Live on Zoom
 home.what.p3: Join from home with a computer with class activities being done digitally. Based in the Calgary area, Alberta.
 home.what.span4: When
-home.what.h33: Sundays at 7 pm
+home.what.h33: Sundays, 7–8 pm
 home.what.p4: One live class every Sunday at {class_time}, from {start_date} to {end_date}.
 home.what.span5: Structure
 home.what.h34: 4 weeks, 60 minutes a week
@@ -608,7 +608,7 @@ register.main.button2: Grade 7
 register.main.button3: Grade 8
 register.main.p5: Please choose a grade.
 register.main.t5: Class time
-register.main.span7: Class is every Sunday at {class_time} (Calgary time), for four weeks. Please only register if you can join on Sundays.
+register.main.span7: Class is every Sunday at {class_time}, for four weeks. Please only register if you can join on Sundays.
 register.main.t6: Why are you interested in engineering or inventing?
 register.main.span8: What excites you most about taking this course? A few sentences is plenty — there are no wrong answers.
 register.main.p8: Tell us a little about why you’re interested.
