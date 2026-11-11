@@ -93,7 +93,7 @@ home.page.a21: Meet the team
 home.page.a22: What ROOTS means
 home.page.a23: Contact
 # --- home / top ---
-home.top.span1: Free pilot · Grades 5–⁠8 · Live on Zoom
+home.top.span1: Free pilot · Grades 5–⁠8 · Live on Zoom · Sundays, {class_time}
 home.top.h11: ROOTS Quest
 home.top.p1: Teaching young students engineering for an impact and discovering how engineers design things that leave people and places better.
 home.top.a1: Join our pilot cohort
