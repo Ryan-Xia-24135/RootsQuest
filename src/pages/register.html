@@ -140,6 +140,25 @@
       <input type="hidden" name="Class time" value="Sundays 7–8 pm Alberta time" />
     </div>
 
+    <div class="field" id="availField">
+      <fieldset>
+        <legend>{{register.main.avail_q}}<span class="req" aria-hidden="true">*</span></legend>
+        <div class="pills" id="availPills">
+          <button class="pill" type="button" data-value="Yes" aria-pressed="false">{{register.main.avail_yes}}</button>
+          <button class="pill" type="button" data-value="No" aria-pressed="false">{{register.main.avail_no}}</button>
+        </div>
+        <input type="hidden" name="Available Sundays 7-8 pm" id="avail" />
+      </fieldset>
+      <p class="error">{{register.main.avail_err}}</p>
+    </div>
+
+    <div class="field" id="altField" hidden>
+      <label for="altTime">{{register.main.alt_label}}<span class="req" aria-hidden="true">*</span></label>
+      <span class="hint">{{register.main.alt_hint}}</span>
+      <textarea class="input" id="altTime" name="Other times available" placeholder="{{register.main.alt_placeholder}}"></textarea>
+      <p class="error">{{register.main.alt_err}}</p>
+    </div>
+
     <div class="field group" data-group="course">
       <label for="why">{{register.main.t6}}<span class="req" aria-hidden="true">*</span></label>
       <span class="hint">{{register.main.span8}}</span>
@@ -188,6 +207,18 @@
       pill.closest(".field").classList.remove("is-invalid");
     });
   });
+  // Availability
+  const availInput = document.getElementById("avail");
+  const altField = document.getElementById("altField");
+  document.querySelectorAll("#availPills .pill").forEach((pill) => {
+    pill.addEventListener("click", () => {
+      document.querySelectorAll("#availPills .pill").forEach((p) => p.setAttribute("aria-pressed", "false"));
+      pill.setAttribute("aria-pressed", "true");
+      availInput.value = pill.dataset.value;
+      pill.closest(".field").classList.remove("is-invalid");
+      altField.hidden = pill.dataset.value !== "No";
+    });
+  });
   form.querySelectorAll(".input").forEach((input) =>
     input.addEventListener("input", () => input.closest(".field").classList.remove("is-invalid"))
   );
@@ -203,6 +234,8 @@
     if (mode === "course" && (!val("guardianFirst") || !val("guardianLast"))) bad.push(invalid(fieldOf("guardianFirst")));
     if (!/^\S+@\S+\.\S+$/.test(val("email"))) bad.push(invalid(fieldOf("email")));
     if (!gradeInput.value) bad.push(invalid(fieldOf("grade")));
+    if (!availInput.value) bad.push(invalid(fieldOf("avail")));
+    else if (availInput.value === "No" && !val("altTime")) bad.push(invalid(fieldOf("altTime")));
     if (mode === "course" && !val("why")) bad.push(invalid(fieldOf("why")));
     if (bad.length) {
       bad[0].scrollIntoView({ behavior: "smooth", block: "center" });

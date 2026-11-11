@@ -609,6 +609,14 @@ register.main.button3: Grade 8
 register.main.p5: Please choose a grade.
 register.main.t5: Class time
 register.main.span7: Class is every Sunday at {class_time}, for four weeks. Please only register if you can join on Sundays.
+register.main.avail_q: Are you available Sundays, 7–8 pm Alberta time?
+register.main.avail_yes: Yes, I'm available
+register.main.avail_no: No, I'm not
+register.main.avail_err: Please let us know if you're available.
+register.main.alt_label: What times are you available instead?
+register.main.alt_hint: Write the days and times that work for you (and your time zone). We'll do our best to find a fit.
+register.main.alt_placeholder: e.g. Saturdays 2–3 pm Mountain Time
+register.main.alt_err: Please write a time that works for you.
 register.main.t6: Why are you interested in engineering or inventing?
 register.main.span8: What excites you most about taking this course? A few sentences is plenty — there are no wrong answers.
 register.main.p8: Tell us a little about why you’re interested.
