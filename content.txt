@@ -48,7 +48,7 @@ shared.nav.a23: Contact
 shared.nav.a24: Register
 # --- shared / footer ---
 shared.footer.b1: ROOTS Quest
-shared.footer.p1: A free, youth-led course in engineering for an impact, for students in Grades 6⁠–⁠8.
+shared.footer.p1: A free, youth-led course in engineering for an impact, for students in Grades 5⁠–⁠8.
 shared.footer.t1: {email}
 shared.footer.span1: Explore
 shared.footer.a1: Home
@@ -66,7 +66,7 @@ shared.footer.span4: Pilot cohort · Four weeks · Starts {start_date}
 # ================================ PAGE: home ================================
 # --- home / head ---
 home.head.title1: ROOTS Quest — Engineering for an impact, a free 4-week course for Grades 5–8
-home.head.description: A free, youth-led 4-week pilot for Grades 6⁠–⁠8 in the Calgary area. Students discover how engineers design things that leave people and places better off. Live on Zoom, 60 minutes a week. No experience needed.
+home.head.description: A free, youth-led 4-week pilot for Grades 5⁠–⁠8 in the Calgary area. Students discover how engineers design things that leave people and places better off. Live on Zoom, 60 minutes a week. No experience needed.
 home.head.social-title: ROOTS Quest
 # --- home / page ---
 home.page.a1: Home
@@ -199,7 +199,7 @@ home.why.t1: Read why it matters
 # --- home / who ---
 home.who.span1: Who it’s for
 home.who.h21: Students who want more than a science fair
-home.who.p1: ROOTS Quest is for students in Grades 6⁠–⁠8 (ages 10 to 14) who are curious about how things are made and how they work. No engineering or science experience needed.
+home.who.p1: ROOTS Quest is for students in Grades 5⁠–⁠8 (ages 10 to 14) who are curious about how things are made and how they work. No engineering or science experience needed.
 home.who.h31: Science-fair students
 home.who.p2: You’ve done science fairs and loved them, and you’re ready to see how engineers turn ideas into things that help real people and places.
 home.who.h32: Curious explorers
@@ -405,7 +405,7 @@ curriculum.faq.span1: Questions
 curriculum.faq.h21: Everything you need to know
 curriculum.faq.p1: Short answers for families, from cost and time to safety.
 curriculum.faq.span2: Who is this course designed for?
-curriculum.faq.p2: Students in Grades 6⁠–⁠8 (ages 10 to 14) in the Calgary area who are curious about how things are made and how they work. No engineering or science experience is needed.
+curriculum.faq.p2: Students in Grades 5⁠–⁠8 (ages 10 to 14) in the Calgary area who are curious about how things are made and how they work. No engineering or science experience is needed.
 curriculum.faq.span3: How much does it cost?
 curriculum.faq.p3: ROOTS Quest is free. No tuition and no fees. As a pilot, we ask families for honest feedback in return.
 curriculum.faq.span4: How long does the course run?
@@ -467,7 +467,7 @@ about.top.p1: What the course is, who is building it and what the name stands fo
 # --- about / story ---
 about.story.span1: About us
 about.story.h21: What is ROOTS Quest?
-about.story.p1: ROOTS Quest is a free, four-week course in engineering for an impact, for students in Grades 6⁠–⁠8.
+about.story.p1: ROOTS Quest is a free, four-week course in engineering for an impact, for students in Grades 5⁠–⁠8.
 about.story.p2: Students discover how engineers design things that leave people and places better off, by studying real inventions and designing ideas of their own.
 about.story.a1: See the curriculum
 about.story.strong1: Meet ROOTS Quest in one minute
@@ -541,7 +541,7 @@ privacy.top.h11: Your privacy, plainly explained
 privacy.top.p1: What ROOTS Quest collects when you register, why, and what choices you have. Last updated October 12, 2026.
 # --- privacy / policy ---
 privacy.policy.h21: Who we are
-privacy.policy.t1: ROOTS Quest is a free, youth-led course in engineering for an impact for students in Grades 6⁠–⁠8, based in Calgary, Alberta, Canada. You can reach us at
+privacy.policy.t1: ROOTS Quest is a free, youth-led course in engineering for an impact for students in Grades 5⁠–⁠8, based in Calgary, Alberta, Canada. You can reach us at
 privacy.policy.a1: {email}
 privacy.policy.h22: What we collect
 privacy.policy.p1: When you register, you give us:
@@ -578,7 +578,7 @@ register.head.description: Register for the free ROOTS Quest pilot: a small grou
 register.nav.t1: ROOTS Quest
 register.nav.a1: ← Back to the site
 # --- register / main ---
-register.main.span1: Free · Grades 6⁠–⁠8 · Live on Zoom
+register.main.span1: Free · Grades 5⁠–⁠8 · Live on Zoom
 register.main.h11: Join ROOTS Quest
 register.main.p1: Four weeks of engineering for an impact, live on Zoom. Tell us a little about you and we’ll be in touch before the course begins.
 register.main.span2: A small pilot for 5 to 6 students
