@@ -82,7 +82,7 @@
     <span class="reg__eyebrow">{{register.main.span1}}</span>
     <h1 id="title">{{register.main.h11}}</h1>
     <p class="reg__lede" id="lede">{{register.main.p1}}</p>
-    <div class="reg__dates" aria-label="Key dates">
+    <div class="reg__dates" aria-label="Key dates" style="display:none">
       <span>{{register.main.span2}}</span>
       <span>{{register.main.span3}}</span>
       <span>{{register.main.span4}}</span>
@@ -92,7 +92,8 @@
   </div>
 
   <div class="reg__panel">
-  <form id="form" novalidate>
+  <!-- Registration closed: remove "hidden" from the form and the dates above to reopen. -->
+  <form id="form" novalidate hidden>
     <input type="hidden" name="Sign-up type" id="signupType" value="Course registration" />
 
     <div class="field">
