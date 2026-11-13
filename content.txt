@@ -579,8 +579,8 @@ register.nav.t1: ROOTS Quest
 register.nav.a1: ← Back to the site
 # --- register / main ---
 register.main.span1: Free · Grades 5⁠–⁠8 · Live on Zoom
-register.main.h11: Pilot cohort registration is closed
-register.main.p1: Thank you for your interest in ROOTS Quest. The pilot cohort is full and registration is now closed. Check back on the site for future cohorts.
+register.main.h11: Join ROOTS Quest
+register.main.p1: Four weeks of engineering for an impact, live on Zoom. Tell us a little about you and we’ll be in touch before the course begins.
 register.main.span2: A small pilot for 5 to 6 students
 register.main.span3: Four weeks, 60 minutes a week
 register.main.span4: No engineering or science experience needed
